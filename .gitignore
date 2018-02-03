@@ -1,0 +1,7 @@
+build
+*.class
+*.xml
+*.jar
+*.war
+*.ear
+*.DS_Store
