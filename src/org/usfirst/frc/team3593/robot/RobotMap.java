@@ -22,7 +22,7 @@ public class RobotMap {
     public static int shifter = 4;
     public static int flap = 4;
     public static int booster = 4;
-    public static int lifter = 4;
+    public static int lift = 4;
     
     // Analog Channel
     public static int gyro = 3;
@@ -33,5 +33,9 @@ public class RobotMap {
     public static int Leftencoder2 = 1;
     public static int Rightencoder1 = 2;
     public static int Rightencoder2 = 3;
+    
+    //Values
+    public static double LowTrig = 0.25;
+    public static double HighTrig = 0.75;
     		
 }
