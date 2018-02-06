@@ -39,5 +39,23 @@ public class RobotMap {
 	public static int rightEncoder1 = 2;
 	public static int rightEncoder2 = 3;
 	
+	//Values
+
+	public static double lowSpeedShooters= 0.25;
+	public static double highSpeedShooters=0.75;
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
