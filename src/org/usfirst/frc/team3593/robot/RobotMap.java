@@ -32,6 +32,7 @@ public class RobotMap {
 	public static int booster = 5;
 	public static int flap = 6;
 	public static int lift = 7;
+	public static int folder = 0;
 	
 	//DIO Channels
 	public static int encoderL1 = 0;
@@ -42,4 +43,8 @@ public class RobotMap {
 	//Analog Channels
 	public static int gryo = 3;
 	public static int pressureSensor = 4;
+	
+	//Random Values
+	public static double shooterLowSpeed = .25;
+	public static double shooterHighSpeed = .75;
 	}

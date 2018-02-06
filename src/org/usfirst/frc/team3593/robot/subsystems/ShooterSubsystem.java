@@ -26,9 +26,33 @@ public class ShooterSubsystem extends Subsystem {
 		
 		lifter = new Solenoid(RobotMap.lift);
 		booster = new Solenoid(RobotMap.booster);
+	} 
+	
+	public void LiftTheLifter(boolean itsavalue) {
+		lifter.set(itsavalue);
 	}
 	
-	public 
+	public void Boostio(boolean inputboolean) {
+		booster.set(inputboolean);
+	}
+	
+	public void SetShooterSpeed(boolean lowTrig, boolean highTrig ) {
+		if (lowTrig) {
+			double speed = highTrig ? RobotMap.shooterHighSpeed: RobotMap.shooterLowSpeed;
+			
+			shooterRFront.set(speed);
+			shooterLFront.set(speed);
+			shooterRRear.set(speed);
+			shooterLRear.set(speed);
+		}
+		else {
+			shooterRFront.set(0);
+			shooterLFront.set(0);
+			shooterRRear.set(0);
+			shooterLRear.set(0);
+		}
+	}
+	
 	
     public void initDefaultCommand() {
     
