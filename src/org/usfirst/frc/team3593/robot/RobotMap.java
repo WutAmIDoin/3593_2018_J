@@ -17,6 +17,11 @@ public class RobotMap {
 	public static int shooterRearLeft = 6;
 	public static int shooterFrontRight = 7;
 	public static int shooterRearRight = 9;
+	public static int intakeFrontLeft = 2;
+	public static int intakeFrontRight = 3;
+	public static int intakeRearLeft = 4;
+	public static int intakeRearRight = 8;
+	// 7,9 reversed
 	
 	
 	
@@ -24,14 +29,13 @@ public class RobotMap {
 	//Solenoids:
 	public static int shifter = 4;
 	public static int booster = 5;
-	public static int lefter = 6;
+	public static int lifter = 6;
 	public static int flap = 7; 
-	
+	public static int folders = 8;
 	
 	//analog
 	public static int gyro = 3;
 	public static int pressureSensor = 4;
-	
 	
 	//DIO
 	public static int encoderLeft1 = 0;
@@ -39,7 +43,10 @@ public class RobotMap {
 	public static int encoderRight1 = 2;
 	public static int encoderRight2 = 3;
 	
-	//network Table
+
+	//stuffs
+	public static double lowTrig = 0.25;
+	public static double highTrig = 0.75;
 	
 	
 	

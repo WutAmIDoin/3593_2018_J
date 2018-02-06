@@ -13,11 +13,16 @@ public class DriveSubsystem extends Subsystem {
 
 	Spark driveLeft;
 	Spark driveRight;
+	
 	Solenoid shifter;
+	
 	AnalogGyro gyro;
+	
 	Encoder encoderLeft;
 	Encoder encoderRight;
+	
 	NetworkTable ntVision;
+	
 	DifferentialDrive drive;
 	
 	
