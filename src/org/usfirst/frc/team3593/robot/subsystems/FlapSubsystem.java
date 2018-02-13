@@ -11,11 +11,16 @@ public class FlapSubsystem extends Subsystem {
 
     Solenoid flap;
     
-    public FlapSubsystem() {
+    public FlapSubsystem(){
     	
     	flap = new Solenoid(RobotMap.flap);
     	
     }
+    
+    public void flapCommand(boolean flapper) {
+		flap.set(flapper);
+		
+	}
     
 
     public void initDefaultCommand() {

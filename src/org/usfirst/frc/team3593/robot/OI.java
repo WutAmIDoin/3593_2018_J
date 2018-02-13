@@ -1,42 +1,67 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team3593.robot;
 
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
-public class OI {
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
+
+import org.usfirst.frc.team3593.robot.subsystems.*;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.*;
+
+
+
+public class OI extends ShooterSubsystem{
+	
+	
+	public static XboxController XBC1;
+	public static XboxController XBC2;
+	
+	public static double axis1;
+	public static double axis5;
+	public static Button shifter;
+	
+	public static Button booster;
+	public static Button lifter;
+	public static Button lowTrig;
+	public static Button highTrig;
+	
+	
+	public OI() {
+		
+		XBC1 = new XboxController(0);
+		XBC2 = new XboxController(1);
+		axis1 = XBC1.getRawAxis(1);
+		axis5 = XBC1.getRawAxis(5);
+		shifter = new JoystickButton(XBC1, 6);
+	
+		booster = new JoystickButton(XBC2, 0);
+		lifter = new JoystickButton(XBC2, 5);
+		lowTrig = new JoystickButton(XBC2, 3);
+		highTrig = new JoystickButton(XBC2, 4);
+
+		
+	}
+	
+	
+		
+	}
+	
+	//double value;
+	//value = exampleStick.getRawAxis(1);
+
+	
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
-
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
 	// three ways:
 
-	// Start the command when the button is pressed and let it run the command
+	// 1. Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenPressed(new ExampleCommand());
 
-	// Run the command while the button is being held down and interrupt it once
+	// 2. Run the command while the button is being held down and interrupt it once
 	// the button is released.
 	// button.whileHeld(new ExampleCommand());
 
-	// Start the command when the button is released and let it run the command
+	// 3. Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-}
