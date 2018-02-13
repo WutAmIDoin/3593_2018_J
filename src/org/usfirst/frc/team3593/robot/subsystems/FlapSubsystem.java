@@ -15,6 +15,9 @@ public class FlapSubsystem extends Subsystem {
    public FlapSubsystem() {
 	   flap = new Solenoid(RobotMap.flap);
    }
+   public void MoveFlap(boolean flapVal) {
+	   flap.set(flapVal);
+   }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -23,26 +23,26 @@ public class RobotMap {
 	public static int shooterRFront = 7;
 	public static int shooterRRear = 9;
 	public static int intakeL = 2;
-	public static int intakeR = 3;
-	public static int ciminiR = 4;
-	public static int ciminiL = 8;
+	public static int intakeR = 4;
+	public static int ciminiR = 8;
+	public static int ciminiL = 3;
 	
 	//PCM Channel
 	public static int shifters = 4;
-	public static int booster = 5;
-	public static int flap = 6;
-	public static int lift = 7;
-	public static int folder = 0;
+	public static int booster = 7;
+	public static int flap = 0;
+	public static int lift = 6;
+	public static int folder = 5;
 	
 	//DIO Channels
 	public static int encoderL1 = 0;
 	public static int encoderL2 = 1;
 	public static int encoderR1 = 2;
-	public static int encoerR2 = 3;
+	public static int encoderR2 = 3;
 	
 	//Analog Channels
-	public static int gryo = 3;
-	public static int pressureSensor = 4;
+	public static int gryo = 0;
+	public static int pressureSensor = 1;
 	
 	//Random Values
 	public static double shooterLowSpeed = .25;

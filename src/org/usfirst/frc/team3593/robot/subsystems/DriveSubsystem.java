@@ -34,7 +34,7 @@ public class DriveSubsystem extends Subsystem {
 		gyro = new AnalogGyro(RobotMap.gryo);
 		
 		encL = new Encoder(RobotMap.encoderL1, RobotMap.encoderL2);
-		encR = new Encoder(RobotMap.encoderR1, RobotMap.encoerR2);
+		encR = new Encoder(RobotMap.encoderR1, RobotMap.encoderR2);
 		
 		ntVision = NetworkTableInstance.getDefault().getTable("vision");
 		
@@ -44,6 +44,11 @@ public class DriveSubsystem extends Subsystem {
 	public void driveTank(double left, double right) {
 		DR.tankDrive(left, right);
 	}
+	
+	public void ShiftTheShifters(boolean inputShf) {
+		
+	}
+	
 	
 	Boolean shifterVar = false;
 	long timeout = System.nanoTime();

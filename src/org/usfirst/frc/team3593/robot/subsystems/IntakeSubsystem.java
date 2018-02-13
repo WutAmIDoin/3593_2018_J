@@ -26,6 +26,25 @@ public class IntakeSubsystem extends Subsystem {
 		
 		folders = new Solenoid(RobotMap.folder);
 	}
+	
+	public void OpenArms(boolean openValue) {
+		folders.set(openValue);
+	}
+	
+	public void IntakeIn(double whoop) {
+		intakeL.set(-whoop);
+		intakeR.set(whoop);
+		ciminiR.set(whoop);
+		ciminiL.set(-whoop);
+	}
+	
+	public void IntakeOut(double douknowdawea) {
+		intakeL.set(-douknowdawea);
+		intakeR.set(douknowdawea);
+		ciminiR.set(douknowdawea);
+		ciminiL.set(-douknowdawea);
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
