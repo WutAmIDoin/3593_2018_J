@@ -3,6 +3,7 @@ package org.usfirst.frc.team3593.robot;
 
 
 import org.usfirst.frc.team3593.robot.subsystems.*;
+import org.usfirst.frc.team3593.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.*;
@@ -11,9 +12,6 @@ import edu.wpi.first.wpilibj.buttons.*;
 
 public class OI extends ShooterSubsystem{
 	
-	
-	public static XboxController XBC1;
-	public static XboxController XBC2;
 	
 	public static double axis1;
 	public static double axis5;
@@ -24,26 +22,25 @@ public class OI extends ShooterSubsystem{
 	public static Button lowTrig;
 	public static Button highTrig;
 	
+
+	
+	
+	private final XboxController XBC1;
+	private final XboxController XBC2; 
 	
 	public OI() {
-		
 		XBC1 = new XboxController(0);
 		XBC2 = new XboxController(1);
-		axis1 = XBC1.getRawAxis(1);
-		axis5 = XBC1.getRawAxis(5);
-		shifter = new JoystickButton(XBC1, 6);
-	
-		booster = new JoystickButton(XBC2, 0);
-		lifter = new JoystickButton(XBC2, 5);
-		lowTrig = new JoystickButton(XBC2, 3);
-		highTrig = new JoystickButton(XBC2, 4);
-
+		
+		getButton(XBC1, 1).cancelWhenPressed(new AutoCommand());
 		
 	}
 	
-	
-		
+	public JoystickButton getButton(XboxController con, int button) {
+	return new JoystickButton(con, button);	
 	}
+		
+}
 	
 	//double value;
 	//value = exampleStick.getRawAxis(1);

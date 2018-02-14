@@ -27,10 +27,7 @@ public class CommandBase extends Command {
 	
     public CommandBase() {
     	super();
-    	// super means 
-    	// ouractions extends commandbase extends command
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	
     }
 
     public CommandBase(String name) {
@@ -51,7 +48,7 @@ public class CommandBase extends Command {
     		writeData[i] = (byte)charArr[i];
     	}
     	arduino.transaction(writeData, writeData.length, null, 0);
-    	// sending data to arduino
+    	// sending data to arduinoz
     	// last two are receiving 
     }
     

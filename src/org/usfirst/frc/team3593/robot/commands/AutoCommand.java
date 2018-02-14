@@ -8,7 +8,6 @@ public class AutoCommand extends CommandBase {
 
 	private boolean finished = false;
 	
-	
     public AutoCommand() {
         requires(CommandBase.drive);
         

@@ -1,19 +1,12 @@
 package org.usfirst.frc.team3593.robot.commands;
 
-import org.usfirst.frc.team3593.robot.OI;
 
-import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class ExampleCommand extends Command {
 
-	public static OI oi;
-	
-    public ExampleCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+public class ShooterCommand extends CommandBase {
+
+    public ShooterCommand() {
+        requires(shooter);
     }
 
     // Called just before this Command runs the first time
@@ -22,6 +15,7 @@ public class ExampleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
