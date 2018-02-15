@@ -15,26 +15,12 @@ public class ShooterSubsystem extends Subsystem {
 	Spark shooterRRear;
 	Spark shooterRFront;
 	
-	Solenoid lifter;
-	Solenoid booster;
-	
 	public ShooterSubsystem() {
 		shooterLRear = new Spark(RobotMap.shooterLRear);
 		shooterLFront = new Spark(RobotMap.shooterLFront);
 		shooterRRear = new Spark(RobotMap.shooterRRear);
 		shooterRFront = new Spark(RobotMap.shooterRFront);
-		
-		lifter = new Solenoid(RobotMap.lift);
-		booster = new Solenoid(RobotMap.booster);
 	} 
-	
-	public void LiftTheLifter(boolean itsavalue) {
-		lifter.set(itsavalue);
-	}
-	
-	public void Boostio(boolean inputboolean) {
-		booster.set(inputboolean);
-	}
 	
 	public void SetShooterSpeed(boolean lowTrig, boolean highTrig ) {
 		if (lowTrig) {

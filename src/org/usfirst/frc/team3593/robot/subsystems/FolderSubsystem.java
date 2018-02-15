@@ -8,16 +8,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class FlapSubsystem extends Subsystem {
+public class FolderSubsystem extends Subsystem {
 
-   Solenoid flap;
-   
-   public FlapSubsystem() {
-	   flap = new Solenoid(RobotMap.flap);
-   }
-   public void SetFlap(boolean flapVal) {
-	   flap.set(flapVal);
-   }
+	Solenoid folders;
+	
+	public FolderSubsystem() {
+		folders = new Solenoid(RobotMap.folder);
+	}
+	
+	public void setFolders(boolean setFolders) {
+		folders.set(setFolders);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

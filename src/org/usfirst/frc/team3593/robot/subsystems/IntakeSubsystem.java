@@ -16,19 +16,11 @@ public class IntakeSubsystem extends Subsystem {
 	Spark ciminiL;
 	Spark ciminiR;
 	
-	Solenoid folders;
-	
 	public IntakeSubsystem() {
 		intakeL = new Spark(RobotMap.intakeL);
 		intakeR = new Spark(RobotMap.intakeR);
 		ciminiL = new Spark(RobotMap.ciminiL);
 		ciminiR = new Spark(RobotMap.ciminiR);
-		
-		folders = new Solenoid(RobotMap.folder);
-	}
-	
-	public void OpenArms(boolean openValue) {
-		folders.set(openValue);
 	}
 	
 	public void IntakeIn(double whoop) {

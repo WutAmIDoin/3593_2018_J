@@ -8,17 +8,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class FlapSubsystem extends Subsystem {
+public class ShifterSubsystem extends Subsystem {
 
-   Solenoid flap;
-   
-   public FlapSubsystem() {
-	   flap = new Solenoid(RobotMap.flap);
-   }
-   public void SetFlap(boolean flapVal) {
-	   flap.set(flapVal);
-   }
-
+    Solenoid shifter;
+    
+    public ShifterSubsystem() {
+    	shifter = new Solenoid(RobotMap.shifters);
+    }
+    
+    public void setShifters(boolean setShifter) {
+    	shifter.set(setShifter);
+    }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
