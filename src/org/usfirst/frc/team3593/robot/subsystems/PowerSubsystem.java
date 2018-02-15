@@ -4,6 +4,8 @@ import java.util.Hashtable;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -12,10 +14,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class PowerSubsystem extends Subsystem {
 	PowerDistributionPanel pdp;
+	NetworkTable nt_power;
 	
 	public PowerSubsystem()
 	{
 		pdp = new PowerDistributionPanel(0);
+		nt_power = NetworkTableInstance.getDefault().getTable("power");
+	}
+	
+	public void reportPower() {
+		Hashtable<String, Double> values = getPowerValues();
+		
+		for(String key : values.keySet()) {
+			nt_power.getEntry(key).setDouble(values.get(key));
+		}
 	}
 	
 	public Hashtable<String, Double> getPowerValues() 
@@ -24,6 +36,7 @@ public class PowerSubsystem extends Subsystem {
 		
 		// Add power values to the table here
 		table.put("battVoltage", pdp.getVoltage());
+		// Get total current of the PDP
 		table.put("totalCurrent", pdp.getTotalCurrent());
 		
 		table.put("driveRight1", pdp.getCurrent(RobotMap.pdp_driveRight1));
@@ -38,7 +51,6 @@ public class PowerSubsystem extends Subsystem {
 		table.put("IntakeRight", pdp.getCurrent(RobotMap.pdp_IntakeRight));
 		table.put("cimmy1", pdp.getCurrent(RobotMap.pdp_cimmy1));
 		table.put("cimmy2", pdp.getCurrent(RobotMap.pdp_cimmy2));
-		// Lastly, get the total current of the PCM
 		
 		return table;
 	}
