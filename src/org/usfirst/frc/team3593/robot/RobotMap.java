@@ -49,6 +49,7 @@ public class RobotMap {
 	public static double shooterHighSpeed = .75;
 	public static double intakeIn = .75;
 	public static double intakeOut = .8;
+	public static double encoderPPR = 256;
 	
 	//Axis Assignments
 	public static int XBC1intakein = 3;
@@ -64,7 +65,7 @@ Drive
 Shifter
 ShooterWheels
 Launcher
-Intake
+Intakes
 Folder
 Flap
 Power

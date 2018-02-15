@@ -20,15 +20,18 @@ public class OI {
 	public static XboxController XBC1;
 	public static XboxController XBC2;
 	
-	public static double XBC2_axis2;
-	public static double XBC2_axis3;
-	
-	
 	public OI() {
 		//Controllers
 		XBC1 = new XboxController(0);
 		XBC2 = new XboxController(1);
 		
+		//Commands XBC1
+		getButton(XBC1, 5).whenPressed(new ToggleShifterCommand());
+		
+		//Commands XBC2
+		getButton(XBC2, 1).whenPressed(new ActivateBoosterCommand());
+		getButton(XBC2, 3).whenPressed(new ToggeLifterCommand());
+		getButton(XBC2, 5).whenPressed(new ToggleFlapCommand());
 	}
 	
 	public JoystickButton getButton(XboxController con, int button) {

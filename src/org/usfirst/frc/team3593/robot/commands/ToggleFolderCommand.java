@@ -6,10 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ToggleFolderCommand extends Command {
-
+	private boolean finished = false;
     public ToggleFolderCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    requires(CommandBase.theFolderSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -18,11 +17,14 @@ public class ToggleFolderCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	CommandBase.toggleFolders = !CommandBase.toggleFolders;
+    	CommandBase.theFolderSubsystem.setFolders(CommandBase.toggleFolders);
+    	finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return finished;
     }
 
     // Called once after isFinished returns true

@@ -1,12 +1,11 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.interfaces.*;
 
 public class DriveSubsystem extends Subsystem {
 	
@@ -28,7 +27,7 @@ public class DriveSubsystem extends Subsystem {
 	
 			
     public void initDefaultCommand() {
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DriveCommand());
     }
 }
 

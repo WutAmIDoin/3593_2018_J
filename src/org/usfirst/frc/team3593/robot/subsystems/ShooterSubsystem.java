@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.ChargeShootersCommand;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -41,7 +42,6 @@ public class ShooterSubsystem extends Subsystem {
 	
 	
     public void initDefaultCommand() {
-    
+    	setDefaultCommand(new ChargeShootersCommand());
     }
 }
-

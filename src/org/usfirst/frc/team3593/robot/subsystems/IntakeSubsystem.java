@@ -2,7 +2,6 @@ package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -24,17 +23,17 @@ public class IntakeSubsystem extends Subsystem {
 	}
 	
 	public void IntakeIn(double whoop) {
-		intakeL.set(-whoop);
-		intakeR.set(whoop);
-		ciminiR.set(whoop);
-		ciminiL.set(-whoop);
+		intakeL.set(whoop);
+		intakeR.set(-whoop);
+		ciminiR.set(-whoop);
+		ciminiL.set(whoop);
 	}
 	
 	public void IntakeOut(double douknowdawea) {
-		intakeL.set(douknowdawea);
-		intakeR.set(-douknowdawea);
-		ciminiR.set(-douknowdawea);
-		ciminiL.set(douknowdawea);
+		intakeL.set(-douknowdawea);
+		intakeR.set(douknowdawea);
+		ciminiR.set(douknowdawea);
+		ciminiL.set(-douknowdawea);
 	}
 	
     public void initDefaultCommand() {

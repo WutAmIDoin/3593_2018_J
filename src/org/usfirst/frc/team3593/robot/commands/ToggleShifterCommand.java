@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ToggleShifterCommand extends Command {
-
+	private boolean finished = false;
     public ToggleShifterCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

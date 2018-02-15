@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ToggleFlapCommand extends Command {
-	private static boolean finished = false;
+public class ToggleFlapCommand extends CommandBase {
+	private boolean finished = false;
     public ToggleFlapCommand() {
         requires(CommandBase.theFlapSubsystem);
     }
