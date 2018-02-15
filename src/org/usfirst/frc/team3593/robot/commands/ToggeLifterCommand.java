@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,7 +11,7 @@ public class ToggeLifterCommand extends CommandBase {
 	private boolean finished = false;
 	
     public ToggeLifterCommand() {
-        requires(theShooterSubsystem);
+        requires(CommandBase.theLifterSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -19,9 +20,9 @@ public class ToggeLifterCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		theShooterSubsystem.LiftTheLifter(setLifter);
-		setLifter = !setLifter;
-    	  	
+    	CommandBase.toggleLifter = !CommandBase.toggleLifter;
+    	CommandBase.theLifterSubsystem.setLifter(CommandBase.toggleLifter);
+    	Timer.delay(.5);
     	finished = true;
     }
 

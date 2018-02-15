@@ -17,8 +17,8 @@ import org.usfirst.frc.team3593.robot.commands.*;
  */
 public class OI {
 
-	private final XboxController XBC1;
-	private final XboxController XBC2;
+	public static XboxController XBC1;
+	public static XboxController XBC2;
 	
 	public static double XBC2_axis2;
 	public static double XBC2_axis3;
@@ -28,17 +28,6 @@ public class OI {
 		//Controllers
 		XBC1 = new XboxController(0);
 		XBC2 = new XboxController(1);
-		
-		
-		//XBC1 Controls
-		getButton(XBC1, 7).whenPressed(new AutoCommand());
-		
-		//XBC2 Controls
-		getButton(XBC2, 1).whenPressed(new ActivateLauncherCommand());
-		
-		//Axis Values?
-		XBC2_axis2 = XBC2.getRawAxis(2);
-		XBC2_axis3 = XBC2.getRawAxis(3);
 		
 	}
 	

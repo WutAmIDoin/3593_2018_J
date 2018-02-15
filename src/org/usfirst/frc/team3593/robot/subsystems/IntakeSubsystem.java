@@ -31,10 +31,10 @@ public class IntakeSubsystem extends Subsystem {
 	}
 	
 	public void IntakeOut(double douknowdawea) {
-		intakeL.set(-douknowdawea);
-		intakeR.set(douknowdawea);
-		ciminiR.set(douknowdawea);
-		ciminiL.set(-douknowdawea);
+		intakeL.set(douknowdawea);
+		intakeR.set(-douknowdawea);
+		ciminiR.set(-douknowdawea);
+		ciminiL.set(douknowdawea);
 	}
 	
     public void initDefaultCommand() {

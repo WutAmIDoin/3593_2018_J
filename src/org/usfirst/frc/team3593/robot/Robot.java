@@ -15,9 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3593.robot.commands.AutoCommand;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
-import org.usfirst.frc.team3593.robot.commands.ExampleCommand;
 import org.usfirst.frc.team3593.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team3593.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team3593.robot.subsystems.ShooterSubsystem;
 
 /**

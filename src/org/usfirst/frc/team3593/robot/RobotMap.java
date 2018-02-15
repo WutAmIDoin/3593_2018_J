@@ -50,6 +50,14 @@ public class RobotMap {
 	public static double intakeIn = .75;
 	public static double intakeOut = .8;
 	
+	//Axis Assignments
+	public static int XBC1intakein = 3;
+	public static int XBC1intakeout = 2;
+	public static int XBC1driveleft = 1;
+	public static int XBC1driveright = 5;
+	
+	public static int XBC2shooterlow = 2;
+	public static int XBC2shooterhigh = 3;
 	/*Subsystems
 	 * New Subsystems:
 Drive

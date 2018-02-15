@@ -1,14 +1,16 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import org.usfirst.frc.team3593.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ToggleFlapCommand extends Command {
-	private static boolean finished = false;
-    public ToggleFlapCommand() {
-        requires(CommandBase.theFlapSubsystem);
+public class IntakeInCommand extends CommandBase {
+
+    public IntakeInCommand() {
+        requires(CommandBase.theIntakeSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -17,9 +19,7 @@ public class ToggleFlapCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.toggleFlap = !CommandBase.toggleFlap;
-    	CommandBase.theFlapSubsystem.SetFlap(CommandBase.toggleFlap);
-    	finished = true;
+    	CommandBase.theIntakeSubsystem.IntakeIn(RobotMap.intakeIn);
     }
 
     // Make this return true when this Command no longer needs to run execute()

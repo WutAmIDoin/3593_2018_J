@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RunIntakeOutCommand extends CommandBase {
 
     public RunIntakeOutCommand() {
-    	requires(theIntakeSubsystem);
+    	requires(CommandBase.theIntakeSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -19,7 +19,7 @@ public class RunIntakeOutCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	theIntakeSubsystem.IntakeOut(RobotMap.intakeOut);
+    	CommandBase.theIntakeSubsystem.IntakeOut(RobotMap.intakeOut);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -29,7 +29,6 @@ public class RunIntakeOutCommand extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	theIntakeSubsystem.IntakeOut(0);
     }
 
     // Called when another command which requires one or more of the same
