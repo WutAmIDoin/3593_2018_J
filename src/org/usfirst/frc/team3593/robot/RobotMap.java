@@ -49,4 +49,37 @@ public class RobotMap {
 	public static double shooterHighSpeed = .75;
 	public static double intakeIn = .75;
 	public static double intakeOut = .8;
+	
+	/*Subsystems
+	 * New Subsystems:
+Drive
+Shifter
+ShooterWheels
+Launcher
+Intake
+Folder
+Flap
+Power
+Vision
+Lifter
+Sensors
+	 */
+	
+	/*Commands
+	 * Commands:
+RunIntake
+AutoCommand
+toggleFolders
+ToggleLifter
+ToggleShifters
+ToggleFlap
+Launch
+ChargeShooter
+ReportPower
+DriveCommand
+DashBoardUpdate
+	 */
+	
+	
+	
 	}

@@ -19,17 +19,10 @@ public class ToggeLifterCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (setLifter) {
-    		theShooterSubsystem.LiftTheLifter(setLifter);
-    		setLifter = !setLifter;
-    	}
-    	else {
-    		theShooterSubsystem.LiftTheLifter(setLifter);
-    		setLifter = !setLifter;
-    		finished = true;
-    	}
-    	
-    	
+		theShooterSubsystem.LiftTheLifter(setLifter);
+		setLifter = !setLifter;
+    	  	
+    	finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()

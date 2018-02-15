@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command {
 	
-	public static boolean toggleForLifter = true;
-	public static boolean previousVal = false;
-	public static boolean setLifter = false;
+	public static boolean toggleLifter = false;
 	
 	public static OI oi;
 	public static I2C arduino = new I2C(I2C.Port.kOnboard, 4);
