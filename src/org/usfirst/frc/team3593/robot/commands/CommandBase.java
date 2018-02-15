@@ -12,41 +12,65 @@ import org.usfirst.frc.team3593.robot.subsystems.*;
 public class CommandBase extends Command 
 {
 	public static OI oi;
-	public static I2C arduino = new I2C(I2C.Port.kOnboard, 4);
+	private static I2C arduino = new I2C(I2C.Port.kOnboard, 4);
 	
 	// Define all subsystems here
 	public static DriveSubsystem drive = new DriveSubsystem();
+	public static FlapSubsystem flap = new FlapSubsystem();
+	public static IntakeArms intakeArms = new IntakeArms();
+	public static IntakeWheels intakeWheels = new IntakeWheels();
+	public static LauncherSubsystem launcher = new LauncherSubsystem();
+	public static LifterSubsystem lifter = new LifterSubsystem();
+	public static NetworkSubsystem network = new NetworkSubsystem();
 	public static PowerSubsystem power = new PowerSubsystem();
+	public static SensorSubsystem sensors = new SensorSubsystem();
+	public static ShifterSubsystem shifter = new ShifterSubsystem();
+	public static ShooterWheels shooterWheels = new ShooterWheels();
+	
+	// Control values for commands
+	public static boolean toggleShiftControl = false;
 
 	
 	public static void init() {
-        // This MUST be here. If the OI creates Commands (which it very likely
-        // will), constructing it during the construction of CommandBase (from
-        // which commands extend), subsystems are not guaranteed to be
-        // yet. Thus, their requires() statements may grab null pointers. Bad
-        // news. Don't move it.
+        // This MUST be here. OI only needs to be created once. 
         oi = new OI();
     }
 	
-    public CommandBase() 
-    {
+    public CommandBase() {
         super();
     }
     
-    public CommandBase(String name)
-    {
+    public CommandBase(String name) {
     	super(name);
     }
 
 	@Override
-	protected boolean isFinished()
-	{
+	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
-	public static void UpdateLEDs(String str)
-	{
+	
+	// Arduino updating
+	private static String upperControlString = "";
+	private static String chassisControlString = "";
+	
+	public static void UpdateUpperLEDs(String sendData) {
+		if(upperControlString != sendData) {
+			CommandBase.ArduinoTransact(sendData, chassisControlString);
+			upperControlString = sendData;
+		}
+	}
+	
+	public static void UpdateDriveLEDs(String sendData) {
+		if(chassisControlString != sendData) {
+			CommandBase.ArduinoTransact(upperControlString, sendData);
+			chassisControlString = sendData;
+		}
+	}
+	
+	public static void ArduinoTransact(String shooterValue, String driveValue) {
+		String str = shooterValue + "-" + driveValue;
 		char[] charArr = str.toCharArray();
 		byte[] WriteData = new byte[charArr.length];
 		for (int i = 0; i < charArr.length; i++) {

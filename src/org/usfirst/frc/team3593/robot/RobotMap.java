@@ -23,11 +23,17 @@ public class RobotMap {
 	public static int shooterFrontRight = 7;
 	public static int shooterRearRight = 9;
 	
+	public static int intakeLeft1 = 2;
+	public static int intakeLeft2 = 3;
+	public static int intakeRight1 = 4;
+	public static int intakeRight2 = 8;
+	
 	// Solenoid Channels
 	public static int shifterSolendoidChannel = 4;
 	public static int boosterSolenoidChannel = 5;
 	public static int lifterSolenoidChannel = 6;
 	public static int flapSolenoidChannel = 7;
+	public static int intakeArmsSolenoidChannel = 3;
 	
 	// Analog Channels
 	public static int gyroChannel = 0;
@@ -53,4 +59,31 @@ public class RobotMap {
 	public static int pdp_cimmy1 = 4;
 	public static int pdp_cimmy2 = 10;
 	
+	/*Subsystems
+		> Drive
+		> Shifter
+		> ShooterWheels
+		> Launcher
+		> IntakeWheels
+		> IntakeArms
+		> Flap
+		> PowerReporting
+		Network
+		> Lifter
+		> Sensors
+	 */
+	
+	/*Commands
+		RunIntake
+		AutoCommand
+		toggleFolders
+		ToggleLifter
+		ToggleShifters
+		ToggleFlap
+		Launch
+		ChargeShooter
+		ReportPower
+		DriveCommand
+		DashBoardUpdate
+	 */
 }

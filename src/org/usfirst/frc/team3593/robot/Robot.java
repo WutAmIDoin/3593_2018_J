@@ -23,6 +23,7 @@ import org.usfirst.frc.team3593.robot.commands.*;
 public class Robot extends TimedRobot 
 {
 	Command autoCommand = null;
+	Command powerReporting = null;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -33,6 +34,8 @@ public class Robot extends TimedRobot
 	{
 		// Initializes all subsystems and the OI
 		CommandBase.init();
+		powerReporting = new PowerReporting();
+		powerReporting.start();
 	}
 
 	/**

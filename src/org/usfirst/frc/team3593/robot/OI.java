@@ -24,7 +24,7 @@ public class OI {
 		_XBC1 = new XboxController(0);
 		_XBC2 = new XboxController(1);
 		
-		getButton(_XBC1, 1).whenPressed(new AutoCommand());
+		getButton(_XBC1, 1).whenPressed(new ToggleShifters());
 	}
 	
 	public JoystickButton getButton(XboxController con, int button) {
