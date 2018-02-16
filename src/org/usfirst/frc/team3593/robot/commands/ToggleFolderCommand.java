@@ -6,8 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ToggleFolderCommand extends Command {
+	
 	private boolean finished = false;
-    public ToggleFolderCommand() {
+    
+	public ToggleFolderCommand() {
     requires(CommandBase.theFolderSubsystem);
     }
 

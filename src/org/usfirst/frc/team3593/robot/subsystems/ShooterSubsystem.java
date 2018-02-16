@@ -23,24 +23,21 @@ public class ShooterSubsystem extends Subsystem {
 		shooterRFront = new Spark(RobotMap.shooterRFront);
 	} 
 	
-	public void SetShooterSpeed(boolean lowTrig, boolean highTrig ) {
-		if (lowTrig) {
-			double speed = highTrig ? RobotMap.shooterHighSpeed: RobotMap.shooterLowSpeed;
-			
-			shooterRFront.set(speed);
-			shooterLFront.set(speed);
-			shooterRRear.set(speed);
-			shooterLRear.set(speed);
-		}
-		else {
-			shooterRFront.set(0);
-			shooterLFront.set(0);
-			shooterRRear.set(0);
-			shooterLRear.set(0);
-		}
+	// Put the speed determination logic in the command. Change this to
+	// only accept one argument, speed, then simply set the motor speeds
+	public void SetShooterSpeed(double speed) {
+		shooterRFront.set(speed);
+		shooterLFront.set(speed);
+		shooterRRear.set(speed);
+		shooterLRear.set(speed);
 	}
 	
-	
+	public void stopShooters() {
+		shooterRFront.set(0);
+		shooterLFront.set(0);
+		shooterRRear.set(0);
+		shooterLRear.set(0);
+	}
     public void initDefaultCommand() {
     	setDefaultCommand(new ChargeShootersCommand());
     }

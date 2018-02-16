@@ -49,7 +49,10 @@ public class RobotMap {
 	public static double shooterHighSpeed = .75;
 	public static double intakeIn = .75;
 	public static double intakeOut = .8;
+	
+	public static double wheelDiameter = 6;
 	public static double encoderPPR = 256;
+	public static double encoderDPP = (wheelDiameter*Math.PI)/encoderPPR;
 	
 	//Axis Assignments
 	public static int XBC1intakein = 3;

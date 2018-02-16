@@ -19,7 +19,15 @@ public class ChargeShootersCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.theShooterSubsystem.SetShooterSpeed(CommandBase.oi.XBC2.getRawAxis(RobotMap.XBC2shooterlow) > .15, CommandBase.oi.XBC2.getRawAxis(RobotMap.XBC2shooterhigh) > .15);
+    	
+    	double speed = 0;
+		if (CommandBase.oi.XBC2.getRawAxis(RobotMap.XBC2shooterlow) > .15) {
+			speed = (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC2shooterhigh) > .15) ? RobotMap.shooterHighSpeed: RobotMap.shooterLowSpeed;
+			CommandBase.theShooterSubsystem.SetShooterSpeed(speed);
+		} 
+		else {
+			CommandBase.theShooterSubsystem.stopShooters();
+		}
     }
 
     // Make this return true when this Command no longer needs to run execute()

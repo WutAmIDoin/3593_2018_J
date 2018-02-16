@@ -10,15 +10,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LifterSubsystem extends Subsystem {
 
-		Solenoid lifter;
-		
-		public LifterSubsystem() {
-			lifter = new Solenoid(RobotMap.lift);
-		}
-		
-		public void setLifter(boolean setLifter) {
-			lifter.set(setLifter);
-		}
+	Solenoid lifter;
+	
+	public LifterSubsystem() {
+		lifter = new Solenoid(RobotMap.lift);
+	}
+	
+	public void setLifter(boolean setLifter) {
+		lifter.set(setLifter);
+	}
+	
+	public void lifterUp() {
+		lifter.set(true);
+	}
+	
+	public void lifterDown() {
+		lifter.set(false);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -19,6 +19,15 @@ public class ShifterSubsystem extends Subsystem {
     public void setShifters(boolean setShifter) {
     	shifter.set(setShifter);
     }
+    
+    public void setLow() {
+    	shifter.set(false);
+    }
+    
+    public void setHigh() {
+    	shifter.set(true);
+    }
+    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

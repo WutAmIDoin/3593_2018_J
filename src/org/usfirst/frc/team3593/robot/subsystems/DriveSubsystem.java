@@ -25,6 +25,10 @@ public class DriveSubsystem extends Subsystem {
 		DR.tankDrive(left, right);
 	}
 	
+	public void driveStop() {
+		DR.tankDrive(0, 0);
+	}
+	
 			
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());

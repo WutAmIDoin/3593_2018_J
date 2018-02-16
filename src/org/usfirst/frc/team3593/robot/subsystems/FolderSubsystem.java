@@ -19,6 +19,14 @@ public class FolderSubsystem extends Subsystem {
 	public void setFolders(boolean setFolders) {
 		folders.set(setFolders);
 	}
+	
+	public void foldersOut() {
+		folders.set(true);
+	}
+	
+	public void foldersIn() {
+		folders.set(false);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

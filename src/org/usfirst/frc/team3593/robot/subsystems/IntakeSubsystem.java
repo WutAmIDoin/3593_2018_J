@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.RunIntakeCommand;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -36,9 +37,9 @@ public class IntakeSubsystem extends Subsystem {
 		ciminiL.set(-douknowdawea);
 	}
 	
+	// Set a default command
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new RunIntakeCommand());
     }
 }
 

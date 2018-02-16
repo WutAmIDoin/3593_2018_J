@@ -14,19 +14,18 @@ public class SensorSubsystem extends Subsystem {
 	Encoder encR;
 	
 	AnalogGyro gyro;
-	//the pressure sensor might need its own subsystem to work properly since its not only in auto. not sure though.
 
-	//AnalogInput PS;
+	AnalogInput PS;
 	
 	public SensorSubsystem() {
 		encL = new Encoder(RobotMap.encoderL1, RobotMap.encoderL2);
 		encR = new Encoder(RobotMap.encoderR1, RobotMap.encoderR2);
-		encL.setDistancePerPulse(RobotMap.encoderPPR);
-		encR.setDistancePerPulse(RobotMap.encoderPPR);
+		encL.setDistancePerPulse(RobotMap.encoderDPP);
+		encR.setDistancePerPulse(RobotMap.encoderDPP);
 		
 		gyro = new AnalogGyro(RobotMap.gryo);
 		
-		//PS = new AnalogInput(RobotMap.pressureSensor);
+		PS = new AnalogInput(RobotMap.pressureSensor);
 	}
 	
 	
@@ -34,17 +33,25 @@ public class SensorSubsystem extends Subsystem {
 		return gyro.getAngle();
 	}
 	
-	public double getEncLDistance() {
-		return encL.getDistance();
+	public double[] getEncDistance() {
+		return new double[] {
+				encL.getDistance(),
+				encR.getDistance()
+		};
 	}
 	
-	public double getEncRDistance() {
-		return encR.getDistance();
+	public void resetGyro() {
+		gyro.reset();
 	}
 	
-	//public double getPressureSensor() {
-	//	return 250 * (PS.getVoltage() / 5) - 25; 
-	//}
+	public void resetEncoders() {
+		encL.reset();
+		encR.reset();
+	}
+	
+	public double getPressure() {
+		return 250 * (PS.getVoltage() / 5) - 25; 
+	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
