@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.ShooterCommand;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,34 +13,15 @@ public class ShooterSubsystem extends Subsystem {
 	Spark shooterFrontRight;
 	Spark shooterRearLeft;
 	Spark shooterRearRight;
-	
-	Solenoid booster;
-	Solenoid lifter;
-	
+
 	public ShooterSubsystem() {
-		
 		shooterFrontLeft = new Spark(RobotMap.shooterFrontLeft);
 		shooterFrontRight = new Spark(RobotMap.shooterFrontRight);
 		shooterRearLeft = new Spark(RobotMap.shooterRearLeft);
-		shooterRearRight = new Spark(RobotMap.shooterRearRight);
-		
-		booster = new Solenoid(RobotMap.booster);
-		lifter = new Solenoid(RobotMap.lifter);		
+		shooterRearRight = new Spark(RobotMap.shooterRearRight);	
 	}
-	
-	
-	public void liftCommand(boolean wat1) {
-		lifter.set(wat1);
-		
-	}
-    
-	public void boosterCommand(boolean wat2) {
-		booster.set(wat2);
-		
-	}
-	
-	
-	public void SetSpeed(boolean lowTrig, boolean highTrig) {
+
+	public void SetShooterSpeed(boolean lowTrig, boolean highTrig) {
 		if(lowTrig) {
 			double speed = highTrig? RobotMap.highTrig : RobotMap.lowTrig;
 			shooterFrontLeft.set(speed);
@@ -56,6 +38,7 @@ public class ShooterSubsystem extends Subsystem {
 	
 	
     public void initDefaultCommand() {
+    	setDefaultCommand(new ShooterCommand() );
     }
 }
 

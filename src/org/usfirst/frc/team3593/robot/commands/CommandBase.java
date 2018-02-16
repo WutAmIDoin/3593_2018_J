@@ -8,17 +8,32 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 public class CommandBase extends Command {
-
+		
+	// toggle booleans
+	public static Boolean toggleFlap = false;
+	public static Boolean toggleFolder = false;
+	public static Boolean toggleShifter = false;
+	public static Boolean toggleLifter = false;
+	
 	public static OI oi;
 	public static I2C arduino = new I2C (I2C.Port.kOnboard, 4);
 	// onboard is the port, 4 is the address
 	
 	
 	// subsystems
-	public static DriveSubsystem drive = new DriveSubsystem();
-	public static IntakeSubsystem intake = new IntakeSubsystem();
-	public static ShooterSubsystem shooter = new ShooterSubsystem();
-	public static FlapSubsystem flap = new FlapSubsystem();
+	public static DriveSubsystem theDrive = new DriveSubsystem();
+	public static IntakeSubsystem theIntake = new IntakeSubsystem();
+	public static ShooterSubsystem theShooter = new ShooterSubsystem();
+	
+	// booster is not a toggle
+	public static BoosterSubsystem theBooster = new BoosterSubsystem();
+	
+	public static FlapSubsystem theFlap = new FlapSubsystem();
+	public static LifterSubsystem theLifter = new LifterSubsystem();
+	public static ShifterSubsystem theShifter = new ShifterSubsystem();
+	public static FolderSubsystem theFolder = new FolderSubsystem();
+		
+	
 	
 	// always decloration before methods
 	public static void init() {

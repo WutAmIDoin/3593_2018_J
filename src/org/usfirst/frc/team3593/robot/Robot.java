@@ -14,8 +14,7 @@ public class Robot extends TimedRobot {
 	
 	Command AutoCommand = null;
 	
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+	
 	public static OI m_oi;
 
 	Command m_autonomousCommand;

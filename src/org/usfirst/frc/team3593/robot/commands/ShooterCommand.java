@@ -1,12 +1,11 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 
-
-
 public class ShooterCommand extends CommandBase {
+	
 
     public ShooterCommand() {
-        requires(shooter);
+    	requires(CommandBase.theShooter);
     }
 
     // Called just before this Command runs the first time
@@ -15,6 +14,9 @@ public class ShooterCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	boolean trigLeft = oi.XBC2.getRawAxis(2) > 0.15;
+    	boolean trigRight = oi.XBC2.getRawAxis(3) > 0.15;
+    	CommandBase.theShooter.SetShooterSpeed(trigLeft, trigRight);
     	
     }
 
