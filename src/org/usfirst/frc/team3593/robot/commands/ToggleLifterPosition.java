@@ -1,11 +1,11 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 
-public class ToggleShifters extends CommandBase {
+public class ToggleLifterPosition extends CommandBase {
 	boolean finished = false;
-	
-    public ToggleShifters() {
-        requires(CommandBase.shifter);
+
+    public ToggleLifterPosition() {
+        requires(CommandBase.lifter);
     }
 
     // Called just before this Command runs the first time
@@ -14,8 +14,8 @@ public class ToggleShifters extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	shifter.shift(CommandBase.toggleShiftControl);
-    	CommandBase.toggleShiftControl = !CommandBase.toggleShiftControl;
+    	lifter.setPosition(CommandBase.toggleLifterControl);
+    	CommandBase.toggleLifterControl = !CommandBase.toggleLifterControl;
     	finished = true;
     }
 

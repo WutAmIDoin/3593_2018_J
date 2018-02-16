@@ -16,7 +16,8 @@ public class LauncherSubsystem extends Subsystem {
 	}
 	
 	public void setSolenoid(boolean setpoint) {
-		booster.set(setpoint);
+		if(booster.get() != setpoint)
+			booster.set(setpoint);
 	}
 
     public void initDefaultCommand() {

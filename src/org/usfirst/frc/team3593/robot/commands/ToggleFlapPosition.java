@@ -1,11 +1,10 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+public class ToggleFlapPosition extends CommandBase {
+	Boolean finished = false;
 
-public class ToggleShifters extends CommandBase {
-	boolean finished = false;
-	
-    public ToggleShifters() {
-        requires(CommandBase.shifter);
+    public ToggleFlapPosition() {
+    	requires(CommandBase.flap);
     }
 
     // Called just before this Command runs the first time
@@ -14,8 +13,8 @@ public class ToggleShifters extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	shifter.shift(CommandBase.toggleShiftControl);
-    	CommandBase.toggleShiftControl = !CommandBase.toggleShiftControl;
+    	flap.setPosition(CommandBase.toggleFlapControl);
+    	CommandBase.toggleFlapControl = !CommandBase.toggleFlapControl;
     	finished = true;
     }
 

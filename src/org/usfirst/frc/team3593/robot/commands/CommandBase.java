@@ -2,6 +2,7 @@ package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.OI;
 
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3593.robot.subsystems.*;
@@ -13,6 +14,11 @@ public class CommandBase extends Command
 {
 	public static OI oi;
 	private static I2C arduino = new I2C(I2C.Port.kOnboard, 4);
+	
+	// NetworkTables
+	public static NetworkTable ntValues;
+	public static NetworkTable ntVision;
+	public static NetworkTable ntBehav;
 	
 	// Define all subsystems here
 	public static DriveSubsystem drive = new DriveSubsystem();
@@ -29,11 +35,17 @@ public class CommandBase extends Command
 	
 	// Control values for commands
 	public static boolean toggleShiftControl = false;
+	public static boolean toggleLifterControl = false;
+	public static boolean toggleIntakeArmsControl = false;
+	public static boolean toggleFlapControl = false;
 
 	
 	public static void init() {
         // This MUST be here. OI only needs to be created once. 
         oi = new OI();
+        ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
+		ntVision = NetworkTableInstance.getDefault().getTable("3593-Vision");
+		ntBehav = NetworkTableInstance.getDefault().getTable("3593-Behavior");
     }
 	
     public CommandBase() {

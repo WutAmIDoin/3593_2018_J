@@ -17,8 +17,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	private final XboxController _XBC1;
-	private final XboxController _XBC2;
+	public final XboxController _XBC1;
+	public final XboxController _XBC2;
 	
 	public OI() {
 		_XBC1 = new XboxController(0);

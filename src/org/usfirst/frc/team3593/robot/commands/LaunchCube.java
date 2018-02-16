@@ -1,11 +1,15 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 
-public class ToggleShifters extends CommandBase {
+/**
+ *
+ */
+public class LaunchCube extends CommandBase {
 	boolean finished = false;
-	
-    public ToggleShifters() {
-        requires(CommandBase.shifter);
+
+    public LaunchCube() {
+        requires(CommandBase.launcher);
     }
 
     // Called just before this Command runs the first time
@@ -14,8 +18,9 @@ public class ToggleShifters extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	shifter.shift(CommandBase.toggleShiftControl);
-    	CommandBase.toggleShiftControl = !CommandBase.toggleShiftControl;
+    	launcher.setSolenoid(true);
+    	Timer.delay(500);
+    	launcher.setSolenoid(false);
     	finished = true;
     }
 
@@ -26,10 +31,12 @@ public class ToggleShifters extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+    	launcher.setSolenoid(false);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	launcher.setSolenoid(false);
     }
 }

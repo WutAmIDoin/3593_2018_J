@@ -16,15 +16,18 @@ public class IntakeArms extends Subsystem {
     }
     
     public void setPosition(boolean setpoint) {
-    	arms.set(setpoint);
+    	if(arms.get() != setpoint) 
+    		arms.set(setpoint);
     }
     
     public void setIn() {
-    	arms.set(true);
+    	if(!arms.get()) 
+    		arms.set(true);
     }
     
     public void setOut() {
-    	arms.set(false);
+    	if(arms.get())
+    		arms.set(false);
     }
 
     public void initDefaultCommand() {

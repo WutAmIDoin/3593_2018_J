@@ -14,6 +14,9 @@ package org.usfirst.frc.team3593.robot;
  * floating around.
  */
 public class RobotMap {
+	// Encoder variables
+	public static int wheelDiam = 6;
+	public static int encoderTicks = 256;
 	// PWM Channels
 	public static int driveLeftPWM = 1;
 	public static int driveRightPWM = 0;
@@ -59,6 +62,9 @@ public class RobotMap {
 	public static int pdp_cimmy1 = 4;
 	public static int pdp_cimmy2 = 10;
 	
+	// Joystick Values
+	public static double trigDeadzone = 0.15;
+	
 	/*Subsystems
 		> Drive
 		> Shifter
@@ -74,16 +80,16 @@ public class RobotMap {
 	 */
 	
 	/*Commands
-		RunIntake
-		AutoCommand
-		toggleFolders
-		ToggleLifter
-		ToggleShifters
-		ToggleFlap
-		Launch
-		ChargeShooter
-		ReportPower
-		DriveCommand
-		DashBoardUpdate
+	 	> DriveCommand (never ending)
+		> RunIntake (never ending)
+		AutoCommand (later)
+		> ToggleArmPosition
+		> ToggleLifter
+		> ToggleShifters
+		> ToggleFlap
+		> Launch
+		ChargeShooter (never ending)
+		ReportPower (never ending)
+		DashBoardUpdate (never ending)
 	 */
 }

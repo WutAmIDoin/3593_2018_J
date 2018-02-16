@@ -2,6 +2,7 @@ package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
+import org.usfirst.frc.team3593.robot.commands.RunIntakeMotors;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -53,8 +54,7 @@ public class IntakeWheels extends Subsystem {
 	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new RunIntakeMotors());
     }
 }
 
