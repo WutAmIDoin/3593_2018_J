@@ -15,11 +15,6 @@ public class ShooterSubsystem extends Subsystem {
 	Spark shooterFrontR;
 	Spark shooterRearR;
 	
-	Solenoid lift;
-	Solenoid booster;
-	
-	
-
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public ShooterSubsystem() {
@@ -27,20 +22,8 @@ public class ShooterSubsystem extends Subsystem {
 		shooterRearL = new Spark(RobotMap.shooterRearL);
 		shooterFrontR = new Spark(RobotMap.shooterFrontR);
 		shooterRearR = new Spark(RobotMap.shooterRearR);
-		lift = new Solenoid(RobotMap.lift);
-	    booster = new Solenoid(RobotMap.booster);
-	}
-    
-	public void LiftTheLifter(boolean ItsaValue) {
-		lift.set(ItsaValue);
-    
-	}
+	}	
 	
-	public void RoosterBooster(boolean ItsAValue) {
-		
-       booster.set(ItsAValue);		
-
-	}
 	
 	public void SetSpeed(Boolean lowTrig, Boolean hightrig) {
 		if(lowTrig) {

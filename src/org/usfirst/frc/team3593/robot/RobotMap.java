@@ -18,11 +18,19 @@ public class RobotMap {
     public static int shooterFrontR = 7;
     public static int shooterRearR = 9;
     
+    public static int IntakeL = 2;
+    public static int IntakeR = 4;
+    public static int SimR = 8;
+    public static int SimL = 3;
+    
+    
 	//Solenoid Channels
     public static int shifter = 4;
     public static int flap = 4;
     public static int booster = 4;
     public static int lift = 4;
+    
+    public static int Fold = 5;
     
     // Analog Channel
     public static int gyro = 3;
