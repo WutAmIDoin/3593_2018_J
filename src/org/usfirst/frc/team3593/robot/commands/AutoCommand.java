@@ -2,9 +2,6 @@ package org.usfirst.frc.team3593.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 
-/**
- *
- */
 public class AutoCommand extends CommandBase {
 
 	private boolean finished = false;
@@ -12,7 +9,6 @@ public class AutoCommand extends CommandBase {
 	private String fieldInfo = "";
 	
     public AutoCommand(String FMS_DATA) {
-        // Use requires() here to declare subsystem dependencies
         requires(CommandBase.drive);
         requires(CommandBase.flap);
         requires(CommandBase.intakeArms);
@@ -25,11 +21,13 @@ public class AutoCommand extends CommandBase {
         fieldInfo = FMS_DATA;
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
-    	// Grab auto mode
-    	// Get target info from vision
-    	// Get switch and scale colors
+    	// TODO Grab auto mode from dashboard
+    	// TODO Get target info from vision
+    	
+    	// TODO Get field color info
+    	/// If the fieldData length is 0, try to get it again
+    	/// --- If it's STILL 0, then just run baselineOnly
     }
 
     
@@ -47,6 +45,7 @@ public class AutoCommand extends CommandBase {
 	    	case "BASERIGHT":
 	    		baseline("R");
 	    		break;
+	    	case "BASEONLY":
     		default:
     			baseline("");
     			break;
@@ -59,15 +58,15 @@ public class AutoCommand extends CommandBase {
     	
     	// If the left switch is ALSO our color
     	if(fieldInfo.charAt(0) == 'L') {
-    		// Score in switch 
+    		// TODO Score in switch 
     	} else {
-    		// Go around and score in other switch
+    		// TODO Go around and score in other switch
     		reverseScaleSide = true;
     	}
     	
     	// If the switch we're now closest to is also our color
     	if(fieldInfo.charAt(1) == 'L' || reverseScaleSide) {
-    		// Attempt to score in scale
+    		// TODO Attempt to score in scale
     	} 
     }
     
@@ -76,23 +75,24 @@ public class AutoCommand extends CommandBase {
     	
     	// If the right switch is ALSO our color
     	if(fieldInfo.charAt(0) == 'R') {
-    		// Score in switch 
+    		// TODO Score in switch 
     	} else {
-    		// Drive around and score in other switch
+    		// TODO Drive around and score in other switch
     		reverseScaleSide = true;
     	}
     	
     	// If the switch we're now closest to is also our color
     	if(fieldInfo.charAt(1) == 'R' || reverseScaleSide) {
-    		// Attempt to pick up a cube and score in scale
+    		// TODO Attempt to pick up a cube and score in scale
     	}
     }
 
 	private void baseline(String side) {
-		// Drive forward to the switch, breaking the baseline
+		// TODO Drive forward to the switch, breaking the baseline
 		
+		// If fieldData is not empty AND this switch side is our color
 		if(side != "" && fieldInfo.charAt(0) == side.toCharArray()[0]) {
-			// Score in the switch
+			// TODO Score in the switch
 		}
 	}
 

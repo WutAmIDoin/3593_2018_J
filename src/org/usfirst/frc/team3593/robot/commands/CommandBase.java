@@ -58,7 +58,7 @@ public class CommandBase extends Command
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
+		// Never want to return true here
 		return false;
 	}
 	

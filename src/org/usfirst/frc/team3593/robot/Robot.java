@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot;
 
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -21,8 +22,9 @@ public class Robot extends TimedRobot
 	}
 	
 	@Override
-	public void autonomousInit() {
-		autoCommand = new AutoCommand();
+	public void autonomousInit() {	
+		autoCommand = new AutoCommand(DriverStation
+				.getInstance().getGameSpecificMessage());
 		autoCommand.start();
 	}
 
