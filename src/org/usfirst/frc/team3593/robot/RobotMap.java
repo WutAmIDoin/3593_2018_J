@@ -14,7 +14,16 @@ package org.usfirst.frc.team3593.robot;
  * floating around.
  */
 public class RobotMap {
+	
+	//Encoder variables
+	public static int wheelDiam =6;
+	public static int encoderTicks = 256;
+	
+	
+	
+	
 	// PWM Channels
+	
 	public static int driveLeftPWM = 1;
 	public static int driveRightPWM = 0;
 	
@@ -25,10 +34,10 @@ public class RobotMap {
 	
 	// Solenoid Channels
 	public static int shifterSolendoidChannel = 4;
-	public static int boosterSolenoidChannel = 5;
+	public static int launcherSolenoidChannel = 5;
 	public static int lifterSolenoidChannel = 6;
 	public static int flapSolenoidChannel = 7;
-	
+	public static int intakearmSolenoidChannel= 3;
 	// Analog Channels
 	public static int gyroChannel = 3;
 	public static int pressureSensorChannel = 4;
@@ -44,6 +53,15 @@ public class RobotMap {
 	public static double lowSpeedShooters= 0.25;
 	public static double highSpeedShooters=0.75;
 	
+
+	
+	
+	// Intake
+	public static int intakerIntakeR = 2;
+	public static int intakerIntakeL = 4;
+	public static int intakerSimR = 8;
+	public static int intakerSimL = 3;
+	public static int intakerFolder = 5;
 	
 }
 
