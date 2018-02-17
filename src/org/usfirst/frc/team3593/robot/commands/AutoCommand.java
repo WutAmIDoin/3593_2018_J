@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 
 public class AutoCommand extends CommandBase {
@@ -22,12 +23,25 @@ public class AutoCommand extends CommandBase {
     }
 
     protected void initialize() {
-    	// TODO Grab auto mode from dashboard
+    	// Grab auto mode from dashboard, default to BASEONLY
+    	autoMode = CommandBase.ntBehav.getEntry("autoMode").getString("BASEONLY");
+    	System.out.println("Auto Mode set to " + autoMode);
+    	
     	// TODO Get target info from vision
     	
-    	// TODO Get field color info
-    	/// If the fieldData length is 0, try to get it again
-    	/// --- If it's STILL 0, then just run baselineOnly
+    	// If the FMS fieldData length is 0, try to get it again
+    	if(fieldInfo.length() == 0) {
+    		fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
+    	}
+    	// If it's STILL 0, then just run baselineOnly to be safe
+    	if(fieldInfo.length() == 0) {
+    		autoMode = "BASEONLY";
+    	}
+    	
+    	
+    	// Reset sensors for starting movement
+    	sensors.resetGyro();
+    	sensors.resetEncoderDistance();
     }
 
     
@@ -89,6 +103,7 @@ public class AutoCommand extends CommandBase {
 
 	private void baseline(String side) {
 		// TODO Drive forward to the switch, breaking the baseline
+		// OPTIONAL turn toward the first target seen
 		
 		// If fieldData is not empty AND this switch side is our color
 		if(side != "" && fieldInfo.charAt(0) == side.toCharArray()[0]) {
