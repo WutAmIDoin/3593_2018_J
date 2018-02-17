@@ -89,6 +89,22 @@ public class RobotMap {
 	public static double encoderDPP = (wheelDiameter*Math.PI)/encoderPPR;
 	
 	
+	// Drive PID values
+	public static double driveKp = 0;
+	public static double driveKi = 0;
+	public static double driveKd = 0;
+	public static double drivePIDTolerance = 5; // This is a percent
+
+	
+	// Gyro / Turn PID values
+	public static double gyroKp = 0;
+	public static double gyroKi = 0;
+	public static double gyroKd = 0;
+	public static double gyroPIDTolerance = 5; // This is a percent
+
+	
+	
+	
 	// Problems:
 	// AutoCommand
 	// Robot.Java
