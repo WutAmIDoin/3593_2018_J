@@ -15,7 +15,7 @@ public class ToggleFlap extends CommandBase {
     
     protected void execute() {
     	CommandBase.toggleFlap = !CommandBase.toggleFlap;
-    	CommandBase.theFlap.flapCommand(CommandBase.toggleFlap);
+    	CommandBase.theFlap.setPosition(CommandBase.toggleFlap);
     	finish = true;
     }
 

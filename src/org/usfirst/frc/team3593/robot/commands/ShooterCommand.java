@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import org.usfirst.frc.team3593.robot.RobotMap;
 
 public class ShooterCommand extends CommandBase {
 	
@@ -13,11 +14,16 @@ public class ShooterCommand extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	boolean trigLeft = oi.XBC2.getRawAxis(2) > 0.15;
-    	boolean trigRight = oi.XBC2.getRawAxis(3) > 0.15;
-    	CommandBase.theShooter.SetShooterSpeed(trigLeft, trigRight);
-    	
+    protected void execute(boolean trigLeft, boolean trigRight) {
+    	trigLeft = oi.XBC2.getRawAxis(2) > 0.15;
+    	trigRight = oi.XBC2.getRawAxis(3) > 0.15;
+    	if(trigLeft) {
+    		CommandBase.theShooter.SetShooterSpeed(RobotMap.lowTrig);
+    	}else if(trigRight) {
+    		CommandBase.theShooter.SetShooterSpeed(RobotMap.highTrig);
+    	}else {
+    		CommandBase.theShooter.SetShooterSpeed(0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

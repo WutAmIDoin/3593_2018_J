@@ -3,6 +3,7 @@ package org.usfirst.frc.team3593.robot.subsystems;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team3593.robot.*;
+import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 
 public class ShifterSubsystem extends Subsystem {
@@ -13,16 +14,12 @@ public class ShifterSubsystem extends Subsystem {
     	shifter = new Solenoid(RobotMap.shifter); 
     }
     
-    public void shifterCommand(Boolean shifter1) {
-    	shifter.set(shifter1);
-    }
-    
-    public void shifterHigh() {
-    	shifter.set(true);
-    }
-    
-    public void shifterLow() {
-    	shifter.set(false);
+    public void shifterCommand(Boolean setpoint) {
+    	if(shifter.get() != setpoint) {
+    		shifter.set(setpoint);
+    		CommandBase.toggleFlap = setpoint;
+    	}else{		
+    	}
     }
 
     public void initDefaultCommand() {        

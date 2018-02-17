@@ -9,31 +9,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ShooterSubsystem extends Subsystem {
 
-	Spark shooterFrontLeft;
-	Spark shooterFrontRight;
-	Spark shooterRearLeft;
-	Spark shooterRearRight;
+	Spark shooterFL;
+	Spark shooterFR;
+	Spark shooterRL;
+	Spark shooterRR;
 
 	public ShooterSubsystem() {
-		shooterFrontLeft = new Spark(RobotMap.shooterFrontLeft);
-		shooterFrontRight = new Spark(RobotMap.shooterFrontRight);
-		shooterRearLeft = new Spark(RobotMap.shooterRearLeft);
-		shooterRearRight = new Spark(RobotMap.shooterRearRight);	
+		shooterFL = new Spark(RobotMap.shooterFrontLeft);
+		shooterFR = new Spark(RobotMap.shooterFrontRight);
+		shooterRL = new Spark(RobotMap.shooterRearLeft);
+		shooterRR = new Spark(RobotMap.shooterRearRight);	
 	}
 
-	public void SetShooterSpeed(boolean lowTrig, boolean highTrig) {
-		if(lowTrig) {
-			double speed = highTrig? RobotMap.highTrig : RobotMap.lowTrig;
-			shooterFrontLeft.set(speed);
-			shooterFrontRight.set(1*speed);
-			shooterRearLeft.set(speed);
-			shooterRearRight.set(1*speed);
-		}else {
-			shooterFrontLeft.set(0);
-			shooterFrontRight.set(0);
-			shooterRearLeft.set(0);
-			shooterRearRight.set(0);
-		}
+	public void SetShooterSpeed(double speed) {
+		shooterFL.set(speed);
+		shooterFR.set(speed);
+		shooterRL.set(speed);
+		shooterRR.set(speed);
+		// logic has to be done within the command
 	}
 	
 	

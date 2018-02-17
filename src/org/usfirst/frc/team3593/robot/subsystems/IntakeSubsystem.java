@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team3593.robot.commands.IntakeCommand;
 
 
+// need to make the whole setSpeed as one method.
 public class IntakeSubsystem extends Subsystem {
 
 	Spark intakeL;
@@ -21,24 +22,18 @@ public class IntakeSubsystem extends Subsystem {
 		cimR = new Spark(RobotMap.cimR);		
 	}
 	
-	public void takein(double takein) {
-		intakeL.set(-takein);
-		intakeR.set(takein);
+	public void setIntakeSpeed(double setSpeed) {
+		intakeL.set(-setSpeed);
+		intakeR.set(setSpeed);
+		cimL.set(-setSpeed);
+		cimR.set(setSpeed);
 	}
 	
-	public void takeout(double takeout) {
-		intakeL.set(-takeout);
-		intakeR.set(takeout);
-	}
-	
-	public void cimin(double cimmi) {
-		cimL.set(-cimmi);
-		cimR.set(cimmi);
-	}
-	
-	public void cimout(double cimmi) {
-		cimL.set(-cimmi);
-		cimR.set(cimmi);
+	public void stopIntake() {
+		intakeL.set(0);
+		intakeR.set(0);
+		cimL.set(0);
+		cimR.set(0);
 	}
 
     public void initDefaultCommand() {
