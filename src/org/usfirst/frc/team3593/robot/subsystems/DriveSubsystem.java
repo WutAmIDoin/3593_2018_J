@@ -7,8 +7,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 
-
-
 public class DriveSubsystem extends Subsystem {
 
 	Spark driveL;

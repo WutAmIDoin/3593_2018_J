@@ -10,6 +10,7 @@ package org.usfirst.frc.team3593.robot;
 
 public class RobotMap {
 	
+	
 	//PWMs
 	public static int driveLeftPWM = 1;
 	public static int driveRightPWM = 0;
@@ -55,12 +56,14 @@ public class RobotMap {
 	public static int pdp_cimmy2 = 10;
 	
 	
+	
 	//stuffs
 	public static double lowTrig = 0.25;
 	public static double highTrig = 0.75;
 	
 	public static double takeIn = 0.75;
 	public static double takeOut = -0.8;
+	
 	
 	
 	//controller stuffs
@@ -79,15 +82,17 @@ public class RobotMap {
 	public static int XBC2toggleFlap = 5;
 	
 	
+	
 	// sensor and vision stuff
 	public static double wheelDiameter = 6;
 	public static double encoderPPR = 256;
 	public static double encoderDPP = (wheelDiameter*Math.PI)/encoderPPR;
 	
 	
-	
-	
-
+	// Problems:
+	// 1. Intake
+	// 2. Robot.Java
+	//
 	
 	
 }
