@@ -45,5 +45,32 @@ public class RobotMap {
     //Values
     public static double LowTrig = 0.25;
     public static double HighTrig = 0.75;
+    
+    //Random Values
+    public static double intakeIn = .75;
+    public static double intakeOut = .8;
+    
+    //Axis Assignments
+    public static int XBCintakein = 3;
+    public static int XBCintakeout = 2;
+    
+
+	// Power channels
+
+	public static int pdp_driveRight1 = 1;
+	public static int pdp_driveRight2 = 14;
+	public static int pdp_driveLeft1 = 0;
+	public static int pdp_driveLeft2 = 15;
+	public static int pdp_shooterRight1 = 12;
+	public static int pdp_shooterRight2 = 13;
+	public static int pdp_shooterLeft1 = 2;
+	public static int pdp_shooterLeft2 = 3;
+	public static int pdp_IntakeLeft = 5;
+	public static int pdp_IntakeRight = 11;
+	public static int pdp_cimmy1 = 4;
+	public static int pdp_cimmy2 = 10;
+    
+    
+    
     		
 }

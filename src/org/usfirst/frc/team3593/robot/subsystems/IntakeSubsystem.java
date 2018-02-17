@@ -18,37 +18,22 @@ public class IntakeSubsystem extends Subsystem {
 	
 	public IntakeSubsystem() {
 		
-	IntakeL = new Spark(RobotMap.IntakeL);
-	IntakeR = new Spark(RobotMap.IntakeR);
-	SimL = new Spark(RobotMap.SimL);
-	SimR = new Spark(RobotMap.SimR);
+		IntakeL = new Spark(RobotMap.IntakeL);
+		IntakeR = new Spark(RobotMap.IntakeR);
+		SimL = new Spark(RobotMap.SimL);
+		SimR = new Spark(RobotMap.SimR);
 
 	}
 
-	
-	
-
-	public void IntakeDoneIn(double Bubble) {
+	public void intakeSetSpeed(double setpoint) {
+		setpoint = setpoint * 0.75;
 		
-		IntakeL.set(-Bubble);
-		IntakeR.set(Bubble);
-		SimL.set(-Bubble);
-		SimR.set(Bubble);
-
+		IntakeL.set(-setpoint);
+		IntakeR.set(setpoint);
+		SimL.set(-setpoint);
+		SimR.set(setpoint);
 	}
 	
-	public void IntakeDoneOut(double Bubble) {
-		 
-		IntakeL.set(Bubble);
-		IntakeR.set(-Bubble);
-		SimL.set(Bubble);
-		SimR.set(-Bubble);
-
-	}
-
-
-	
-
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

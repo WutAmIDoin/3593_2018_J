@@ -17,13 +17,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	private final XboxController XBC1;
-	private final XboxController XBC2;
+	public final XboxController XBC1;
+	public final XboxController XBC2;
 	
 	public OI() {
 		
-		XBC1 = new XboxController(1);
-		XBC2 = new XboxController(0);
+		XBC1 = new XboxController(0);
+		XBC2 = new XboxController(1);
 			
 	}
 	

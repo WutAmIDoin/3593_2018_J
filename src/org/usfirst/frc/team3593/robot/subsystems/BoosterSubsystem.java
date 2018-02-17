@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,8 +21,8 @@ public class BoosterSubsystem extends Subsystem {
 	}
 	
 	public void BoosterTheDoocher(boolean McBooster) {
-		
-		booster.set(McBooster);
+		if(booster.get() != McBooster)
+		 booster.set(McBooster);
 	}
 	
 

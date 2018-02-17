@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,9 +20,10 @@ public class ShifterSubsystem extends Subsystem {
 		Shifter = new Solenoid(RobotMap.shifter);
 	}
 	
-	public void ShifterDoneShift(boolean ShiftyShadesOfGrey) {
-		
-		Shifter.set(ShiftyShadesOfGrey);
+	public void ShifterDoneShift(boolean ShiftyTheBifty) {
+		if(Shifter.get() != ShiftyTheBifty)
+		Shifter.set(ShiftyTheBifty);
+		CommandBase.toggleShifter = ShiftyTheBifty;
 	}
 	
 
