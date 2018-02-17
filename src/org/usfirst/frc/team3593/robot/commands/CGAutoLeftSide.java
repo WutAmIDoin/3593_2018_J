@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import org.usfirst.frc.team3593.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -25,6 +27,8 @@ public class CGAutoLeftSide extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	
+    	addSequential(new DriveDistanceForward(265, 0.75));
+    	addParallel(new SetIntakeArms(true));
+    	addParallel(new SetShooterSpeed(RobotMap.switchSpeed));
     }
 }

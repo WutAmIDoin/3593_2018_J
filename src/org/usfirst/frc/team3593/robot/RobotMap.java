@@ -70,6 +70,9 @@ public class RobotMap {
 	public static double driveKi = 0;
 	public static double driveKd = 0;
 	
+	// Speeds and other values
+	public static double switchSpeed = 0.25;
+	
 	/*Subsystems
 		> Drive
 		> Shifter
