@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -21,6 +22,8 @@ public class SetShooterSpeed extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	shooterWheels.setSpeed(speed);
+    	Timer.delay(1);
+    	finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()

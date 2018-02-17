@@ -26,6 +26,8 @@ public class DriveDistanceForward extends CommandBase {
        pidSource = new EncoderPIDSource();
        drivePID = new PIDController(RobotMap.driveKp, 
     		   RobotMap.driveKi, RobotMap.driveKd, pidSource, dummy);
+       drivePID.setPercentTolerance(RobotMap.drivePIDTolerance);
+       drivePID.setOutputRange(-1, 1);
     }
 
     // Called just before this Command runs the first time
@@ -46,7 +48,7 @@ public class DriveDistanceForward extends CommandBase {
     		
     		drive.driveArcade(speed, rotation);
     		
-    		finished = averageDistanceTraveled > (distanceToDrive - 4);
+    		finished = averageDistanceTraveled > (distanceToDrive - 6);
     	}
     }
 

@@ -23,20 +23,9 @@ public class AutoCommand extends CommandBase {
     }
 
     protected void initialize() {
-    	// Grab auto mode from dashboard, default to BASEONLY
-    	autoMode = CommandBase.ntBehav.getEntry("autoMode").getString("BASEONLY");
-    	System.out.println("Auto Mode set to " + autoMode);
     	
-    	// TODO Get target info from vision
     	
-    	// If the FMS fieldData length is 0, try to get it again
-    	if(fieldInfo.length() == 0) {
-    		fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
-    	}
-    	// If it's STILL 0, then just run baselineOnly to be safe
-    	if(fieldInfo.length() == 0) {
-    		autoMode = "BASEONLY";
-    	}
+    	
     	
     	
     	// Reset sensors for starting movement
@@ -46,42 +35,8 @@ public class AutoCommand extends CommandBase {
 
     
     protected void execute() {
-    	switch(autoMode) {
-	    	case "LEFT":
-	    		leftSide();
-	    		break;
-	    	case "RIGHT":
-	    		rightSide();
-	    		break;
-	    	case "BASELEFT":
-	    		baseline("L");
-	    		break;
-	    	case "BASERIGHT":
-	    		baseline("R");
-	    		break;
-	    	case "BASEONLY":
-    		default:
-    			baseline("");
-    			break;
-    	}
+    	
     	finished = true;
-    }
-    
-    private void leftSide() {    	
-    	boolean reverseScaleSide = false;
-    	
-    	// If the left switch is ALSO our color
-    	if(fieldInfo.charAt(0) == 'L') {
-    		// TODO Score in switch 
-    	} else {
-    		// TODO Go around and score in other switch
-    		reverseScaleSide = true;
-    	}
-    	
-    	// If the switch we're now closest to is also our color
-    	if(fieldInfo.charAt(1) == 'L' || reverseScaleSide) {
-    		// TODO Attempt to score in scale
-    	} 
     }
     
     private void rightSide() {
