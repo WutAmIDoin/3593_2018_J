@@ -5,6 +5,7 @@ import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.PowerCommand;
 
 
 public class PowerSubsystem extends Subsystem {
@@ -48,6 +49,7 @@ public class PowerSubsystem extends Subsystem {
     }
 
     public void initDefaultCommand() { 
+    	setDefaultCommand(new PowerCommand());
     }
 }
 

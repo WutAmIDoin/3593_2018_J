@@ -90,9 +90,13 @@ public class RobotMap {
 	
 	
 	// Problems:
-	// 1. Intake
-	// 2. Robot.Java
-	//
+	// AutoCommand
+	// Robot.Java
+	// PID
 	
+	// only do CommandBase. in requires, and toggle
+	
+	
+	// intelligey
 	
 }

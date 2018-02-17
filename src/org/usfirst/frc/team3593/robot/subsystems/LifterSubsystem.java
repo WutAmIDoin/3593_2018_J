@@ -19,8 +19,7 @@ public class LifterSubsystem extends Subsystem {
 	public void lifterCommand(boolean setpoint) {
 		if(lifter.get() != setpoint) {
     		lifter.set(setpoint);
-    		CommandBase.toggleFlap = setpoint;
-    	}else{		
+    		CommandBase.toggleFlap = setpoint;	
     	}
 	}
 	
