@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 public class DriveDistanceForward extends CommandBase {
-	double distanceToDrive;
+	private double distanceToDrive;
 	private PIDController drivePID;
 	private EncoderPIDSource pidSource;
 	private PIDOutput dummy;
@@ -43,7 +43,7 @@ public class DriveDistanceForward extends CommandBase {
     		double averageDistanceTraveled = (encDistances[0] + 
     				encDistances[1]) / 2;
     		
-    		while(averageDistanceTraveled < (averageDistanceTraveled - 4)) {
+    		while(averageDistanceTraveled < (distanceToDrive - 4)) {
     			drive.driveArcade(speed, rotation);
     		}
     		
