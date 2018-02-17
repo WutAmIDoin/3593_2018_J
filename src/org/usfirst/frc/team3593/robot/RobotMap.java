@@ -76,6 +76,12 @@ public class RobotMap {
 	
 	public static int XBC2shooterlow = 2;
 	public static int XBC2shooterhigh = 3;
+	
+	//PID Values
+	public static double driveKp = 0;
+	public static double driveKi = 0;
+	public static double driveKd = 0;
+	
 	/*Subsystems
 	 * New Subsystems:
 Drive
