@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RunIntakeCommand extends CommandBase {
 
     public RunIntakeCommand() {
+    	super("RunIntakeCommand");
         requires(CommandBase.theIntakeSubsystem);
     }
 
@@ -21,14 +22,18 @@ public class RunIntakeCommand extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakein) > .15) {
-    		CommandBase.theIntakeSubsystem.IntakeIn(RobotMap.intakeIn);
+    		CommandBase.theIntakeSubsystem.runIntake(RobotMap.intakeIn);
+    	}
+    	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakein) > .15 && CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) > .15) {
+    		CommandBase.theIntakeSubsystem.runIntake(0);
+    		CommandBase.theIntakeSubsystem.runIntake(0);
     	}
     	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) > .15) {
-    		CommandBase.theIntakeSubsystem.IntakeOut(RobotMap.intakeOut);
+    		CommandBase.theIntakeSubsystem.runIntake(RobotMap.intakeOut);
     	}
     	else {
-    		CommandBase.theIntakeSubsystem.IntakeIn(0);
-    		CommandBase.theIntakeSubsystem.IntakeOut(0);
+    		CommandBase.theIntakeSubsystem.runIntake(0);
+    		CommandBase.theIntakeSubsystem.runIntake(0);
     	}
     }
 

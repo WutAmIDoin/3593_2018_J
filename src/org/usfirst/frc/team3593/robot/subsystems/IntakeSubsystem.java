@@ -23,18 +23,11 @@ public class IntakeSubsystem extends Subsystem {
 		ciminiR = new Spark(RobotMap.ciminiR);
 	}
 	
-	public void IntakeIn(double whoop) {
-		intakeL.set(whoop);
-		intakeR.set(-whoop);
-		ciminiR.set(-whoop);
-		ciminiL.set(whoop);
-	}
-	
-	public void IntakeOut(double douknowdawea) {
-		intakeL.set(-douknowdawea);
-		intakeR.set(douknowdawea);
-		ciminiR.set(douknowdawea);
-		ciminiL.set(-douknowdawea);
+	public void runIntake(double douknowdawea) {
+		intakeL.set(douknowdawea);
+		intakeR.set(-douknowdawea);
+		ciminiR.set(-douknowdawea);
+		ciminiL.set(douknowdawea);
 	}
 	
 	// Set a default command

@@ -1,11 +1,12 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ToggleShifterCommand extends Command {
+public class ToggleShifterCommand extends CommandBase {
 	private boolean finished = false;
     public ToggleShifterCommand() {
         requires(CommandBase.theShifterSubsystem);
@@ -19,6 +20,7 @@ public class ToggleShifterCommand extends Command {
     protected void execute() {
     	CommandBase.toggleShifters = !CommandBase.toggleShifters;
     	CommandBase.theShifterSubsystem.setShifters(CommandBase.toggleShifters);
+    	Timer.delay(.5);
     	finished = true;
     }
 

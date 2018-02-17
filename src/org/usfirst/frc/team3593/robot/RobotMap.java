@@ -44,6 +44,20 @@ public class RobotMap {
 	public static int gryo = 0;
 	public static int pressureSensor = 1;
 	
+	//Power Channels
+	public static int pdp_driveRight1 = 1;
+	public static int pdp_driveRight2 = 14;
+	public static int pdp_driveLeft1 = 0;
+	public static int pdp_driveLeft2 = 15;
+	public static int pdp_shooterRight1 = 12;
+	public static int pdp_shooterRight2 = 13;
+	public static int pdp_shooterLeft1 = 2;
+	public static int pdp_shooterLeft2 = 3;
+	public static int pdp_IntakeLeft = 5;
+	public static int pdp_IntakeRight = 11;
+	public static int pdp_cimmy1 = 4;
+	public static int pdp_cimmy2 = 10;
+	
 	//Random Values
 	public static double shooterLowSpeed = .25;
 	public static double shooterHighSpeed = .75;

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,15 +18,23 @@ public class LifterSubsystem extends Subsystem {
 	}
 	
 	public void setLifter(boolean setLifter) {
-		lifter.set(setLifter);
+		if (lifter.get() != setLifter)
+			lifter.set(setLifter);
+			CommandBase.toggleLifter = setLifter;
 	}
 	
 	public void lifterUp() {
-		lifter.set(true);
+		if (!lifter.get()) {
+			lifter.set(true);
+			CommandBase.toggleLifter = true;
+		}
 	}
 	
 	public void lifterDown() {
+		if (lifter.get())
 		lifter.set(false);
+		CommandBase.toggleLifter = false;
+		
 	}
 
     public void initDefaultCommand() {

@@ -24,6 +24,7 @@ public class ChargeShootersCommand extends CommandBase {
 		if (CommandBase.oi.XBC2.getRawAxis(RobotMap.XBC2shooterlow) > .15) {
 			speed = (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC2shooterhigh) > .15) ? RobotMap.shooterHighSpeed: RobotMap.shooterLowSpeed;
 			CommandBase.theShooterSubsystem.SetShooterSpeed(speed);
+			CommandBase.UpdateUpperLEDs("runningShooter");
 		} 
 		else {
 			CommandBase.theShooterSubsystem.stopShooters();

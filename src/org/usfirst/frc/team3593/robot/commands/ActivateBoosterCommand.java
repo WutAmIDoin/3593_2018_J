@@ -11,7 +11,8 @@ public class ActivateBoosterCommand extends CommandBase {
 	private boolean finished = false;
 	
     public ActivateBoosterCommand() {
-        requires(CommandBase.theBoosterSubsystem);
+        super("ActivateBoosterCommand");
+    	requires(CommandBase.theBoosterSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -19,8 +20,10 @@ public class ActivateBoosterCommand extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    
+    //took out the CommandBase.
     protected void execute() {
-    	CommandBase.theBoosterSubsystem.SetLauncher(true);
+    	theBoosterSubsystem.SetLauncher(true);
     	Timer.delay(1);
     	finished = true;
     }
@@ -32,7 +35,7 @@ public class ActivateBoosterCommand extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	CommandBase.theBoosterSubsystem.SetLauncher(false);
+    	theBoosterSubsystem.SetLauncher(false);
     }
 
     // Called when another command which requires one or more of the same

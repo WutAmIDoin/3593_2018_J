@@ -31,7 +31,7 @@ public class OI {
 		//Commands XBC2
 		getButton(XBC2, 1).whenPressed(new ActivateBoosterCommand());
 		getButton(XBC2, 3).whenPressed(new ToggeLifterCommand());
-		getButton(XBC2, 5).whenPressed(new ToggleFlapCommand());
+		getButton(XBC2, 4).whenPressed(new ToggleFlapCommand());
 	}
 	
 	public JoystickButton getButton(XboxController con, int button) {

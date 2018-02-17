@@ -29,6 +29,13 @@ public class DriveSubsystem extends Subsystem {
 		DR.tankDrive(0, 0);
 	}
 	
+	public void driveArcade(double speed, double rotation) {
+		DR.arcadeDrive(speed, rotation);
+	}
+	
+	public void driveArcadeStop() {
+		DR.arcadeDrive(0, 0);
+	}
 			
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
