@@ -82,6 +82,16 @@ public class RobotMap {
 	public static double driveKi = 0;
 	public static double driveKd = 0;
 	
+	// Gyro / Turn PID values
+	public static double gyroKp = 0;
+	public static double gyroKi = 0;
+	public static double gyroKd = 0;
+	public static double gyroPIDTolerance = 5; // This is a percent
+		
+	// Speeds and other values
+	public static double switchSpeed = 0.25;
+	public static double scaleSpeed = 1;
+
 	/*Subsystems
 	 * New Subsystems:
 Drive
