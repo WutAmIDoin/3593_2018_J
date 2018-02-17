@@ -14,6 +14,7 @@ public class DriveDistanceForward extends CommandBase {
 	private EncoderPIDSource pidSource;
 	private PIDOutput dummy;
 	private double speed = 0.75;
+	private boolean finished = false;
 	
     public DriveDistanceForward(double inchDist, double setSpeed) {
        requires(CommandBase.drive);
@@ -25,11 +26,11 @@ public class DriveDistanceForward extends CommandBase {
        pidSource = new EncoderPIDSource();
        drivePID = new PIDController(RobotMap.driveKp, 
     		   RobotMap.driveKi, RobotMap.driveKd, pidSource, dummy);
-       drivePID.enable();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	drivePID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -43,26 +44,26 @@ public class DriveDistanceForward extends CommandBase {
     		double averageDistanceTraveled = (encDistances[0] + 
     				encDistances[1]) / 2;
     		
-    		while(averageDistanceTraveled < (distanceToDrive - 4)) {
-    			drive.driveArcade(speed, rotation);
-    		}
+    		drive.driveArcade(speed, rotation);
     		
-    		drive.stop();
+    		finished = averageDistanceTraveled > (distanceToDrive - 4);
     	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return finished;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	drive.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	drive.stop();
     }
 }
