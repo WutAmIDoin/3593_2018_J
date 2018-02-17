@@ -1,18 +1,14 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.ChargeShooters;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
-public class ShooterWheels extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+public class ShooterWheels extends Subsystem {
 	Spark[] leftSparks;
 	Spark[] rightSparks;
 	
@@ -54,8 +50,7 @@ public class ShooterWheels extends Subsystem {
 	}
 
     public void initDefaultCommand() {
-        // Need to create a default SetShooterSpeed 
-    	// command for this
+        setDefaultCommand(new ChargeShooters() );
     }
 }
 

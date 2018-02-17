@@ -27,6 +27,10 @@ public class DriveSubsystem extends Subsystem {
 		drive.tankDrive(left, right);
 	}
 	
+	public void driveArcade(double speed, double rotation) {
+		drive.arcadeDrive(speed, rotation, false);
+	}
+	
 	public void stop() {
 		drive.stopMotor();
 	}

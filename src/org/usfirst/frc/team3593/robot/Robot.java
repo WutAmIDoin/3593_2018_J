@@ -10,15 +10,12 @@ import org.usfirst.frc.team3593.robot.commands.*;
 public class Robot extends TimedRobot 
 {
 	Command autoCommand = null;
-	Command powerReporting = null;
 
 	@Override
 	public void robotInit() 
 	{
 		// Initializes all subsystems and the OI
 		CommandBase.init();
-		powerReporting = new PowerReporting();
-		powerReporting.start();
 	}
 	
 	@Override

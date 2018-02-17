@@ -3,15 +3,13 @@ package org.usfirst.frc.team3593.robot.subsystems;
 import java.util.Hashtable;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.PowerReporting;
 
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
+
 public class PowerSubsystem extends Subsystem {
 	PowerDistributionPanel pdp;
 	NetworkTable nt_power;
@@ -56,8 +54,7 @@ public class PowerSubsystem extends Subsystem {
 	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new PowerReporting());
     }
 }
 

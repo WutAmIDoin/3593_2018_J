@@ -21,6 +21,14 @@ public class ShifterSubsystem extends Subsystem {
     public void shift(boolean setpoint) {
     	solShifter.set(setpoint);
     }
+    
+    public void shiftLow() {
+    	solShifter.set(true);
+    }
+    
+    public void shiftHigh() {
+    	solShifter.set(false);
+    }
 
 	@Override
 	protected void initDefaultCommand()

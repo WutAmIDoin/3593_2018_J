@@ -65,6 +65,11 @@ public class RobotMap {
 	// Joystick Values
 	public static double trigDeadzone = 0.15;
 	
+	// Drive PID values
+	public static double driveKp = 0;
+	public static double driveKi = 0;
+	public static double driveKd = 0;
+	
 	/*Subsystems
 		> Drive
 		> Shifter
