@@ -42,24 +42,21 @@ public class Robot extends TimedRobot
     		autoCommand = new CGAutoLeftSide(fieldInfo);
     		break;
     	case "RIGHT":
-    		rightSide();
+    		//rightSide();
     		break;
     	case "BASELEFT":
-    		baseline("L");
+    		//baseline("L");
     		break;
     	case "BASERIGHT":
-    		baseline("R");
+    		//baseline("R");
     		break;
     	case "BASEONLY":
 		default:
-			baseline("");
+			//baseline("");
 			break;
     	}
     	
     	autoCommand.start();
-		
-		//autoCommand = new AutoCommand();
-		//autoCommand.start();
 	}
 
 	@Override

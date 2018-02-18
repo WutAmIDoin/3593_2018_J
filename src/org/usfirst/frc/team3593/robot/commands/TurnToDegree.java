@@ -7,9 +7,7 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
+
 public class TurnToDegree extends CommandBase {
 	private PIDController pidGyro;
 	private GyroPIDSource gyroPidSource;
@@ -39,7 +37,10 @@ public class TurnToDegree extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	sensors.resetEncoderDistance();
+    	sensors.resetGyro();
     	pidGyro.enable();
+    	System.out.println("AUTO - GYRO - Turning to " + setpoint);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,6 +49,7 @@ public class TurnToDegree extends CommandBase {
     	gyroPidSource.gyroAngle = angle;
     	pidGyro.setSetpoint(setpoint);
     	double rotation = pidGyro.get();
+    	ntBehav.getEntry("GyroPIDRotation").setDouble(rotation);
     	
     	drive.driveArcade(0, rotation * turnSpeed);
     	

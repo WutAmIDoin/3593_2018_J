@@ -32,7 +32,10 @@ public class DriveDistanceForward extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	sensors.resetEncoderDistance();
+    	sensors.resetGyro();
     	drivePID.enable();
+    	System.out.println("AUTO - ENCODERS - Driving " + distanceToDrive + "in");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -42,6 +45,7 @@ public class DriveDistanceForward extends CommandBase {
     		pidSource.encoderDistances = encDistances;
     		drivePID.setSetpoint(0);
     		double rotation = drivePID.get();
+    		ntBehav.getEntry("RotationCorrection").setDouble(rotation);
     		
     		double averageDistanceTraveled = (encDistances[0] + 
     				encDistances[1]) / 2;
