@@ -28,7 +28,6 @@ public class RunIntakeMotors extends CommandBase {
     		flap.setDown();
     	} else {
     		speed = 0;
-    		flap.setUp();
     	}
     	
     	intakeWheels.setSpeed(speed);

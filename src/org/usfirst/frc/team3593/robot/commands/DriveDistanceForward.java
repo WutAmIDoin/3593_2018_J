@@ -46,8 +46,10 @@ public class DriveDistanceForward extends CommandBase {
     	double[] encDistances = sensors.getEncoderDistance();
     	
     	// Send this value to the network table
-    	CommandBase.ntValues.getEntry("encoderDistances").
-    		setDoubleArray(encDistances);
+    	CommandBase.ntValues.getEntry("driveLeftEncoder").
+    		setDouble(encDistances[0]);
+    	CommandBase.ntValues.getEntry("driveRightEncoder").
+			setDouble(encDistances[1]);
     	
     	// Check to make sure we got encoder values
     	if(encDistances.length == 2) {
@@ -62,7 +64,8 @@ public class DriveDistanceForward extends CommandBase {
     		double rotation = drivePID.get();
     		
     		// Update NetworkTables
-    		ntBehav.getEntry("RotationCorrection").setDouble(rotation);
+    		CommandBase.ntValues.getEntry("rotationCorrection")
+    			.setDouble(rotation);
     		
     		// Calculate the average distance traveled by both sides
     		double averageDistanceTraveled = (encDistances[0] + 

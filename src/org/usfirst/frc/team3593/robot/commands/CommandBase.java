@@ -32,6 +32,7 @@ public class CommandBase extends Command
 	public static SensorSubsystem sensors = new SensorSubsystem();
 	public static ShifterSubsystem shifter = new ShifterSubsystem();
 	public static ShooterWheels shooterWheels = new ShooterWheels();
+	public static CameraSubsystem camera = new CameraSubsystem();
 	
 	// Control values for commands
 	public static boolean toggleShiftControl = false;

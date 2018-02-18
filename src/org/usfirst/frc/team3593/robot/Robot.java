@@ -16,6 +16,7 @@ public class Robot extends TimedRobot
 	{
 		// Initializes all subsystems and the OI
 		CommandBase.init();
+		CommandBase.ntBehav.getEntry("robotMode").setString("DISABLED");
 	}
 	
 	@Override
@@ -56,6 +57,7 @@ public class Robot extends TimedRobot
 			break;
     	}
     	
+    	CommandBase.ntBehav.getEntry("robotMode").setString("AUTO");
     	autoCommand.start();
 	}
 
@@ -68,6 +70,7 @@ public class Robot extends TimedRobot
 	public void teleopInit() {
 		if (autoCommand != null)
             autoCommand.cancel();
+		CommandBase.ntBehav.getEntry("robotMode").setString("TELEOP");
 	}
 
 	@Override
@@ -75,4 +78,8 @@ public class Robot extends TimedRobot
 		Scheduler.getInstance().run();
 	}
 	
+	@Override
+	public void disabledInit() {
+		CommandBase.ntBehav.getEntry("robotMode").setString("DISABLED");
+	}
 }
