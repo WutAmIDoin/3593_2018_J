@@ -4,6 +4,7 @@ import org.usfirst.frc.team3593.robot.OI;
 import org.usfirst.frc.team3593.robot.subsystems.*;
 import org.usfirst.frc.team3593.*;
 
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,6 +22,12 @@ public class CommandBase extends Command {
 	public static boolean toggleFlap = false;
 	public static boolean toggleFolder = false;
 	public static boolean toggleLifter = false;
+	
+	// NetworkTables
+
+	public static NetworkTable ntValues;
+	public static NetworkTable ntVision;
+	public static NetworkTable ntBehav;
 	                
 	//subsystems
 	

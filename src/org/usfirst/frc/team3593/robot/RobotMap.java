@@ -184,6 +184,10 @@ public class RobotMap {
 
 	public static double scaleSpeed = 1;
 
+	public static int pressureSensorChannel = 0;
+
+	public static double drivePIDTolerance;
+
 
 
 	/*Subsystems

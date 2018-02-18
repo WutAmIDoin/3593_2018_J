@@ -30,5 +30,10 @@ public class BoosterSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+	public void setSolenoid(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

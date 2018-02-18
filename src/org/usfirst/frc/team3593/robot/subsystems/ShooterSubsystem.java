@@ -41,5 +41,10 @@ public class ShooterSubsystem extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new ChargeShootersCommand());
     }
+
+	public void setSpeed(double speed) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

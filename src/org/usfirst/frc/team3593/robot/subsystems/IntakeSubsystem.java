@@ -41,5 +41,15 @@ public class IntakeSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+	public void setPosition(boolean setpoint) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setSpeed(double speed) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
