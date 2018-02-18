@@ -11,6 +11,7 @@ public class RunIntakeCommand extends CommandBase {
 
     public RunIntakeCommand() {
         requires(CommandBase.theIntakeSubsystem);
+        requires(CommandBase.theFlapSubsystem);
     }
 
     // Called just before this Command runs the first time
