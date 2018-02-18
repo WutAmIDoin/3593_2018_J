@@ -33,10 +33,10 @@ public class RobotMap {
 	
 	// Solenoid Channels
 	public static int shifterSolendoidChannel = 4;
-	public static int boosterSolenoidChannel = 5;
+	public static int boosterSolenoidChannel = 7;
 	public static int lifterSolenoidChannel = 6;
-	public static int flapSolenoidChannel = 7;
-	public static int intakeArmsSolenoidChannel = 3;
+	public static int flapSolenoidChannel = 0;
+	public static int intakeArmsSolenoidChannel = 5;
 	
 	// Analog Channels
 	public static int gyroChannel = 0;

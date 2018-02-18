@@ -46,6 +46,7 @@ public class TurnToDegree extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angle = sensors.getGyroAngle();
+    	CommandBase.ntValues.getEntry("gyroAngle").setDouble(angle);
     	gyroPidSource.gyroAngle = angle;
     	pidGyro.setSetpoint(setpoint);
     	double rotation = pidGyro.get();

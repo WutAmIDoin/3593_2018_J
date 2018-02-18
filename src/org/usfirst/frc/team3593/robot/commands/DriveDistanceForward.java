@@ -23,6 +23,8 @@ public class DriveDistanceForward extends CommandBase {
        distanceToDrive = inchDist;
        speed = setSpeed;
        
+       // Create a new PID source and a aPID controller for 
+       // calculating the rotation of the drive
        pidSource = new EncoderPIDSource();
        drivePID = new PIDController(RobotMap.driveKp, 
     		   RobotMap.driveKi, RobotMap.driveKd, pidSource, dummy);
@@ -40,18 +42,36 @@ public class DriveDistanceForward extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	// Get the new angle of the gyro
     	double[] encDistances = sensors.getEncoderDistance();
+    	
+    	// Send this value to the network table
+    	CommandBase.ntValues.getEntry("encoderDistances").
+    		setDoubleArray(encDistances);
+    	
+    	// Check to make sure we got encoder values
     	if(encDistances.length == 2) {
+    		// Set the PID source to the encoder distances 
+    		// so that it can calculate the difference
     		pidSource.encoderDistances = encDistances;
+    		
+    		// Set the PID setpoint (aiming for no difference 
+    		// between the two encoders) 
+    		// Then get the calucalted PID value for rotation
     		drivePID.setSetpoint(0);
     		double rotation = drivePID.get();
+    		
+    		// Update NetworkTables
     		ntBehav.getEntry("RotationCorrection").setDouble(rotation);
     		
+    		// Calculate the average distance traveled by both sides
     		double averageDistanceTraveled = (encDistances[0] + 
     				encDistances[1]) / 2;
     		
+    		// Drive with the speed and rotation we set / calculated
     		drive.driveArcade(speed, rotation);
     		
+    		// If we've traveled the distance we want to, stop
     		finished = averageDistanceTraveled > (distanceToDrive - 6);
     	}
     }
