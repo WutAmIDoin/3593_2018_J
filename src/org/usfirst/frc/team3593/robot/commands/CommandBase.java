@@ -33,7 +33,7 @@ public class CommandBase extends Command {
 	public static SensorSubsystem sensor = new SensorSubsystem();
 	public static ShifterSubsystem shifter = new ShifterSubsystem();
 	public static ShooterSubsystem shooter = new ShooterSubsystem();
-	
+	public static PowerSubsystem power = new PowerSubsystem();
 	public static void init()
 	{
 		oi = new OI();

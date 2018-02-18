@@ -23,9 +23,9 @@ public class RunIntakeCommand extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double speed = 0;
-    	if(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBCintakein) > .15) {
+    	if(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakein) > .15) {
     		speed = RobotMap.intakeIn;
-    	} else if(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBCintakeout) > .15) {
+    	} else if(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) > .15) {
     		speed = RobotMap.intakeOut;
     	} else {
     		speed = 0;
