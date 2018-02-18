@@ -24,10 +24,6 @@ public class ToggleFolderCommand extends CommandBase {
     	CommandBase.toggleFolders = !CommandBase.toggleFolders;
     	CommandBase.theFolderSubsystem.setFolders(CommandBase.toggleFolders);
     	
-    	if (CommandBase.toggleFolders = true) {
-    		CommandBase.theFlapSubsystem.flapUp();
-    	}
-    	
     	Timer.delay(.5);
     	
     	finished = true;

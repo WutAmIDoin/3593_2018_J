@@ -26,9 +26,9 @@ public class ShooterSubsystem extends Subsystem {
 	// Put the speed determination logic in the command. Change this to
 	// only accept one argument, speed, then simply set the motor speeds
 	public void SetShooterSpeed(double speed) {
-		shooterRFront.set(speed);
+		shooterRFront.set(-speed);
 		shooterLFront.set(speed);
-		shooterRRear.set(speed);
+		shooterRRear.set(-speed);
 		shooterLRear.set(speed);
 	}
 	

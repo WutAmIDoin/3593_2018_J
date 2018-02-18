@@ -19,7 +19,7 @@ public class DriveCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.theDriveSubsystem.driveTank(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1driveleft), CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1driveright));
+    	CommandBase.theDriveSubsystem.driveTank(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1driveright), CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1driveleft));
     }
 
     // Make this return true when this Command no longer needs to run execute()

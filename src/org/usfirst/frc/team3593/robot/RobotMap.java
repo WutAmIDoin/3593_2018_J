@@ -59,9 +59,9 @@ public class RobotMap {
 	public static int pdp_cimmy2 = 10;
 	
 	//Random Values
-	public static double shooterLowSpeed = .25;
-	public static double shooterHighSpeed = .75;
-	public static double intakeIn = .75;
+	public static double shooterLowSpeed = .50;
+	public static double shooterHighSpeed = 1;
+	public static double intakeIn = .8;
 	public static double intakeOut = .8;
 	
 	public static double wheelDiameter = 6;

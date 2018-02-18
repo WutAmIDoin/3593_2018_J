@@ -24,10 +24,10 @@ public class IntakeSubsystem extends Subsystem {
 	}
 	
 	public void runIntake(double douknowdawea) {
-		intakeL.set(douknowdawea);
-		intakeR.set(-douknowdawea);
-		ciminiR.set(-douknowdawea);
-		ciminiL.set(douknowdawea);
+		intakeL.set(douknowdawea * 0.8);
+		intakeR.set(-douknowdawea * 0.8);
+		ciminiR.set(douknowdawea);
+		ciminiL.set(-douknowdawea);
 	}
 	
 	// Set a default command

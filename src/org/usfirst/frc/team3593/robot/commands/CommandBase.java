@@ -72,29 +72,29 @@ public class CommandBase extends Command {
 	private static String upperControlString = "";
 	private static String chassisControlString = "";
 	
-	public static void UpdateUpperLEDs(String sendData) {
-		if(upperControlString != sendData) {
-			CommandBase.ArduinoTransact(sendData, chassisControlString);
-			upperControlString = sendData;
-		}
-	}
+//	public static void UpdateUpperLEDs(String sendData) {
+//		if(upperControlString != sendData) {
+//			CommandBase.ArduinoTransact(sendData, chassisControlString);
+//			upperControlString = sendData;
+//		}
+//	}
+//	
+//	public static void UpdateDriveLEDs(String sendData) {
+//		if(chassisControlString != sendData) {
+//			CommandBase.ArduinoTransact(upperControlString, sendData);
+//			chassisControlString = sendData;
+//		}
+//	}
 	
-	public static void UpdateDriveLEDs(String sendData) {
-		if(chassisControlString != sendData) {
-			CommandBase.ArduinoTransact(upperControlString, sendData);
-			chassisControlString = sendData;
-		}
-	}
-	
-	public static void ArduinoTransact(String shooterValue, String driveValue) {
-		String str = shooterValue + "-" + driveValue;
-		char[] charArr = str.toCharArray();
-		byte[] WriteData = new byte[charArr.length];
-		for (int i = 0; i < charArr.length; i++) {
-			WriteData[i] = (byte) charArr[i];
-		}
-		arduino.transaction(WriteData, WriteData.length, null, 0);
-	}
+//	public static void ArduinoTransact(String shooterValue, String driveValue) {
+//		String str = shooterValue + "-" + driveValue;
+//		char[] charArr = str.toCharArray();
+//		byte[] WriteData = new byte[charArr.length];
+//		for (int i = 0; i < charArr.length; i++) {
+//			WriteData[i] = (byte) charArr[i];
+//		}
+//		arduino.transaction(WriteData, WriteData.length, null, 0);
+//	}
 	public static void updateLEDs(String str) {
 		char[] charArr = str.toCharArray();
 		byte[] writeData = new byte[charArr.length];

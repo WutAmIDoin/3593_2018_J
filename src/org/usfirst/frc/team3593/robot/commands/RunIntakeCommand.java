@@ -26,13 +26,11 @@ public class RunIntakeCommand extends CommandBase {
     	}
     	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakein) > .15 && CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) > .15) {
     		CommandBase.theIntakeSubsystem.runIntake(0);
-    		CommandBase.theIntakeSubsystem.runIntake(0);
     	}
     	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) > .15) {
-    		CommandBase.theIntakeSubsystem.runIntake(RobotMap.intakeOut);
+    		CommandBase.theIntakeSubsystem.runIntake(-CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) * 0.8);
     	}
     	else {
-    		CommandBase.theIntakeSubsystem.runIntake(0);
     		CommandBase.theIntakeSubsystem.runIntake(0);
     	}
     }

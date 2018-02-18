@@ -26,7 +26,8 @@ public class OI {
 		XBC2 = new XboxController(1);
 		
 		//Commands XBC1
-		getButton(XBC1, 5).whenPressed(new ToggleShifterCommand());
+		getButton(XBC1, 6).whenPressed(new ToggleShifterCommand());
+		getButton(XBC1, 5).whenPressed(new ToggleFolderCommand());
 		
 		//Commands XBC2
 		getButton(XBC2, 1).whenPressed(new ActivateBoosterCommand());
