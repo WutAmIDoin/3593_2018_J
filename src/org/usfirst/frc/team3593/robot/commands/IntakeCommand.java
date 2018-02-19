@@ -5,19 +5,29 @@ import org.usfirst.frc.team3593.robot.RobotMap;
 public class IntakeCommand extends CommandBase {
 
     public IntakeCommand() {
-        requires(theIntake);
+        requires(CommandBase.theIntake);
+        requires(CommandBase.theFlap);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	if(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1takein) > 0.15){
+    	if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1takein) > .15) {
     		CommandBase.theIntake.setIntakeSpeed(RobotMap.takeIn);
-    	}else if(CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1takeout) > 0.15) {
-    		CommandBase.theIntake.setIntakeSpeed(RobotMap.takeOut);
-    	}else {
+    		theFlap.flapDown();
+    	}
+    	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1takein) > .15 && CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1takeout) > .15) {
+    		CommandBase.theIntake.setIntakeSpeed(0);
+    		theFlap.flapUp();
+    	}
+    	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1takeout) > .15) {
+    		CommandBase.theIntake.setIntakeSpeed(-CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1takeout) * 0.8);
+    		theFlap.flapDown();
+    	}
+    	else {
     		CommandBase.theIntake.stopIntake();
+    		theFlap.flapUp();
     	}
     }
 

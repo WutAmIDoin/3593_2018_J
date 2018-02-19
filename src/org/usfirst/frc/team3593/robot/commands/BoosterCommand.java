@@ -14,8 +14,9 @@ public class BoosterCommand extends CommandBase {
     }
 
     protected void execute() {
-    	CommandBase.theBooster.BoosterCommand(true);
+    	theBooster.setSolenoid(true);
     	Timer.delay(1);
+    	theBooster.setSolenoid(false);
     	finish = true;
     }
 
@@ -24,9 +25,10 @@ public class BoosterCommand extends CommandBase {
     }
 
     protected void end() {
-    	CommandBase.theBooster.BoosterCommand(false);
+    	theBooster.setSolenoid(false);
     }
 
     protected void interrupted() {
+    	theBooster.setSolenoid(false);
     }
 }

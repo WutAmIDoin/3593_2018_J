@@ -20,8 +20,23 @@ public class FlapSubsystem extends Subsystem {
     	if(flap.get() != setpoint) {
     		flap.set(setpoint);
     		CommandBase.toggleFlap = setpoint;
-    	}else{		
     	}
+    }
+    
+    public void flapUp() {
+    	if (!flap.get()) {
+ 		   flap.set(true);
+ 		   CommandBase.toggleFlap = true;
+  		   CommandBase.ntValues.getEntry("flapPosition").setBoolean(true);
+ 	   }
+    }
+    
+    public void flapDown() {
+ 	   if (flap.get()) {
+ 		   flap.set(false);
+ 		   CommandBase.toggleFlap = false;
+  		   CommandBase.ntValues.getEntry("flapPosition").setBoolean(false);
+ 	   }
     }
     
     public void initDefaultCommand() {

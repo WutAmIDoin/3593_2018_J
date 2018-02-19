@@ -21,6 +21,7 @@ public class ShooterCommand extends CommandBase {
     		CommandBase.theShooter.SetShooterSpeed(RobotMap.lowTrig);
     	}else if(trigRight) {
     		CommandBase.theShooter.SetShooterSpeed(RobotMap.highTrig);
+    		CommandBase.UpdateUpperLEDs("runningShooter");
     	}else {
     		CommandBase.theShooter.SetShooterSpeed(0);
     	}

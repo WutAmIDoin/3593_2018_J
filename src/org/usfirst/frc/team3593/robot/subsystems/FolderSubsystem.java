@@ -23,6 +23,22 @@ public class FolderSubsystem extends Subsystem {
     	}
 	}
 	
+	public void foldersOut() {
+		if (!folder.get()) {
+			folder.set(true);
+			CommandBase.toggleFolder = true;
+			CommandBase.ntValues.getEntry("intakeArms").setBoolean(true);
+		}
+	}	
+
+	public void foldersIn() {
+		if (folder.get()) {
+			folder.set(false);
+			CommandBase.toggleFolder = true;
+			CommandBase.ntValues.getEntry("intakeArms").setBoolean(false);
+		}
+	}
+	
     public void initDefaultCommand() {
     }
 }

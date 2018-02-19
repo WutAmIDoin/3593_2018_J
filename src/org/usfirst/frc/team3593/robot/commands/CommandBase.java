@@ -35,6 +35,7 @@ public class CommandBase extends Command {
 	public static ShooterSubsystem theShooter = new ShooterSubsystem();
 	public static SensorSubsystem theSensor = new SensorSubsystem();
 	public static PowerSubsystem thePower = new PowerSubsystem();
+	public static CameraSubsystem theCamera = new CameraSubsystem();
 	
 	// booster is not a toggle
 	public static BoosterSubsystem theBooster = new BoosterSubsystem();

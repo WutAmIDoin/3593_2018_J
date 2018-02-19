@@ -20,7 +20,23 @@ public class LifterSubsystem extends Subsystem {
 		if(lifter.get() != setpoint) {
     		lifter.set(setpoint);
     		CommandBase.toggleFlap = setpoint;	
+    		CommandBase.ntValues.getEntry("shooterPosition").setBoolean(setpoint);
     	}
+	}
+	
+	public void lifterUp() {
+		if (!lifter.get()) {
+			lifter.set(true);
+			CommandBase.toggleLifter = true;
+			CommandBase.ntValues.getEntry("shooterPosition").setBoolean(true);
+		}
+	}
+
+	public void lifterDown() {
+		if (lifter.get())
+		lifter.set(false);
+		CommandBase.toggleLifter = false;
+		CommandBase.ntValues.getEntry("shooterPosition").setBoolean(false);
 	}
 	
     public void initDefaultCommand() {

@@ -14,9 +14,9 @@ public class BoosterSubsystem extends Subsystem {
 		booster = new Solenoid(RobotMap.booster);
 	}
 	
-	public void BoosterCommand(boolean booster1) {
-		booster.set(booster1);
-		
+	public void setSolenoid(boolean setpoint) {
+		if(booster.get() != setpoint)
+			booster.set(setpoint);
 	}
 	
     public void initDefaultCommand() {

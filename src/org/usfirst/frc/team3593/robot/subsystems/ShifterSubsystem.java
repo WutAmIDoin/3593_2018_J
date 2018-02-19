@@ -18,7 +18,23 @@ public class ShifterSubsystem extends Subsystem {
     	if(shifter.get() != setpoint) {
     		shifter.set(setpoint);
     		CommandBase.toggleFlap = setpoint;
-    	}else{		
+    		CommandBase.ntValues.getEntry("driveShifter").setBoolean(setpoint);
+    	}
+    }
+    
+    public void setLow() {
+    	if (shifter.get()) {
+    		shifter.set(false);
+    		CommandBase.toggleShifter = false;
+    		CommandBase.ntValues.getEntry("driveShifter").setBoolean(true);
+    	}
+    }
+
+    public void setHigh() {
+    	if (!shifter.get()) {
+    		shifter.set(true);
+    		CommandBase.toggleShifter = true;
+    		CommandBase.ntValues.getEntry("driveShifter").setBoolean(false);
     	}
     }
 

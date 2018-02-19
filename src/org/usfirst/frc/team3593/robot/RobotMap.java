@@ -58,10 +58,10 @@ public class RobotMap {
 	
 	
 	//stuffs
-	public static double lowTrig = 0.25;
-	public static double highTrig = 0.75;
+	public static double lowTrig = 0.5;
+	public static double highTrig = 1;
 	
-	public static double takeIn = 0.75;
+	public static double takeIn = 0.8;
 	public static double takeOut = -0.8;
 	
 	
@@ -104,15 +104,18 @@ public class RobotMap {
 
 	
 	
+	// values for auto
+	public static double switchSpeed = 0.25;
+	public static double scaleSpeed = 1;
+	
+	
 	
 	// Problems:
-	// AutoCommand
+	// CG Auto
 	// Robot.Java
 	// PID
-	
-	// only do CommandBase. in requires, and toggle
-	
-	
-	// intelligey
-	
+	// Turn to Degree? DriveForwardDistance?; LaunchCube
+	//
+	// flap before folder
+ 
 }
