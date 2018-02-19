@@ -1,12 +1,8 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 import org.usfirst.frc.team3593.robot.RobotMap;
-
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  *
@@ -27,22 +23,18 @@ public class DriveSubsystem extends Subsystem {
 	}
 	
 	 public void driveTank(double left, double right) {
-	   DR.tankDrive(left, right); 	 
+		 DR.tankDrive(left, right); 	 
+	 }
+	
+	 public void stop() {
+		 DR.tankDrive(0, 0);
 	 }
 	 
-	 
-		  
-	  
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
     public void initDefaultCommand() {
-        
+	}
 
-   
-    }
-}
-
-
-
+	public void driveArcade(double speed, double rotation) {
+		// TODO Auto-generated method stub
+		
+	}     
+}   

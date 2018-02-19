@@ -7,12 +7,7 @@
 
 package org.usfirst.frc.team3593.robot;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
+
 public class RobotMap {
 	
 	//Encoder variables
@@ -59,9 +54,77 @@ public class RobotMap {
 	// Intake
 	public static int intakerIntakeR = 2;
 	public static int intakerIntakeL = 4;
+	public static int intakerIntakeL2 = 3;
+	public static int intakerIntakeR2 = 8;
+	
 	public static int intakerSimR = 8;
 	public static int intakerSimL = 3;
 	public static int intakerFolder = 5;
+	
+	
+	
+	// Power channels
+	public static int pdp_driveRight1 = 1; 
+	 	public static int pdp_driveRight2 = 14; 
+	 	public static int pdp_driveLeft1 = 0; 
+	 	public static int pdp_driveLeft2 = 15; 
+	 	public static int pdp_shooterRight1 = 12; 
+	 	public static int pdp_shooterRight2 = 13; 
+	 	public static int pdp_shooterLeft1 = 2; 
+	 	public static int pdp_shooterLeft2 = 3; 
+	 	public static int pdp_IntakeLeft = 5; 
+	 	public static int pdp_IntakeRight = 11; 
+	 	public static int pdp_cimmy1 = 4; 
+	 	public static int pdp_cimmy2 = 10;
+	
+	 // Joystick Values 
+ 	 	public static double trigDeadzone = 0.15; 
+ 	 	 
+ 	 	// Drive PID values 
+ 	 	public static double driveKp = 0; 
+ 	 	public static double driveKi = 0; 
+ 	 	public static double driveKd = 0; 
+ 	 	public static double drivePIDTolerance = 5; // This is a percent 
+ 	 	 
+ 	 	// Gyro / Turn PID values 
+ 	 	public static double gyroKp = 0; 
+ 	 	public static double gyroKi = 0; 
+ 	 	public static double gyroKd = 0; 
+ 		public static double gyroPIDTolerance = 5; // This is a percent 
+ 	 	 
+ 	 	// Speeds and other values 
+ 	 	public static double switchSpeed = 0.25; 
+ 	 	public static double scaleSpeed = 1; 
+ 	 	 
+ 	 	/*Subsystems 
+ 	 		> Drive 
+ 	 		> Shifter 
+ 	 		> ShooterWheels 
+ 	 		> Launcher 
+ 	 		> IntakeWheels 
+ 	 		> IntakeArms 
+ 	 		> Flap 
+ 	 		> PowerReporting 
+ 	 		Network 
+ 	 		> Lifter 
+ 	 		> Sensors 
+ 	 	 */ 
+ 	 	 
+ 	 	/*Commands 
+ 		 	> DriveCommand (never ending) 
+ 	 		> RunIntake (never ending) 
+ 	 		AutoCommand (later) 
+ 	 		> ToggleArmPosition 
+ 	 		> ToggleLifter 
+ 	 		> ToggleShifters 
+ 			> ToggleFlap 
+ 			> Launch 
+ 	 		ChargeShooter (never ending) 
+ 			ReportPower (never ending) 
+ 	 		DashBoardUpdate (never ending) 
+ 	 	 */ 
+		 
+
 	
 }
 

@@ -15,9 +15,14 @@ public class IntakeArmSubsystem extends Subsystem {
 		arms = new Solenoid(RobotMap.intakearmSolenoidChannel);		
 	}
     
-	public void letsarm(boolean armworks) {
-		arms.set(armworks);
-	}
+	 
+	     public void setPosition(boolean setpoint) { 
+	     	if(arms.get() != setpoint)  
+	     		arms.set(setpoint); 
+
+		     } 
+
+
 
 	public void setIn() {
 		arms.set(true);

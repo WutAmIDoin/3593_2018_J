@@ -8,6 +8,7 @@
 package org.usfirst.frc.team3593.robot;
 
 import org.usfirst.frc.team3593.robot.commands.AutoCommand;
+import org.usfirst.frc.team3593.robot.commands.ToggleShifterCommand;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -17,13 +18,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	private final XboxController XBC1;
-	private final XboxController XBC2;
+	public final XboxController _XBC1;
+	public final XboxController _XBC2;
 	public OI() {
-		XBC1 = new XboxController(0);
-		XBC2 = new XboxController(1);
+		_XBC1 = new XboxController(0);
+		_XBC2= new XboxController(1);
 
-		getButton(XBC1, 1).cancelWhenPressed(new AutoCommand());
+		getButton(_XBC1, 1).cancelWhenPressed(new ToggleShifterCommand());
 		
 	}
 	

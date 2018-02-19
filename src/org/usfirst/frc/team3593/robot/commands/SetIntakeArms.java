@@ -1,14 +1,15 @@
 package org.usfirst.frc.team3593.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class Sensors extends Command {
 
-    public Sensors() {
-        // Use requires() here to declare subsystem dependencies
+public class SetIntakeArms extends CommandBase {
+	boolean setpoint;
+	boolean finished = false;
+	
+    public SetIntakeArms(boolean set) {
+        requires(CommandBase.intakeArms);
+        setpoint = set;
+    	// Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
@@ -18,9 +19,16 @@ public class Sensors extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+   SetIntakeArms.setPosition(setpoint);
+   finished = true;
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    private static void setPosition(boolean setpoint2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	// Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
