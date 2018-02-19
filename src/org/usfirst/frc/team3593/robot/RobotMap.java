@@ -25,7 +25,7 @@ public class RobotMap {
 	public static int shooterFrontLeft = 5;
 	public static int shooterRearLeft = 6;
 	public static int shooterFrontRight = 7;
-	public static int shooterRearRight = 9;
+S	public static int shooterRearRight = 9;
 	
 	// Solenoid Channels
 	public static int shifterSolendoidChannel = 4;

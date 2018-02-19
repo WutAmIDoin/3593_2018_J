@@ -3,12 +3,13 @@ package org.usfirst.frc.team3593.robot.commands;
  
  
  
- public class ToggleShifterCommand extends CommandBase { 
+ public class ToggleLifterPosition extends CommandBase { 
  	boolean finished = false; 
- 	 
-     public ToggleShifterCommand() { 
-         requires(CommandBase.shifter); 
-     } 
+ 
+ 
+     public ToggleLifterPosition() { 
+        requires(CommandBase.lifter); 
+    } 
  
  
      // Called just before this Command runs the first time 
@@ -18,12 +19,11 @@ package org.usfirst.frc.team3593.robot.commands;
  
      // Called repeatedly when this Command is scheduled to run 
      protected void execute() { 
-     	shifter.letsShift(CommandBase.toggleShiftControl); 
-     	CommandBase.toggleShiftControl = !CommandBase.toggleShiftControl; 
+     	lifter.setPosition(CommandBase.toggleLifterControl); 
+     	CommandBase.toggleLifterControl = !CommandBase.toggleLifterControl; 
      	finished = true; 
      } 
  
-
      // Make this return true when this Command no longer needs to run execute() 
      protected boolean isFinished() { 
          return finished; 
@@ -38,5 +38,5 @@ package org.usfirst.frc.team3593.robot.commands;
      // Called when another command which requires one or more of the same 
      // subsystems is scheduled to run 
      protected void interrupted() { 
-     } 
+    } 
  } 
