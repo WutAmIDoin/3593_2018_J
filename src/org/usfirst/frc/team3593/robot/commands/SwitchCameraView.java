@@ -1,14 +1,17 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team3593.robot.*;
 
 /**
  *
  */
-public class StartCamera extends Command {
-
-    public StartCamera() {
-        requires(CommandBase.camera);
+public class SwitchCameraView extends Command {
+	int sentPOV;
+	boolean finished = false;
+	
+    public SwitchCameraView(int POV) {
+    	sentPOV = POV;
     }
 
     // Called just before this Command runs the first time
@@ -17,11 +20,21 @@ public class StartCamera extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	switch (sentPOV) {
+	    	case 180:
+	    		Robot.ntBehav.getEntry("cameraView").setString("REAR");
+	    		break;
+	    	case 0:
+	    	default:
+	    		Robot.ntBehav.getEntry("cameraView").setString("FRONT");
+    			break;    		
+    	}
+    	finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return finished;
     }
 
     // Called once after isFinished returns true

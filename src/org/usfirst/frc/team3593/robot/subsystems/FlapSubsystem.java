@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.*;
@@ -20,7 +20,7 @@ public class FlapSubsystem extends Subsystem {
     	if(flap.get() != setpoint) {
     		flap.set(setpoint);
     		CommandBase.toggleFlapControl = setpoint;
-    		CommandBase.ntValues.getEntry("flapPosition").setBoolean(setpoint);
+    		Robot.ntValues.getEntry("flapPosition").setBoolean(setpoint);
     	}
     }
     
@@ -28,7 +28,7 @@ public class FlapSubsystem extends Subsystem {
     	if(!flap.get()) {
     		flap.set(true);
     		CommandBase.toggleFlapControl = true;
-    		CommandBase.ntValues.getEntry("flapPosition").setBoolean(true);
+    		Robot.ntValues.getEntry("flapPosition").setBoolean(true);
     	}
     }
     
@@ -36,7 +36,7 @@ public class FlapSubsystem extends Subsystem {
     	if(flap.get()) {
     		flap.set(false);
     		CommandBase.toggleFlapControl = false;
-    		CommandBase.ntValues.getEntry("flapPosition").setBoolean(false);
+    		Robot.ntValues.getEntry("flapPosition").setBoolean(false);
     	}
     }
 

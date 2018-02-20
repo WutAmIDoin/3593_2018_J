@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team3593.robot.*;
 
 /**
  *
@@ -17,16 +18,16 @@ public class SensorReportingCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.ntValues.getEntry("gyroAngle")
+    	Robot.ntValues.getEntry("gyroAngle")
     		.setDouble(sensors.getGyroAngle());
     	
     	double[] encs = sensors.getEncoderDistance();
-    	CommandBase.ntValues.getEntry("driveLeftEncoder")
+    	Robot.ntValues.getEntry("driveLeftEncoder")
 		.setDouble(encs[0]);
-    	CommandBase.ntValues.getEntry("driveRightEncoder")
+    	Robot.ntValues.getEntry("driveRightEncoder")
 		.setDouble(encs[1]);
     	
-    	CommandBase.ntValues.getEntry("systemPressure")
+    	Robot.ntValues.getEntry("systemPressure")
 			.setDouble(sensors.getPressure());
     }
 

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.*;
@@ -19,20 +19,20 @@ public class IntakeArms extends Subsystem {
     public void setPosition(boolean setpoint) {
     	if(arms.get() != setpoint) {
     		arms.set(setpoint);
-    		CommandBase.ntValues.getEntry("intakeArms").setBoolean(setpoint);
+    		Robot.ntValues.getEntry("intakeArms").setBoolean(setpoint);
     	}
     }
     
     public void setIn() {
     	if(!arms.get()) 
     		arms.set(true);
-    	CommandBase.ntValues.getEntry("intakeArms").setBoolean(true);
+    	Robot.ntValues.getEntry("intakeArms").setBoolean(true);
     }
     
     public void setOut() {
     	if(arms.get())
     		arms.set(false);
-    	CommandBase.ntValues.getEntry("intakeArms").setBoolean(false);
+    	Robot.ntValues.getEntry("intakeArms").setBoolean(false);
     }
 
     public void initDefaultCommand() {

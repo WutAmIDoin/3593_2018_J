@@ -1,7 +1,7 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.EncoderPIDSource;
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -46,9 +46,9 @@ public class DriveDistanceForward extends CommandBase {
     	double[] encDistances = sensors.getEncoderDistance();
     	
     	// Send this value to the network table
-    	CommandBase.ntValues.getEntry("driveLeftEncoder").
+    	Robot.ntValues.getEntry("driveLeftEncoder").
     		setDouble(encDistances[0]);
-    	CommandBase.ntValues.getEntry("driveRightEncoder").
+    	Robot.ntValues.getEntry("driveRightEncoder").
 			setDouble(encDistances[1]);
     	
     	// Check to make sure we got encoder values
@@ -64,7 +64,7 @@ public class DriveDistanceForward extends CommandBase {
     		double rotation = drivePID.get();
     		
     		// Update NetworkTables
-    		CommandBase.ntValues.getEntry("rotationCorrection")
+    		Robot.ntValues.getEntry("rotationCorrection")
     			.setDouble(rotation);
     		
     		// Calculate the average distance traveled by both sides

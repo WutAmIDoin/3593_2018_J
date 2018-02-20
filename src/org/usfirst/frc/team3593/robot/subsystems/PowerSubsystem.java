@@ -17,7 +17,7 @@ public class PowerSubsystem extends Subsystem {
 	public PowerSubsystem()
 	{
 		pdp = new PowerDistributionPanel(0);
-		nt_power = NetworkTableInstance.getDefault().getTable("power");
+		nt_power = NetworkTableInstance.getDefault().getTable("3593-Power");
 	}
 	
 	public void reportPower() {

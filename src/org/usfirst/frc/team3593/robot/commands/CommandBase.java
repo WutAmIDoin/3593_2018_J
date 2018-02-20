@@ -15,10 +15,7 @@ public class CommandBase extends Command
 	public static OI oi;
 	private static I2C arduino = new I2C(I2C.Port.kOnboard, 4);
 	
-	// NetworkTables
-	public static NetworkTable ntValues;
-	public static NetworkTable ntVision;
-	public static NetworkTable ntBehav;
+	
 	
 	// Define all subsystems here
 	public static DriveSubsystem drive = new DriveSubsystem();
@@ -32,7 +29,6 @@ public class CommandBase extends Command
 	public static SensorSubsystem sensors = new SensorSubsystem();
 	public static ShifterSubsystem shifter = new ShifterSubsystem();
 	public static ShooterWheels shooterWheels = new ShooterWheels();
-	public static CameraSubsystem camera = new CameraSubsystem();
 	
 	// Control values for commands
 	public static boolean toggleShiftControl = false;
@@ -44,9 +40,7 @@ public class CommandBase extends Command
 	public static void init() {
         // This MUST be here. OI only needs to be created once. 
         oi = new OI();
-        ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
-		ntVision = NetworkTableInstance.getDefault().getTable("3593-Vision");
-		ntBehav = NetworkTableInstance.getDefault().getTable("3593-Behavior");
+        
     }
 	
     public CommandBase() {

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.*;
@@ -21,17 +21,17 @@ public class ShifterSubsystem extends Subsystem {
     
     public void shift(boolean setpoint) {
     	solShifter.set(setpoint);
-    	CommandBase.ntValues.getEntry("driveShifter").setBoolean(setpoint);
+    	Robot.ntValues.getEntry("driveShifter").setBoolean(setpoint);
     }
     
     public void shiftLow() {
     	solShifter.set(true);
-    	CommandBase.ntValues.getEntry("driveShifter").setBoolean(true);
+    	Robot.ntValues.getEntry("driveShifter").setBoolean(true);
     }
     
     public void shiftHigh() {
     	solShifter.set(false);
-    	CommandBase.ntValues.getEntry("driveShifter").setBoolean(false);
+    	Robot.ntValues.getEntry("driveShifter").setBoolean(false);
     }
 
 	@Override

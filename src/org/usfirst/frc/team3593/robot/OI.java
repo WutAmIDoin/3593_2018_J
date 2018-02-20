@@ -18,6 +18,9 @@ public class OI {
 		_XBC2 = new XboxController(1);
 		
 		getButton(_XBC1, 1).whenPressed(new ToggleShifters());
+		if(_XBC1.getPOV() != -1){
+			new SwitchCameraView(_XBC1.getPOV());
+		}
 	}
 	
 	public JoystickButton getButton(XboxController con, int button) {
