@@ -24,11 +24,15 @@ public class DriveSubsystem extends Subsystem {
 	}
 	
 	public void driveTank(double left, double right) {
-		drive.tankDrive(left, right);
+		if(RobotMap.driveReversed) // if drive is reversed
+			drive.tankDrive(right * -1, left * -1); // reverse joystick sides as well
+		else
+			drive.tankDrive(left, right); // drive normally
 	}
 	
 	public void driveArcade(double speed, double rotation) {
-		drive.arcadeDrive(speed, rotation, false);
+		int revCoeff = RobotMap.driveReversed ? -1 : 1;
+		drive.arcadeDrive(speed * revCoeff, rotation * revCoeff, false);
 	}
 	
 	public void stop() {

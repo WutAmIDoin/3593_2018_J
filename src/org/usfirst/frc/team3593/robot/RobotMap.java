@@ -17,6 +17,7 @@ public class RobotMap {
 	// Encoder variables
 	public static int wheelDiam = 6;
 	public static int encoderTicks = 256;
+	
 	// PWM Channels
 	public static int driveLeftPWM = 1;
 	public static int driveRightPWM = 0;
@@ -64,6 +65,7 @@ public class RobotMap {
 	
 	// Joystick Values
 	public static double trigDeadzone = 0.15;
+	public static boolean driveReversed = false;
 	
 	// Drive PID values
 	public static double driveKp = 0;

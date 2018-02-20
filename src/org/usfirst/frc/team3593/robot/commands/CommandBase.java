@@ -34,7 +34,7 @@ public class CommandBase extends Command
 	public static boolean toggleLifterControl = false;
 	public static boolean toggleIntakeArmsControl = false;
 	public static boolean toggleFlapControl = false;
-
+	public static boolean toggleDriveDirection = false;
 	
 	public static void init() {
         // This MUST be here. OI only needs to be created once. 
