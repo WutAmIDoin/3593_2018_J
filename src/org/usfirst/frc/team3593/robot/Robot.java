@@ -64,7 +64,10 @@ public class Robot extends TimedRobot {
 		
 		//Run Commands
 		SmartDashboard.putData("Toggle Folders", new ToggleFolderCommand());
-		SmartDashboard.putData("Run Lifter", new ToggeLifterCommand());
+		SmartDashboard.putData("Toggle Lifter", new ToggeLifterCommand());
+		SmartDashboard.putData("Drive Forward 70in", new DriveForwardCommand(70, .75));
+		SmartDashboard.putData("Turn 90 degrees", new TurnToDegree(90, .75));
+		SmartDashboard.putData("Run Baseline", new CGAutoBaseline());
 		
 		//Network Tables
 		Robot.ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
@@ -129,14 +132,14 @@ public class Robot extends TimedRobot {
     		autoCommand = new CGAutoLeftSide(fieldInfo);
     		break;
     	case "RIGHT":
-    		//rightSide();
+    		autoCommand = new CGAutoRightSide(fieldInfo);
     		break;
     	case "B-SWITCH": // turn to the vision target and drive to it, then score in switch
     		//baseline("R");
     		break;
     	case "BASEONLY": // break the baseline only, do not score
 		default:
-			//baseline("");
+			autoCommand = new CGAutoBaseline();
 			break;
     	}
     	
