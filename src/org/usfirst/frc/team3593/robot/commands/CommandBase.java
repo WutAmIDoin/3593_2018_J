@@ -2,7 +2,6 @@ package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.OI;
 
-import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3593.robot.subsystems.*;

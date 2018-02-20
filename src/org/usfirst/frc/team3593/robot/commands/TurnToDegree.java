@@ -1,10 +1,8 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.*;
-
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.command.Command;
 
 
 public class TurnToDegree extends CommandBase {

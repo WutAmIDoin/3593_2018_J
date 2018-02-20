@@ -1,15 +1,9 @@
 package org.usfirst.frc.team3593.robot;
 
-import edu.wpi.cscore.MjpegServer;
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.cscore.VideoMode;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.cscore.*;
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.Scheduler;
-
+import edu.wpi.first.wpilibj.command.*;
 import org.usfirst.frc.team3593.robot.commands.*;
 
 public class Robot extends TimedRobot 

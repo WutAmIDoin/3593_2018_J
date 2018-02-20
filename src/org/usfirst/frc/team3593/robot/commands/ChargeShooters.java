@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
