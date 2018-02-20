@@ -46,10 +46,27 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		CommandBase.init();
+		
+		//SmartDashboard Values
 		SmartDashboard.putData(Scheduler.getInstance());
-		SmartDashboard.putData("Run Left Auto RRR", new CGAutoLeftSide("RRR"));
+		
+		//Left Auto
+		SmartDashboard.putData("Run Left Auto LLL", new CGAutoLeftSide("LLL"));
+		SmartDashboard.putData("Run Left Auto RLL", new CGAutoLeftSide("RLL"));
+		SmartDashboard.putData("Run Left Auto LRL", new CGAutoLeftSide("LRL"));
+		SmartDashboard.putData("Run Left Auto RRL", new CGAutoLeftSide("RRL"));
+		
+		//Right Auto
+		SmartDashboard.putData("Run Right Auto LLL", new CGAutoLeftSide("LLL"));
+		SmartDashboard.putData("Run Right Auto RLL", new CGAutoLeftSide("RLL"));
+		SmartDashboard.putData("Run Right Auto LRL", new CGAutoLeftSide("LRL"));
+		SmartDashboard.putData("Run Right Auto RRL", new CGAutoLeftSide("RRL"));
+		
+		//Run Commands
 		SmartDashboard.putData("Toggle Folders", new ToggleFolderCommand());
 		SmartDashboard.putData("Run Lifter", new ToggeLifterCommand());
+		
+		//Network Tables
 		Robot.ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
 		Robot.ntVision = NetworkTableInstance.getDefault().getTable("3593-Vision");
 		Robot.ntBehav = NetworkTableInstance.getDefault().getTable("3593-Behavior");
@@ -57,6 +74,7 @@ public class Robot extends TimedRobot {
 		Robot.ntBehav.getEntry("cameraView").setDefaultString("FRONT");
 		Robot.ntBehav.getEntry("robotMode").setString("DISABLED");
 		
+		//Rear Camera
 		serv = new MjpegServer("RearStream", 1188);
 		rearCamera = new UsbCamera("RearCam", 0);
 		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 20);
@@ -149,9 +167,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		//Toggle Values
 		SmartDashboard.putBoolean("Shifter Current Value", CommandBase.toggleShifters);
 		SmartDashboard.putBoolean("Flap Current Value", CommandBase.toggleFlap);
-		
+		SmartDashboard.putBoolean("Lifter Current Value", CommandBase.toggleLifter);
+		SmartDashboard.putBoolean("Folders Current Value", CommandBase.toggleFolders);
 	}
 
 	/**
