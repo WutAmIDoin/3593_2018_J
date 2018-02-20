@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
 import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.commands.SensorReportingCommand;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -20,8 +21,8 @@ public class SensorSubsystem extends Subsystem {
 	public SensorSubsystem() {
 		encL = new Encoder(RobotMap.encoderL1, RobotMap.encoderL2);
 		encR = new Encoder(RobotMap.encoderR1, RobotMap.encoderR2);
-		encL.setDistancePerPulse(RobotMap.encoderDPP);
-		encR.setDistancePerPulse(RobotMap.encoderDPP);
+		encL.setDistancePerPulse((RobotMap.wheelDiameter * Math.PI) / RobotMap.encoderPPR);
+		encR.setDistancePerPulse((RobotMap.wheelDiameter * Math.PI) / RobotMap.encoderPPR);
 		
 		gyro = new AnalogGyro(RobotMap.gryo);
 		
@@ -54,8 +55,7 @@ public class SensorSubsystem extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new SensorReportingCommand());
     }
 }
 

@@ -1,14 +1,16 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import org.usfirst.frc.team3593.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ToggleShifterCommand extends CommandBase {
-	private boolean finished = false;
-    public ToggleShifterCommand() {
-        requires(CommandBase.theShifterSubsystem);
+public class SensorReportingCommand extends Command {
+
+	public SensorReportingCommand() {
+    	requires(CommandBase.theSensorSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -17,14 +19,22 @@ public class ToggleShifterCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.toggleShifters = !CommandBase.toggleShifters;
-    	CommandBase.theShifterSubsystem.setShifters(CommandBase.toggleShifters);
-    	finished = true;
+    	Robot.ntValues.getEntry("gyroAngle")
+    		.setDouble(CommandBase.theSensorSubsystem.getGyroAngle());
+    	
+    	double[] encs = CommandBase.theSensorSubsystem.getEncDistance();
+    	Robot.ntValues.getEntry("driveLeftEncoder")
+		.setDouble(encs[0]);
+    	Robot.ntValues.getEntry("driveRightEncoder")
+		.setDouble(encs[1]);
+    	
+    	Robot.ntValues.getEntry("systemPressure")
+			.setDouble(CommandBase.theSensorSubsystem.getPressure());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return finished;
+        return false;
     }
 
     // Called once after isFinished returns true

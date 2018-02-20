@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team3593.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -14,11 +15,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team3593.robot.commands.AutoCommand;
-import org.usfirst.frc.team3593.robot.commands.CommandBase;
-import org.usfirst.frc.team3593.robot.commands.PowerReporting;
-import org.usfirst.frc.team3593.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team3593.robot.subsystems.ShooterSubsystem;
+import org.usfirst.frc.team3593.robot.commands.*;
+import org.usfirst.frc.team3593.robot.subsystems.*;
+import edu.wpi.cscore.MjpegServer;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,6 +33,12 @@ import org.usfirst.frc.team3593.robot.subsystems.ShooterSubsystem;
 public class Robot extends TimedRobot {
 	Command autoCommand = null;
 	Command powerReporting = null;
+	
+	public static NetworkTable ntValues;
+	public static NetworkTable ntVision;
+	public static NetworkTable ntBehav;
+	MjpegServer serv;
+	UsbCamera rearCamera;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -37,6 +46,21 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		CommandBase.init();
+		SmartDashboard.putData(Scheduler.getInstance());
+		SmartDashboard.putData("Run Left Auto RRR", new CGAutoLeftSide("RRR"));
+		SmartDashboard.putData("Toggle Folders", new ToggleFolderCommand());
+		SmartDashboard.putData("Run Lifter", new ToggeLifterCommand());
+		Robot.ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
+		Robot.ntVision = NetworkTableInstance.getDefault().getTable("3593-Vision");
+		Robot.ntBehav = NetworkTableInstance.getDefault().getTable("3593-Behavior");
+		Robot.ntBehav.getEntry("piContinue").setDefaultBoolean(true);
+		Robot.ntBehav.getEntry("cameraView").setDefaultString("FRONT");
+		Robot.ntBehav.getEntry("robotMode").setString("DISABLED");
+		
+		serv = new MjpegServer("RearStream", 1188);
+		rearCamera = new UsbCamera("RearCam", 0);
+		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 20);
+		serv.setSource(rearCamera);
 	}
 
 	/**
@@ -67,9 +91,39 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autoCommand = new AutoCommand(DriverStation.getInstance().getGameSpecificMessage());
-		autoCommand.start();
-		
+		String autoMode = Robot.ntBehav.getEntry("autoMode").getString("BASEONLY");
+    	System.out.println("Auto Mode set to " + autoMode);
+    	
+    	// TODO Get target info from vision
+    	
+    	String fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
+    	// If the FMS fieldData length is 0, try to get it again
+    	if(fieldInfo.length() == 0) {
+    		fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
+    	}
+    	// If it's STILL 0, then just run baselineOnly to be safe
+    	if(fieldInfo.length() == 0) {
+    		autoMode = "BASEONLY";
+    	}
+    	
+    	switch(autoMode.toUpperCase()) {
+    	case "LEFT":
+    		autoCommand = new CGAutoLeftSide(fieldInfo);
+    		break;
+    	case "RIGHT":
+    		//rightSide();
+    		break;
+    	case "B-SWITCH": // turn to the vision target and drive to it, then score in switch
+    		//baseline("R");
+    		break;
+    	case "BASEONLY": // break the baseline only, do not score
+		default:
+			//baseline("");
+			break;
+    	}
+    	
+    	ntBehav.getEntry("robotMode").setString("AUTO");
+    	autoCommand.start();
 	}
 
 	/**
@@ -85,7 +139,7 @@ public class Robot extends TimedRobot {
 		if (autoCommand != null) {
 			autoCommand.cancel();
 		}
-		
+		ntBehav.getEntry("robotMode").setString("TELEOP");
 	
 	}
 
@@ -95,6 +149,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putBoolean("Shifter Current Value", CommandBase.toggleShifters);
+		SmartDashboard.putBoolean("Flap Current Value", CommandBase.toggleFlap);
 		
 	}
 

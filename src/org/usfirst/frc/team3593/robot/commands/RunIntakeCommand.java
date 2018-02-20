@@ -11,7 +11,6 @@ public class RunIntakeCommand extends CommandBase {
 
     public RunIntakeCommand() {
         requires(CommandBase.theIntakeSubsystem);
-        requires(CommandBase.theFlapSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -23,19 +22,15 @@ public class RunIntakeCommand extends CommandBase {
     protected void execute() {
     	if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakein) > .15) {
     		CommandBase.theIntakeSubsystem.runIntake(RobotMap.intakeIn);
-    		theFlapSubsystem.flapDown();
     	}
     	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakein) > .15 && CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) > .15) {
     		CommandBase.theIntakeSubsystem.runIntake(0);
-    		theFlapSubsystem.flapUp();
     	}
     	else if (CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) > .15) {
-    		CommandBase.theIntakeSubsystem.runIntake(-CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) * 0.8);
-    		theFlapSubsystem.flapDown();
+    		CommandBase.theIntakeSubsystem.runIntake(-CommandBase.oi.XBC1.getRawAxis(RobotMap.XBC1intakeout) * 0.6);
     	}
     	else {
     		CommandBase.theIntakeSubsystem.runIntake(0);
-    		theFlapSubsystem.flapUp();
     	}
     }
 

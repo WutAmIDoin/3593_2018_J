@@ -10,6 +10,7 @@ package org.usfirst.frc.team3593.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.*;
+
 import org.usfirst.frc.team3593.robot.commands.*;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -17,8 +18,8 @@ import org.usfirst.frc.team3593.robot.commands.*;
  */
 public class OI {
 
-	public static XboxController XBC1;
-	public static XboxController XBC2;
+	public final XboxController XBC1;
+	public final XboxController XBC2;
 	
 	public OI() {
 		//Controllers
@@ -33,6 +34,10 @@ public class OI {
 		getButton(XBC2, 1).whenPressed(new ActivateBoosterCommand());
 		getButton(XBC2, 3).whenPressed(new ToggeLifterCommand());
 		getButton(XBC2, 4).whenPressed(new ToggleFlapCommand());
+		
+		if(XBC1.getPOV() != -1) {
+			new SwitchCameraViewCommand(XBC1.getPOV());
+		}
 	}
 	
 	public JoystickButton getButton(XboxController con, int button) {

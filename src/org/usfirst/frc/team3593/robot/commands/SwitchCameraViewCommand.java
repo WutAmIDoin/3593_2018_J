@@ -1,14 +1,17 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import org.usfirst.frc.team3593.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ToggleShifterCommand extends CommandBase {
-	private boolean finished = false;
-    public ToggleShifterCommand() {
-        requires(CommandBase.theShifterSubsystem);
+public class SwitchCameraViewCommand extends CommandBase {
+	int sentPOV;
+	boolean finished = false;
+    public SwitchCameraViewCommand(int POV) {
+        sentPOV = POV;
     }
 
     // Called just before this Command runs the first time
@@ -17,8 +20,15 @@ public class ToggleShifterCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.toggleShifters = !CommandBase.toggleShifters;
-    	CommandBase.theShifterSubsystem.setShifters(CommandBase.toggleShifters);
+    	switch (sentPOV) {
+    		case 100:
+    				Robot.ntBehav.getEntry("cameraView").setString("REAR");
+    				break;
+    		case 0:
+    		default:
+    				Robot.ntBehav.getEntry("cameraView").setString("FRONT");
+    				break;
+    	}
     	finished = true;
     }
 

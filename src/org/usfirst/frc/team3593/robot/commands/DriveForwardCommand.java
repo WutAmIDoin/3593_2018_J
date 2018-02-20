@@ -1,7 +1,7 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.EncoderPIDSource;
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -27,8 +27,7 @@ public class DriveForwardCommand extends CommandBase {
        speed = setSpeed;
        
        pidSource = new EncoderPIDSource();
-       drivePID = new PIDController(RobotMap.driveKp, 
-    		   RobotMap.driveKi, RobotMap.driveKd, pidSource, dummy);
+       drivePID = new PIDController(RobotMap.driveKp, RobotMap.driveKi, RobotMap.driveKd, pidSource, dummy);
     }
 
     // Called just before this Command runs the first time

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -21,17 +21,20 @@ public class FlapSubsystem extends Subsystem {
 	   if(flap.get() != flapVal) 
 		   flap.set(flapVal);
 	   	   CommandBase.toggleFlap = flapVal;
+	   	Robot.ntValues.getEntry("flapPosition").setBoolean(flapVal);
    }
    
    public void flapUp() {
 	   if (!flap.get()) {
 		   flap.set(true);
+		   Robot.ntValues.getEntry("flapPosition").setBoolean(true);
 	   }
    }
    
    public void flapDown() {
 	   if (flap.get()) {
 		   flap.set(false);
+		   Robot.ntValues.getEntry("flapPosition").setBoolean(false);
 	   }
    }
    // Add explicit setting methods for UP / DOWN

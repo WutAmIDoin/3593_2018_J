@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -21,6 +21,7 @@ public class ShifterSubsystem extends Subsystem {
     	if (shifter.get() != setShifter) {
     		shifter.set(setShifter);
     		CommandBase.toggleShifters = setShifter;
+    		Robot.ntValues.getEntry("driveShifter").setBoolean(setShifter);
     	}
     }
     
@@ -28,6 +29,7 @@ public class ShifterSubsystem extends Subsystem {
     	if (shifter.get()) {
     		shifter.set(false);
     		CommandBase.toggleShifters = false;
+    		Robot.ntValues.getEntry("driveShifter").setBoolean(false);
     	}
     }
     
@@ -35,6 +37,7 @@ public class ShifterSubsystem extends Subsystem {
     	if (!shifter.get()) {
     		shifter.set(true);
     		CommandBase.toggleShifters = true;
+    		Robot.ntValues.getEntry("driveShifter").setBoolean(true);
     	}
     }
     

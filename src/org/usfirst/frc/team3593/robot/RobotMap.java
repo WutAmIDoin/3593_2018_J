@@ -59,14 +59,13 @@ public class RobotMap {
 	public static int pdp_cimmy2 = 10;
 	
 	//Random Values
-	public static double shooterLowSpeed = .50;
+	public static double shooterLowSpeed = 0.5;
 	public static double shooterHighSpeed = 1;
-	public static double intakeIn = .8;
-	public static double intakeOut = .8;
+	public static double intakeIn = 0.8;
+	public static double intakeOut = 0.8;
 	
 	public static double wheelDiameter = 6;
 	public static double encoderPPR = 256;
-	public static double encoderDPP = (wheelDiameter*Math.PI)/encoderPPR;
 	
 	//Axis Assignments
 	public static int XBC1intakein = 3;
@@ -89,7 +88,7 @@ public class RobotMap {
 	public static double gyroPIDTolerance = 5; // This is a percent
 		
 	// Speeds and other values
-	public static double switchSpeed = 0.25;
+	public static double switchSpeed = 0.5;
 	public static double scaleSpeed = 1;
 
 	/*Subsystems

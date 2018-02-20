@@ -1,11 +1,11 @@
 package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.GyroPIDSource;
+import org.usfirst.frc.team3593.robot.Robot;
 import org.usfirst.frc.team3593.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
@@ -45,10 +45,14 @@ public class TurnToDegree extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angle = theSensorSubsystem.getGyroAngle();
+    	
+    	Robot.ntValues.getEntry("gyroAngle").setDouble(angle);
+    	
     	gyroPidSource.gyroAngle = angle;
     	pidGyro.setSetpoint(setpoint);
     	double rotation = pidGyro.get();
     	
+    	Robot.ntValues.getEntry("gyroPIDRotation").setDouble(rotation);    	
     	theDriveSubsystem.driveArcade(0, rotation * turnSpeed);
     	
     	finished = angle < maxToleratedAngle && angle > minToleratedAngle;

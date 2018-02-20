@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
-import org.usfirst.frc.team3593.robot.RobotMap;
+import org.usfirst.frc.team3593.robot.*;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -21,6 +21,7 @@ public class FolderSubsystem extends Subsystem {
 		if (folders.get() != setFolders) {
 			folders.set(setFolders);
 			CommandBase.toggleFolders = setFolders;
+			Robot.ntValues.getEntry("intakeArms").setBoolean(setFolders);
 		}
 	}
 	
@@ -28,12 +29,15 @@ public class FolderSubsystem extends Subsystem {
 		if (!folders.get()) {
 			folders.set(true);
 			CommandBase.toggleFolders = true;
+			Robot.ntValues.getEntry("intakeArms").setBoolean(true);
 		}
 	}
 	
 	public void foldersIn() {
 		if (folders.get()) {
 			folders.set(false);
+			CommandBase.toggleFolders = false;
+			Robot.ntValues.getEntry("intakeArms").setBoolean(false);
 		}
 	}
 

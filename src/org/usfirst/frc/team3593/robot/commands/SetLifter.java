@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SetLifter extends Command {
+public class SetLifter extends CommandBase {
 	private boolean finished = false;
 	private boolean setLifter;
     public SetLifter(boolean moreValues) {
