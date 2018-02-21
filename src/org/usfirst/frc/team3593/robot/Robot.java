@@ -50,24 +50,23 @@ public class Robot extends TimedRobot {
 		//SmartDashboard Values
 		SmartDashboard.putData(Scheduler.getInstance());
 		
-		//Left Auto
-		SmartDashboard.putData("Run Left Auto LLL", new CGAutoLeftSide("LLL"));
-		SmartDashboard.putData("Run Left Auto RLL", new CGAutoLeftSide("RLL"));
-		SmartDashboard.putData("Run Left Auto LRL", new CGAutoLeftSide("LRL"));
-		SmartDashboard.putData("Run Left Auto RRL", new CGAutoLeftSide("RRL"));
-		
-		//Right Auto
-		SmartDashboard.putData("Run Right Auto LLL", new CGAutoLeftSide("LLL"));
-		SmartDashboard.putData("Run Right Auto RLL", new CGAutoLeftSide("RLL"));
-		SmartDashboard.putData("Run Right Auto LRL", new CGAutoLeftSide("LRL"));
-		SmartDashboard.putData("Run Right Auto RRL", new CGAutoLeftSide("RRL"));
-		
-		//Run Commands
-		SmartDashboard.putData("Toggle Folders", new ToggleFolderCommand());
-		SmartDashboard.putData("Toggle Lifter", new ToggeLifterCommand());
-		SmartDashboard.putData("Drive Forward 70in", new DriveForwardCommand(70, .75));
-		SmartDashboard.putData("Turn 90 degrees", new TurnToDegree(90, .75));
-		SmartDashboard.putData("Run Baseline", new CGAutoBaseline());
+//		//Left Auto
+//		SmartDashboard.putData("Run Left Auto LLL", new CGAutoLeftSide("LLL"));
+//		SmartDashboard.putData("Run Left Auto RLL", new CGAutoLeftSide("RLL"));
+//		SmartDashboard.putData("Run Left Auto LRL", new CGAutoLeftSide("LRL"));
+//		SmartDashboard.putData("Run Left Auto RRL", new CGAutoLeftSide("RRL"));
+//		//Right Auto
+//		SmartDashboard.putData("Run Right Auto LLL", new CGAutoLeftSide("LLL"));
+//		SmartDashboard.putData("Run Right Auto RLL", new CGAutoLeftSide("RLL"));
+//		SmartDashboard.putData("Run Right Auto LRL", new CGAutoLeftSide("LRL"));
+//		SmartDashboard.putData("Run Right Auto RRL", new CGAutoLeftSide("RRL"));
+//		
+//		//Run Commands
+//		SmartDashboard.putData("Toggle Folders", new ToggleFolderCommand());
+//		SmartDashboard.putData("Toggle Lifter", new ToggeLifterCommand());
+//		SmartDashboard.putData("Drive Forward 100in", new DriveForwardCommand(50, .75));
+//		SmartDashboard.putData("Turn 90 degrees", new TurnToDegree(90, .5));
+//		SmartDashboard.putData("Run Baseline", new CGAutoBaseline());
 		
 		//Network Tables
 		Robot.ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
@@ -77,11 +76,11 @@ public class Robot extends TimedRobot {
 		Robot.ntBehav.getEntry("cameraView").setDefaultString("FRONT");
 		Robot.ntBehav.getEntry("robotMode").setString("DISABLED");
 		
-		//Rear Camera
-		serv = new MjpegServer("RearStream", 1188);
-		rearCamera = new UsbCamera("RearCam", 0);
-		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 20);
-		serv.setSource(rearCamera);
+//		//Rear Camera
+//		serv = new MjpegServer("RearStream", 1188);
+//		rearCamera = new UsbCamera("RearCam", 0);
+//		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 20);
+//		serv.setSource(rearCamera);
 	}
 
 	/**
@@ -112,37 +111,37 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		String autoMode = Robot.ntBehav.getEntry("autoMode").getString("BASEONLY");
-    	System.out.println("Auto Mode set to " + autoMode);
-    	
-    	// TODO Get target info from vision
-    	
-    	String fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
-    	// If the FMS fieldData length is 0, try to get it again
-    	if(fieldInfo.length() == 0) {
-    		fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
-    	}
-    	// If it's STILL 0, then just run baselineOnly to be safe
-    	if(fieldInfo.length() == 0) {
-    		autoMode = "BASEONLY";
-    	}
-    	
-    	switch(autoMode.toUpperCase()) {
-    	case "LEFT":
-    		autoCommand = new CGAutoLeftSide(fieldInfo);
-    		break;
-    	case "RIGHT":
-    		autoCommand = new CGAutoRightSide(fieldInfo);
-    		break;
-    	case "B-SWITCH": // turn to the vision target and drive to it, then score in switch
-    		//baseline("R");
-    		break;
-    	case "BASEONLY": // break the baseline only, do not score
-		default:
-			autoCommand = new CGAutoBaseline();
-			break;
-    	}
-    	
+//		String autoMode = Robot.ntBehav.getEntry("autoMode").getString("BASEONLY");
+//    	System.out.println("Auto Mode set to " + autoMode);
+//    	
+//    	// TODO Get target info from vision
+//    	
+		String fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
+//    	//If the FMS fieldData length is 0, try to get it again
+//    	if(fieldInfo.length() == 0) {
+//    		fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
+//    	}
+//    	// If it's STILL 0, then just run baselineOnly to be safe
+//    	if(fieldInfo.length() == 0) {
+//    		autoMode = "BASEONLY";
+//    	}
+//    	
+//    	switch(autoMode.toUpperCase()) {
+//    	case "LEFT":
+//    		autoCommand = new CGAutoLeftSide(fieldInfo);
+//    		break;
+//    	case "RIGHT":
+//    		autoCommand = new CGAutoRightSide(fieldInfo);
+//    		break;
+//    	case "B-SWITCH": // turn to the vision target and drive to it, then score in switch
+//    		//baseline("R");
+//    		break;
+//    	case "BASEONLY": // break the baseline only, do not score
+//		default:
+//			autoCommand = new CGAutoBaseline();
+//			break;
+//    	}
+    	autoCommand = new CGAutoRightSide(fieldInfo);
     	ntBehav.getEntry("robotMode").setString("AUTO");
     	autoCommand.start();
 	}
@@ -171,6 +170,7 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		//Toggle Values
+		
 		SmartDashboard.putBoolean("Shifter Current Value", CommandBase.toggleShifters);
 		SmartDashboard.putBoolean("Flap Current Value", CommandBase.toggleFlap);
 		SmartDashboard.putBoolean("Lifter Current Value", CommandBase.toggleLifter);

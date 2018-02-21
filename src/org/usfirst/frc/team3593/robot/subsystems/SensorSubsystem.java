@@ -21,8 +21,8 @@ public class SensorSubsystem extends Subsystem {
 	public SensorSubsystem() {
 		encL = new Encoder(RobotMap.encoderL1, RobotMap.encoderL2);
 		encR = new Encoder(RobotMap.encoderR1, RobotMap.encoderR2);
-		encL.setDistancePerPulse((RobotMap.wheelDiameter * Math.PI) / RobotMap.encoderPPR);
-		encR.setDistancePerPulse((RobotMap.wheelDiameter * Math.PI) / RobotMap.encoderPPR);
+		encL.setDistancePerPulse(0.006316);
+		encR.setDistancePerPulse(0.006316); //0.07359375
 		
 		gyro = new AnalogGyro(RobotMap.gryo);
 		

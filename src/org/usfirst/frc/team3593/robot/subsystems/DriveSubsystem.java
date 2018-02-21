@@ -18,7 +18,7 @@ public class DriveSubsystem extends Subsystem {
 		driveL = new Spark(RobotMap.driveLeftPWM);
 		driveR = new Spark(RobotMap.driveRightPWM);
 		
-		DR = new DifferentialDrive(driveL, driveR);
+		DR = new DifferentialDrive(driveR, driveL);
 	}
 	
 	public void driveTank(double left, double right) {

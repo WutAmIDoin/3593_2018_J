@@ -34,42 +34,44 @@ public class CGAutoRightSide extends CommandGroup {
     	//Shift and Lower Lifter
     	addSequential(new SetShifter(false));
     	addSequential(new SetLifter(true));
+    	addSequential(new SetFlap(true));
     	
     	// Drive to the first switch
-    	addSequential(new DriveForwardCommand(120, 0.75));
+    	addSequential(new DriveForwardCommand(100, 0.75));
     	// Open the intake arms
     	addParallel(new SetFolders(true));
     	
     	// If the left switch is our color
     	if(FMSInfo.charAt(0) == 'R') {
     		// Turn to face the switch
-    		addSequential(new TurnToDegree(45, 0.50));
+    		addSequential(new TurnToDegree(-45, 0.70));
+    		addSequential(new DriveForwardCommand(10, 0.75));
     		
     		// Score in switch
     		addSequential(new SetShooter(RobotMap.switchSpeed));
-    		Timer.delay(4);
     		addSequential(new ActivateBoosterCommand());
     		//Stop Motors
     		addSequential(new SetShooter(0));
     		
+    		addSequential(new DriveForwardCommand(-10, 0.75));
+    		
     		// Turn back to facing forward
-    		addSequential(new TurnToDegree(-45, 0.50));
+    		addSequential(new TurnToDegree(45, 0.7));
     	} else {
     		// Drive to the end of the first switch
         	addSequential(new DriveForwardCommand(110, 0.75));//or 81
         	
         	// Turn the robot 90 degrees
-        	addSequential(new TurnToDegree(90, 0.50));
+        	addSequential(new TurnToDegree(-90, 0.7));
         	
         	// Drive to the other side of the switch
         	addSequential(new DriveForwardCommand(155, 0.75));
         	
         	// Turn to face the switch
-        	addSequential(new TurnToDegree(90, 0.50));
+        	addSequential(new TurnToDegree(-90, 0.70));
         	
         	// Score in the switch
         	addSequential(new SetShooter(RobotMap.switchSpeed));
-        	Timer.delay(2);
         	addSequential(new ActivateBoosterCommand());
         	//Stop Motors
         	addSequential(new SetShooter(0));
@@ -81,50 +83,48 @@ public class CGAutoRightSide extends CommandGroup {
     		// TODO Attempt to score in scale
     		if(reverseScaleSide)
     		{
-	    		// Turn around to get a cube
-	    		addParallel(new SetIntake(0.75));
-	    		addSequential(new TurnToDegree(-180, 0.50));
-	    		
-	    		// Backup to get the cube
-	    		addSequential(new DriveForwardCommand(-10, -0.25));
-	    		
-	    		//Back Away from switch
-	    		addSequential(new DriveForwardCommand(10, 0.5));
-	    		
-	    		//Turn towards scale and stop Intake
-	    		addSequential(new TurnToDegree(45, 0.5));
-	    		addParallel(new SetIntake(0));
-	    		
-	    		//Drive to Scale
-	    		addSequential(new DriveForwardCommand(-40, 0.75));
-	    		
-	    		//Turn to shoot
-	    		addSequential(new TurnToDegree(45, 0.5));
+//	    		// Turn around to get a cube
+//	    		addParallel(new SetIntake(0.75));
+//	    		addSequential(new TurnToDegree(180, 0.70));
+//	    		
+//	    		// Backup to get the cube
+//	    		addSequential(new DriveForwardCommand(-15, 0.5));
+//	    		
+//	    		//Back Away from switch
+//	    		addSequential(new DriveForwardCommand(15, 0.5));
+//	    		
+//	    		//Turn towards scale and stop Intake
+//	    		addSequential(new TurnToDegree(-45, 0.7));
+//	    		addParallel(new SetIntake(0));
+//	    		
+//	    		//Drive to Scale
+//	    		addSequential(new DriveForwardCommand(30, 0.75));
+//	    		
+//	    		//Turn to shoot
+//	    		addSequential(new TurnToDegree(-90, 0.7));
     		
     		} else {
     			// Drive to the end of the first switch
-            	addSequential(new DriveForwardCommand(112, 0.75));
+            	addSequential(new DriveForwardCommand(100, 0.75));
             	
             	// Turn the rear wheels towards the nearest cube
-            	addSequential(new TurnToDegree(-45, 0.50));
+            	addSequential(new TurnToDegree(45, 0.7));
+            	addParallel(new SetIntake(0.75));
             	
             	// Backup to get the cube
-            	addParallel(new SetIntake(0.75));
-	    		addSequential(new DriveForwardCommand(-12, -0.25));
+	    		addSequential(new DriveForwardCommand(-12, 0.7));
 	    		
 	    		// Move away from the switch and toward scale 
 	    		addSequential(new DriveForwardCommand(45, 0.5));//this distance is not set
-	    		addSequential(new SetIntake(0));
+	    		addParallel(new SetIntake(0));
 	    		
 	    		// Turn toward the scale and shoot
-            	addSequential(new TurnToDegree(-90, 0.50));//or 135
+            	addSequential(new TurnToDegree(90, 0.70));//or 135
     		}
     		
     		// SCORE
     		addSequential(new SetShooter(RobotMap.scaleSpeed));
-    		Timer.delay(2);
         	addSequential(new ActivateBoosterCommand());
-        	Timer.delay(1);
         	addSequential(new SetShooter(0));
     	} 
     	

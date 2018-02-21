@@ -1,11 +1,11 @@
 package org.usfirst.frc.team3593.robot.commands;
 
-import org.usfirst.frc.team3593.robot.EncoderPIDSource;
 import org.usfirst.frc.team3593.robot.*;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -13,42 +13,61 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveForwardCommand extends CommandBase {
 
 	private double distanceToDrive;
-	private PIDController drivePID;
-	private EncoderPIDSource pidSource;
-	private PIDOutput dummy;
+//	private PIDController gyroPID;
+//	private GyroPIDSource pidSource;
+//	private DummyPIDOutput dummy;
 	private double speed = 0.75;
 	private boolean finished = false;
+	private boolean reversing = false;
 	
     public DriveForwardCommand(double inchDist, double setSpeed) {
        requires(CommandBase.theDriveSubsystem);
        requires(CommandBase.theSensorSubsystem);
        
+       if(inchDist < 0)
+    	   reversing = true;
+       
        distanceToDrive = inchDist;
        speed = setSpeed;
        
-       pidSource = new EncoderPIDSource();
-       drivePID = new PIDController(RobotMap.driveKp, RobotMap.driveKi, RobotMap.driveKd, pidSource, dummy);
+//       dummy = new DummyPIDOutput();
+//       pidSource = new GyroPIDSource();
+//       gyroPID = new PIDController(RobotMap.gyroKp, 
+//    		   RobotMap.gyroKi, RobotMap.gyroKd, pidSource, dummy);
+//       gyroPID.setOutputRange(-1, 1);
+//       gyroPID.setPercentTolerance(1);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	drivePID.enable();
+    	//gyroPID.enable();
+    	System.out.println("DriveDistance starting - " + distanceToDrive + "in - speed = " + speed);
+    	theSensorSubsystem.resetEncoders();
+    	theSensorSubsystem.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double[] encDistances = CommandBase.theSensorSubsystem.getEncDistance();
+    	encDistances[0] = encDistances[0] *-1;
+    	SmartDashboard.putNumber("Encoder Left", encDistances[0]);
+    	SmartDashboard.putNumber("Encoder Right", encDistances[1]);
+    	
     	if(encDistances.length == 2) {
-    		pidSource.encoderDistances = encDistances;
-    		drivePID.setSetpoint(0);
-    		double rotation = drivePID.get();
+    		//gyroPID.setSetpoint(0);
     		
     		double averageDistanceTraveled = (encDistances[0] + 
     				encDistances[1]) / 2;
     		
-    	CommandBase.theDriveSubsystem.driveArcade(speed, rotation);
-    		
-    		finished = averageDistanceTraveled > (distanceToDrive - 4);
+    		if(!reversing) {
+    			CommandBase.theDriveSubsystem.driveArcade(speed, -0.31);
+    			finished = averageDistanceTraveled > (distanceToDrive);
+    			
+    		}
+    		else {
+    			CommandBase.theDriveSubsystem.driveArcade(-speed, -0.31);
+    			finished = averageDistanceTraveled < distanceToDrive;
+    		}    				
     	}
     }
 
@@ -59,12 +78,20 @@ public class DriveForwardCommand extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	theDriveSubsystem.driveArcadeStop();
+    	System.out.println("DistanceDrive " + 
+	    		distanceToDrive + " finished");
+    	theDriveSubsystem.driveStop();
+    	theSensorSubsystem.resetEncoders();
+    	theSensorSubsystem.resetGyro();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	theDriveSubsystem.driveArcadeStop();
+    	System.out.println("DistanceDrive " + 
+	    		distanceToDrive + " finished");
+    	theDriveSubsystem.driveStop();
+    	theSensorSubsystem.resetEncoders();
+    	theSensorSubsystem.resetGyro();
     }
 }

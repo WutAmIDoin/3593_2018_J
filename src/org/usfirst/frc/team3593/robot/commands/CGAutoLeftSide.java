@@ -93,7 +93,7 @@ public class CGAutoLeftSide extends CommandGroup {
 	    		
 	    		//Turn towards scale and stop intake
 	    		addSequential(new TurnToDegree(45, 0.5));
-	    		addParaellel(new SetIntake(0));
+	    		addParallel(new SetIntake(0));
 	    		
 	    		//Drive to Scale
 	    		addSequential(new DriveForwardCommand(40, 0.75));

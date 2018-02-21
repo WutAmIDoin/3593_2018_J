@@ -59,7 +59,7 @@ public class RobotMap {
 	public static int pdp_cimmy2 = 10;
 	
 	//Random Values
-	public static double shooterLowSpeed = 0.5;
+	public static double shooterLowSpeed = 0.25;
 	public static double shooterHighSpeed = 1;
 	public static double intakeIn = 0.8;
 	public static double intakeOut = 0.8;
@@ -77,12 +77,12 @@ public class RobotMap {
 	public static int XBC2shooterhigh = 3;
 	
 	//PID Values
-	public static double driveKp = 0;
-	public static double driveKi = 0;
+	public static double driveKp = 0.05;
+	public static double driveKi = 0.001;
 	public static double driveKd = 0;
 	
 	// Gyro / Turn PID values
-	public static double gyroKp = 0;
+	public static double gyroKp = 0.01;
 	public static double gyroKi = 0;
 	public static double gyroKd = 0;
 	public static double gyroPIDTolerance = 5; // This is a percent
