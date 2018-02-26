@@ -2,42 +2,31 @@ package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.*;
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.PIDOutput;
 
 
 public class TurnToDegree extends CommandBase {
-	private PIDController pidGyro;
-	private GyroPIDSource gyroPidSource;
-	private PIDOutput dummy;
 	private double setpoint;
 	private double turnSpeed;
 	private boolean finished;
 	private double maxToleratedAngle;
 	private double minToleratedAngle;
 	
-    public TurnToDegree(double newDegree, double speedPercent) {
+    public TurnToDegree(double newDegree, double turnspeed) {
         requires(CommandBase.drive);
         requires(CommandBase.sensors);
         
         setpoint = newDegree;
-        turnSpeed = speedPercent;
+        turnSpeed = turnspeed > 0.75 ? 0.75 : turnspeed;
         
-        gyroPidSource = new GyroPIDSource();
-        pidGyro = new PIDController(RobotMap.gyroKp, RobotMap.gyroKi, 
-        		RobotMap.gyroKd, gyroPidSource, dummy);
-        pidGyro.setPercentTolerance(RobotMap.gyroPIDTolerance);
-        pidGyro.setOutputRange(-1, 1);
-        
-        maxToleratedAngle = setpoint + (setpoint * (RobotMap.gyroPIDTolerance / 100));
-        minToleratedAngle = setpoint - (setpoint * (RobotMap.gyroPIDTolerance / 100));
+        maxToleratedAngle = setpoint + (setpoint * (RobotMap.gyroTolerance / 100));
+        minToleratedAngle = setpoint - (setpoint * (RobotMap.gyroTolerance / 100));
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	sensors.resetEncoderDistance();
     	sensors.resetGyro();
-    	pidGyro.enable();
-    	System.out.println("AUTO - GYRO - Turning to " + setpoint);
+    	DriverStation.reportWarning("AUTO - GYRO - Turning to " + setpoint, false);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,15 +35,7 @@ public class TurnToDegree extends CommandBase {
     	
     	Robot.ntValues.getEntry("gyroAngle").setDouble(angle);
     	
-    	gyroPidSource.gyroAngle = angle;
-    	pidGyro.setSetpoint(setpoint);
-    	
-    	double rotation = pidGyro.get();
-    	
-    	Robot.ntValues.getEntry("gyroPIDRotation")
-    		.setDouble(rotation);
-    	
-    	drive.driveArcade(0, rotation * turnSpeed);
+    	drive.driveArcade(0, (angle * RobotMap.gyroKp) + turnSpeed);
     	
     	finished = angle < maxToleratedAngle && angle > minToleratedAngle;
     }

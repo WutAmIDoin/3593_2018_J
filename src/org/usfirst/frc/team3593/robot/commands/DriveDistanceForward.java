@@ -1,17 +1,11 @@
 package org.usfirst.frc.team3593.robot.commands;
 
-import org.usfirst.frc.team3593.robot.EncoderPIDSource;
 import org.usfirst.frc.team3593.robot.*;
 
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
-
+import edu.wpi.first.wpilibj.DriverStation;
 
 public class DriveDistanceForward extends CommandBase {
 	private double distanceToDrive;
-	private PIDController drivePID;
-	private EncoderPIDSource pidSource;
-	private PIDOutput dummy;
 	private double speed = 0.75;
 	private boolean finished = false;
 	
@@ -21,22 +15,14 @@ public class DriveDistanceForward extends CommandBase {
        
        distanceToDrive = inchDist;
        speed = setSpeed;
-       
-       // Create a new PID source and a aPID controller for 
-       // calculating the rotation of the drive
-       pidSource = new EncoderPIDSource();
-       drivePID = new PIDController(RobotMap.driveKp, 
-    		   RobotMap.driveKi, RobotMap.driveKd, pidSource, dummy);
-       drivePID.setPercentTolerance(RobotMap.drivePIDTolerance);
-       drivePID.setOutputRange(-1, 1);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	sensors.resetEncoderDistance();
     	sensors.resetGyro();
-    	drivePID.enable();
-    	System.out.println("AUTO - ENCODERS - Driving " + distanceToDrive + "in");
+    	DriverStation.reportWarning("AUTO - ENCODERS - Driving " + 
+    		distanceToDrive + "in", false);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -52,29 +38,16 @@ public class DriveDistanceForward extends CommandBase {
     	
     	// Check to make sure we got encoder values
     	if(encDistances.length == 2) {
-    		// Set the PID source to the encoder distances 
-    		// so that it can calculate the difference
-    		pidSource.encoderDistances = encDistances;
-    		
-    		// Set the PID setpoint (aiming for no difference 
-    		// between the two encoders) 
-    		// Then get the calucalted PID value for rotation
-    		drivePID.setSetpoint(0);
-    		double rotation = drivePID.get();
-    		
-    		// Update NetworkTables
-    		Robot.ntValues.getEntry("rotationCorrection")
-    			.setDouble(rotation);
     		
     		// Calculate the average distance traveled by both sides
     		double averageDistanceTraveled = (encDistances[0] + 
     				encDistances[1]) / 2;
     		
-    		// Drive with the speed and rotation we set / calculated
-    		drive.driveArcade(speed, rotation);
+    		// Drive with the speed and rotation, plus observed rotation offset 0.3
+    		drive.driveArcade(speed, 0.3 + (-sensors.getGyroAngle() * RobotMap.driveKp));
     		
     		// If we've traveled the distance we want to, stop
-    		finished = averageDistanceTraveled > (distanceToDrive - 6);
+    		finished = averageDistanceTraveled > (distanceToDrive - 4);
     	}
     }
 

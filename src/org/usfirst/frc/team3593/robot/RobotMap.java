@@ -67,47 +67,13 @@ public class RobotMap {
 	public static double trigDeadzone = 0.15;
 	public static boolean driveReversed = false;
 	
-	// Drive PID values
-	public static double driveKp = 0;
-	public static double driveKi = 0;
-	public static double driveKd = 0;
-	public static double drivePIDTolerance = 5; // This is a percent
 	
-	// Gyro / Turn PID values
-	public static double gyroKp = 0;
-	public static double gyroKi = 0;
-	public static double gyroKd = 0;
-	public static double gyroPIDTolerance = 5; // This is a percent
+	// Proportion values for turning and gyro angle tolerance
+	public static double gyroKp = 0.00139;
+	public static double gyroTolerance = 2.2; // This is a percent
+	public static double driveKp = 0.03;
 	
 	// Speeds and other values
 	public static double switchSpeed = 0.25;
 	public static double scaleSpeed = 1;
-	
-	/*Subsystems
-		> Drive
-		> Shifter
-		> ShooterWheels
-		> Launcher
-		> IntakeWheels
-		> IntakeArms
-		> Flap
-		> PowerReporting
-		Network
-		> Lifter
-		> Sensors
-	 */
-	
-	/*Commands
-	 	> DriveCommand (never ending)
-		> RunIntake (never ending)
-		AutoCommand (later)
-		> ToggleArmPosition
-		> ToggleLifter
-		> ToggleShifters
-		> ToggleFlap
-		> Launch
-		ChargeShooter (never ending)
-		ReportPower (never ending)
-		DashBoardUpdate (never ending)
-	 */
 }
