@@ -16,7 +16,12 @@ public class ToggleFolder extends CommandBase {
 
     protected void execute() {
     	CommandBase.toggleFolder = ! CommandBase.toggleFolder;
-    	CommandBase.theFolder.folderCommand(toggleFolder);
+    	theFolder.folderCommand(toggleFolder);
+    	if(toggleFolder = true) {
+    		theFlap.flapUp();
+    	}else if(toggleFolder = false) {
+    		theFlap.flapDown();
+    	}
     	Timer.delay(0.5);
     	finish = true;
     }

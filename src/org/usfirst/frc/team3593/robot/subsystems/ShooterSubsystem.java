@@ -43,7 +43,7 @@ public class ShooterSubsystem extends Subsystem {
 		shooterFR.set(0);
 		shooterRL.set(0);
 		shooterRR.set(0);
-		CommandBase.UpdateUpperLEDs("SHOTDEF");
+		//CommandBase.UpdateUpperLEDs("SHOTDEF");
 	}
 	
     public void initDefaultCommand() {

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
+import org.usfirst.frc.team3593.robot.Robot;
 import org.usfirst.frc.team3593.robot.RobotMap;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
@@ -20,7 +21,7 @@ public class LifterSubsystem extends Subsystem {
 		if(lifter.get() != setpoint) {
     		lifter.set(setpoint);
     		CommandBase.toggleFlap = setpoint;	
-    		CommandBase.ntValues.getEntry("shooterPosition").setBoolean(setpoint);
+    		Robot.ntValues.getEntry("shooterPosition").setBoolean(setpoint);
     	}
 	}
 	
@@ -28,7 +29,7 @@ public class LifterSubsystem extends Subsystem {
 		if (!lifter.get()) {
 			lifter.set(true);
 			CommandBase.toggleLifter = true;
-			CommandBase.ntValues.getEntry("shooterPosition").setBoolean(true);
+			Robot.ntValues.getEntry("shooterPosition").setBoolean(true);
 		}
 	}
 
@@ -36,7 +37,7 @@ public class LifterSubsystem extends Subsystem {
 		if (lifter.get())
 		lifter.set(false);
 		CommandBase.toggleLifter = false;
-		CommandBase.ntValues.getEntry("shooterPosition").setBoolean(false);
+		Robot.ntValues.getEntry("shooterPosition").setBoolean(false);
 	}
 	
     public void initDefaultCommand() {

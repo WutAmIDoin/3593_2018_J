@@ -37,7 +37,7 @@ public class IntakeSubsystem extends Subsystem {
 		}else {
 			sendData = "DEF";
 		}
-		CommandBase.UpdateUpperLEDs("IN" + sendData);
+		//CommandBase.UpdateUpperLEDs("IN" + sendData);
 	}
 	
 	public void stopIntake() {
@@ -45,7 +45,7 @@ public class IntakeSubsystem extends Subsystem {
 		intakeR.set(0);
 		cimL.set(0);
 		cimR.set(0);
-		CommandBase.UpdateUpperLEDs("INDEF");
+		//CommandBase.UpdateUpperLEDs("INDEF");
 	}
 
     public void initDefaultCommand() {

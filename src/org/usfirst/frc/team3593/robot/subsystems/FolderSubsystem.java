@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot.subsystems;
 
+import org.usfirst.frc.team3593.robot.Robot;
 import org.usfirst.frc.team3593.robot.RobotMap;
 import org.usfirst.frc.team3593.robot.commands.CommandBase;
 
@@ -27,15 +28,15 @@ public class FolderSubsystem extends Subsystem {
 		if (!folder.get()) {
 			folder.set(true);
 			CommandBase.toggleFolder = true;
-			CommandBase.ntValues.getEntry("intakeArms").setBoolean(true);
+			Robot.ntValues.getEntry("intakeArms").setBoolean(true);
 		}
 	}	
 
 	public void foldersIn() {
 		if (folder.get()) {
 			folder.set(false);
-			CommandBase.toggleFolder = true;
-			CommandBase.ntValues.getEntry("intakeArms").setBoolean(false);
+			CommandBase.toggleFolder = false;
+			Robot.ntValues.getEntry("intakeArms").setBoolean(false);
 		}
 	}
 	

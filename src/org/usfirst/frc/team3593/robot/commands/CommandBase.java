@@ -2,9 +2,6 @@ package org.usfirst.frc.team3593.robot.commands;
 
 import org.usfirst.frc.team3593.robot.OI;
 import org.usfirst.frc.team3593.robot.subsystems.*;
-
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,19 +20,12 @@ public class CommandBase extends Command {
 	// onboard is the port, 4 is the address
 	
 	
-	// NetworkTables
-	public static NetworkTable ntValues;
-	public static NetworkTable ntVision;
-	public static NetworkTable ntBehav;
-	
-	
 	// subsystems
 	public static DriveSubsystem theDrive = new DriveSubsystem();
 	public static IntakeSubsystem theIntake = new IntakeSubsystem();
 	public static ShooterSubsystem theShooter = new ShooterSubsystem();
 	public static SensorSubsystem theSensor = new SensorSubsystem();
 	public static PowerSubsystem thePower = new PowerSubsystem();
-	public static CameraSubsystem theCamera = new CameraSubsystem();
 	
 	// booster is not a toggle
 	public static BoosterSubsystem theBooster = new BoosterSubsystem();
@@ -50,9 +40,6 @@ public class CommandBase extends Command {
 	// always declaration before methods
 	public static void init() {
     	oi = new OI();
-    	ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
-    	ntVision = NetworkTableInstance.getDefault().getTable("3593-Vision");
-    	ntBehav = NetworkTableInstance.getDefault().getTable("3593-Behavior");
     }
 	
     public CommandBase() {

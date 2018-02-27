@@ -86,11 +86,11 @@ public class RobotMap {
 	// sensor and vision stuff
 	public static double wheelDiameter = 6;
 	public static double encoderPPR = 256;
-	public static double encoderDPP = (wheelDiameter*Math.PI)/encoderPPR;
+	public static double encoderDPP = 0.006316;
 	
 	
 	// Drive PID values
-	public static double driveKp = 0;
+	public static double driveKp = 0.1;
 	public static double driveKi = 0;
 	public static double driveKd = 0;
 	public static double drivePIDTolerance = 5; // This is a percent

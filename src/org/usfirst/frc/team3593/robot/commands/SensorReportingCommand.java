@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3593.robot.commands;
 
-
+import org.usfirst.frc.team3593.robot.Robot;
 
 public class SensorReportingCommand extends CommandBase {
 
@@ -14,16 +14,16 @@ public class SensorReportingCommand extends CommandBase {
 
 
     protected void execute() {
-    	CommandBase.ntValues.getEntry("gyroAngle")
+    	Robot.ntValues.getEntry("gyroAngle")
 		.setDouble(theSensor.getGyroAngle());
 	
     	double[] encs = theSensor.getEncDistance();
-    	CommandBase.ntValues.getEntry("driveLeftEncoder")
+    	Robot.ntValues.getEntry("driveLeftEncoder")
     	.setDouble(encs[0]);
-    	CommandBase.ntValues.getEntry("driveRightEncoder")
+    	Robot.ntValues.getEntry("driveRightEncoder")
     	.setDouble(encs[1]);
 	
-    	CommandBase.ntValues.getEntry("systemPressure")
+    	Robot.ntValues.getEntry("systemPressure")
 		.setDouble(theSensor.getPressure());
     }
 

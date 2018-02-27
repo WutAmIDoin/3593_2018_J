@@ -32,6 +32,10 @@ public class DriveSubsystem extends Subsystem {
 	public void driveStop() {
 		DR.tankDrive(0,0);
 	}
+	
+	public void driveArcadeStop() {
+		DR.arcadeDrive(0,0);
+	}
 			
     public void initDefaultCommand() {	
     	setDefaultCommand(new DriveCommand());

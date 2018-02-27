@@ -18,7 +18,7 @@ public class ShifterSubsystem extends Subsystem {
     	if(shifter.get() != setpoint) {
     		shifter.set(setpoint);
     		CommandBase.toggleFlap = setpoint;
-    		CommandBase.ntValues.getEntry("driveShifter").setBoolean(setpoint);
+    		Robot.ntValues.getEntry("driveShifter").setBoolean(setpoint);
     	}
     }
     
@@ -26,7 +26,7 @@ public class ShifterSubsystem extends Subsystem {
     	if (shifter.get()) {
     		shifter.set(false);
     		CommandBase.toggleShifter = false;
-    		CommandBase.ntValues.getEntry("driveShifter").setBoolean(true);
+    		Robot.ntValues.getEntry("driveShifter").setBoolean(true);
     	}
     }
 
@@ -34,7 +34,7 @@ public class ShifterSubsystem extends Subsystem {
     	if (!shifter.get()) {
     		shifter.set(true);
     		CommandBase.toggleShifter = true;
-    		CommandBase.ntValues.getEntry("driveShifter").setBoolean(false);
+    		Robot.ntValues.getEntry("driveShifter").setBoolean(false);
     	}
     }
 
