@@ -14,6 +14,7 @@ public class Robot extends TimedRobot
 	public static NetworkTable ntValues;
 	public static NetworkTable ntVision;
 	public static NetworkTable ntBehav;
+	public static NetworkTableInstance NTDef;
 	
 	MjpegServer serv;
 	UsbCamera rearCamera;
@@ -23,10 +24,14 @@ public class Robot extends TimedRobot
 	{
 		// Initializes all subsystems and the OI
 		CommandBase.init();
+		NTDef = NetworkTableInstance.create();
+		NTDef.setNetworkIdentity("3593-Robot");
+		NTDef.setServerTeam(3593, 1180);
+		NTDef.startServer();
 		
-		Robot.ntValues = NetworkTableInstance.getDefault().getTable("3593-Values");
-		Robot.ntVision = NetworkTableInstance.getDefault().getTable("3593-Vision");
-		Robot.ntBehav = NetworkTableInstance.getDefault().getTable("3593-Behavior");
+		Robot.ntValues = NTDef.getTable("3593-Values");
+		Robot.ntVision = NTDef.getTable("3593-Vision");
+		Robot.ntBehav = NTDef.getTable("3593-Behavior");
 		Robot.ntBehav.getEntry("piContinue").setDefaultBoolean(true);
 		Robot.ntBehav.getEntry("cameraView").setDefaultString("FRONT");
 		Robot.ntBehav.getEntry("robotMode").setString("DISABLED");
