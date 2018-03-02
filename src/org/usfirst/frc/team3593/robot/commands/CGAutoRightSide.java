@@ -129,7 +129,7 @@ public class CGAutoRightSide extends CommandGroup {
 	    		addParallel(new SetIntake(0.75));
 	    		
 	    		//Turn Slightly to line up with scale
-	    		addSequential(new TurnToDegree(10));
+	    		addSequential(new TurnToDegree(10, 0.7));
 	    		
 	    		// Move away from the switch and toward scale and stop intake
 	    		addSequential(new DriveForwardCommand(45, 0.5));//this distance is not set
