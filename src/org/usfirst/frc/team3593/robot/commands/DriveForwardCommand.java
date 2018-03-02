@@ -13,9 +13,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveForwardCommand extends CommandBase {
 
 	private double distanceToDrive;
-//	private PIDController gyroPID;
-//	private GyroPIDSource pidSource;
-//	private DummyPIDOutput dummy;
 	private double speed = 0.75;
 	private boolean finished = false;
 	private boolean reversing = false;
@@ -29,19 +26,10 @@ public class DriveForwardCommand extends CommandBase {
        
        distanceToDrive = inchDist;
        speed = setSpeed;
-       
-//       dummy = new DummyPIDOutput();
-//       pidSource = new GyroPIDSource();
-//       gyroPID = new PIDController(RobotMap.gyroKp, 
-//    		   RobotMap.gyroKi, RobotMap.gyroKd, pidSource, dummy);
-//       gyroPID.setOutputRange(-1, 1);
-//       gyroPID.setPercentTolerance(1);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//gyroPID.enable();
-    	System.out.println("DriveDistance starting - " + distanceToDrive + "in - speed = " + speed);
     	theSensorSubsystem.resetEncoders();
     	theSensorSubsystem.resetGyro();
     }

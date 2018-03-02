@@ -78,49 +78,13 @@ public class RobotMap {
 	
 	//PID Values
 	public static double driveKp = 0.05;
-	public static double driveKi = 0.001;
-	public static double driveKd = 0;
 	
 	// Gyro / Turn PID values
 	public static double gyroKp = 0.01;
-	public static double gyroKi = 0;
-	public static double gyroKd = 0;
 	public static double gyroPIDTolerance = 5; // This is a percent
 		
 	// Speeds and other values
 	public static double switchSpeed = 0.5;
-	public static double scaleSpeed = 1;
-
-	/*Subsystems
-	 * New Subsystems:
-Drive
-Shifter
-ShooterWheels
-Launcher
-Intakes
-Folder
-Flap
-Power
-Vision
-Lifter
-Sensors
-	 */
-	
-	/*Commands
-	 * Commands:
-RunIntake
-AutoCommand
-toggleFolders
-ToggleLifter
-ToggleShifters
-ToggleFlap
-Launch
-ChargeShooter
-ReportPower
-DriveCommand
-DashBoardUpdate
-	 */
-	
-	
+	public static double scaleSpeed = 1;	
 	
 	}

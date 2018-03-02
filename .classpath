@@ -11,5 +11,9 @@
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix-sources.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRLib.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/jeromq-0.4.3.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/json-20180130.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Newton/wpilib/user/java/lib/jeromq-0.4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Newton/wpilib/user/java/lib/json-20180130.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

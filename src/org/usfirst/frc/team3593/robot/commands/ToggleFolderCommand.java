@@ -22,7 +22,7 @@ public class ToggleFolderCommand extends CommandBase {
     protected void execute() {
     	CommandBase.toggleFolders = !CommandBase.toggleFolders;
     	CommandBase.theFolderSubsystem.setFolders(CommandBase.toggleFolders);
-    	
+
     	Timer.delay(.5);
     	
     	finished = true;
