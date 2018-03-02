@@ -26,17 +26,17 @@ public class LifterSubsystem extends Subsystem {
 	
 	public void lifterUp() {
 		if (!lifter.get()) {
-			lifter.set(true);
-			CommandBase.toggleLifter = true;
-			CommandBase.dashTable.put("shooterPosition", true);
+			lifter.set(false);
+			CommandBase.toggleLifter = false;
+			CommandBase.dashTable.put("shooterPosition", false);
 		}
 	}
 	
 	public void lifterDown() {
 		if (lifter.get())
-		lifter.set(false);
-		CommandBase.toggleLifter = false;
-		CommandBase.dashTable.put("shooterPosition", false);
+		lifter.set(true);
+		CommandBase.toggleLifter = true;
+		CommandBase.dashTable.put("shooterPosition", true);
 		
 	}
 

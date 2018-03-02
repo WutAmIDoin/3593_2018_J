@@ -10,15 +10,25 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CGAutoBaseline extends CommandGroup {
 
     public CGAutoBaseline(String fieldInfo, String side) {
-    	//Drive to switch
-    	addSequential(new DriveForwardCommand(120, .75));
+    	//Drive to switch, touching the edge with bumpers
+    	addSequential(new DriveForwardCommand(120, .65));
     	//Stop motors just in case
     	addSequential(new DriveForwardCommand(0,0));
     	
     	// Check to see if the side we're on (side) is the same as the first switch
+    	//if so, shoot
     	if(fieldInfo.toUpperCase().charAt(0) == side.toUpperCase().charAt(0)) {
-    		// TODO SCORE
+    		//Charge Motors
+    		addSequential(new SetShooter(RobotMap.switchSpeed));
+    		
+    		//Delay to get to speed
+    		addSequential(new DelayCommand(.5));
+    		
+    		//Activate Launcher
+    		addSequential(new ActivateBoosterCommand());
+    		
+    		//Turn off shooters
+    		addSequential(new SetShooter(0));
     	}
-    	
     }
 }
