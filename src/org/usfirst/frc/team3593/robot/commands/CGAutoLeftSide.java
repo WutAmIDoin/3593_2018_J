@@ -150,7 +150,7 @@ public class CGAutoLeftSide extends CommandGroup {
             	shoot = true;
     		}
     		//For if we want to shoot
-    		if (shoot) {
+    	if (shoot) {
     		//Delay for Lifter
     		addSequential(new DelayCommand(0.5));
     		
