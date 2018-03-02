@@ -10,10 +10,16 @@ package org.usfirst.frc.team3593.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.zeromq.*;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import org.usfirst.frc.team3593.robot.commands.*;
 import org.usfirst.frc.team3593.robot.subsystems.*;
@@ -36,10 +42,10 @@ public class Robot extends TimedRobot {
 	
 	MjpegServer serv;
 	UsbCamera rearCamera;
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
+	
+	ZMQ.Context context;
+	ZMQ.Socket responder;
+	
 	@Override
 	public void robotInit() {
 		CommandBase.init();
@@ -47,21 +53,44 @@ public class Robot extends TimedRobot {
 		//SmartDashboard Values
 		SmartDashboard.putData(Scheduler.getInstance());
 
-//		//Rear Camera
-//		serv = new MjpegServer("RearStream", 1188);
-//		rearCamera = new UsbCamera("RearCam", 0);
-//		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 20);
-//		serv.setSource(rearCamera);
+		//Rear Camera
+		serv = new MjpegServer("RearStream", 1188);
+		rearCamera = new UsbCamera("RearCam", 0);
+		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 20);
+		serv.setSource(rearCamera);
+		
+		//TommiNET
+		CommandBase.dashTable = new JSONObject();
+        CommandBase.dashTable.put("gyroAngle", 0);
+        CommandBase.dashTable.put("autoMode", "NOT SET");
+        
+        context = ZMQ.context(1);
+
+        //  Socket to talk to clients
+        responder = context.socket(ZMQ.REP);
+        responder.bind("tcp://*:1180");
+        DriverStation.reportWarning("Binding socket", false);
+        
+        Thread t = new Thread(() -> {
+        	while(!Thread.interrupted()) {
+                byte[] request = responder.recv(8);
+                CommandBase.dashTable.put("autoMode", new String(request));
+                //System.out.println(new String(request));
+
+                // Send reply back to client
+                String reply = CommandBase.dashTable.toString();
+                responder.send(reply.getBytes(), 0);
+                Timer.delay(0.2);
+        	}
+        });
+        t.start();
+        System.out.println("RobotStarted");
+        CommandBase.dashTable.put("robotMode", "DISABLED");
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
 	@Override
 	public void disabledInit() {
-
+        CommandBase.dashTable.put("robotMode", "DISABLED");
 	}
 
 	@Override
@@ -69,56 +98,44 @@ public class Robot extends TimedRobot {
 		
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
 	@Override
 	public void autonomousInit() {
-//		String autoMode = Robot.ntBehav.getEntry("autoMode").getString("BASEONLY");
-//    	System.out.println("Auto Mode set to " + autoMode);
-//    	
-//    	// TODO Get target info from vision
-//    	
+        CommandBase.dashTable.put("robotMode", "AUTO");
+		String autoMode = CommandBase.dashTable.getString("autoMode");
+    	System.out.println("Auto Mode set to " + autoMode);
+    	
 		String fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
-//    	//If the FMS fieldData length is 0, try to get it again
-//    	if(fieldInfo.length() == 0) {
-//    		fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
-//    	}
-//    	// If it's STILL 0, then just run baselineOnly to be safe
-//    	if(fieldInfo.length() == 0) {
-//    		autoMode = "BASEONLY";
-//    	}
-//    	
-//    	switch(autoMode.toUpperCase()) {
-//    	case "LEFT":
-//    		autoCommand = new CGAutoLeftSide(fieldInfo);
-//    		break;
-//    	case "RIGHT":
-//    		autoCommand = new CGAutoRightSide(fieldInfo);
-//    		break;
-//    	case "B-SWITCH": // turn to the vision target and drive to it, then score in switch
-//    		//baseline("R");
-//    		break;
-//    	case "BASEONLY": // break the baseline only, do not score
-//		default:
-//			autoCommand = new CGAutoBaseline();
-//			break;
-//    	}
-    	autoCommand = new CGAutoRightSide(fieldInfo);
+		
+    	//If the FMS fieldData length is 0, try to get it again
+    	if(fieldInfo.length() == 0) {
+    		fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
+    	}
+    	// If it's STILL 0, then just run baselineOnly to be safe
+    	if(fieldInfo.length() == 0) {
+    		autoMode = "BASEONLY";
+    	}
+   	
+    	switch(autoMode.toUpperCase()) {
+	    	case "LEFT":
+	    		autoCommand = new CGAutoLeftSide(fieldInfo);
+	    		System.out.println("AUTO - Running LEFT");
+	    		break;
+	    	case "RIGHT":
+	    		autoCommand = new CGAutoRightSide(fieldInfo);
+	    		System.out.println("AUTO - Running RIGHT");
+	    		break;
+	    	case "BASELEFT": // turn to the vision target and drive to it, then score in switch
+	    		autoCommand = new CGAutoBaseline(fieldInfo, "L");
+	    		System.out.println("AUTO - Running BASELEFT");
+	    		break;
+	    	case "BASERIGHT": // break the baseline only, do not score=
+				autoCommand = new CGAutoBaseline(fieldInfo, "R");
+				System.out.println("AUTO - Running BASERIGHT");
+				break;
+	    }
     	autoCommand.start();
 	}
 
-	/**
-	 * This function is called periodically during autonomous.
-	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
@@ -126,22 +143,18 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+        CommandBase.dashTable.put("robotMode", "TELEOP");
 		if (autoCommand != null) {
 			autoCommand.cancel();
 		}
 	
 	}
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 	}
-	/**
-	 * This function is called periodically during test mode.
-	 */
+
 	@Override
 	public void testPeriodic() {
 	}

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3593.robot.commands;
 
+import org.json.JSONObject;
 import org.usfirst.frc.team3593.robot.*;
 import org.usfirst.frc.team3593.robot.subsystems.*;
 import edu.wpi.first.wpilibj.I2C;
@@ -16,6 +17,9 @@ public class CommandBase extends Command {
 	public static boolean toggleFolders = false;
 	public static boolean toggleFlap = false;
 	
+	//TommiNET
+	public static JSONObject dashTable;
+
 	//New OI and Lights
 	public static OI oi;
 	public static I2C arduino = new I2C(I2C.Port.kOnboard, 4);

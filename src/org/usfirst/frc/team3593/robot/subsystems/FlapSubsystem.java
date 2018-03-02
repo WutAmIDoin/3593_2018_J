@@ -21,20 +21,24 @@ public class FlapSubsystem extends Subsystem {
 	   if(flap.get() != flapVal) 
 		   flap.set(flapVal);
 	   	   CommandBase.toggleFlap = flapVal;
-	   	Robot.ntValues.getEntry("flapPosition").setBoolean(flapVal);
+	   	   
+	   	CommandBase.dashTable.put("flapPosition", flapVal);
    }
    
    public void flapUp() {
 	   if (!flap.get()) {
 		   flap.set(true);
-		   Robot.ntValues.getEntry("flapPosition").setBoolean(true);
+		   CommandBase.dashTable.put("flapPosition", true);
+		   CommandBase.toggleFlap = true;
 	   }
    }
    
    public void flapDown() {
 	   if (flap.get()) {
 		   flap.set(false);
-		   Robot.ntValues.getEntry("flapPosition").setBoolean(false);
+		   CommandBase.dashTable.put("flapPosition", false);
+		   CommandBase.toggleFlap = false;
+
 	   }
    }
    // Add explicit setting methods for UP / DOWN

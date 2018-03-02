@@ -52,6 +52,7 @@ public class SensorSubsystem extends Subsystem {
 	
 	public double getPressure() {
 		return 250 * (PS.getVoltage() / 5) - 25; 
+		
 	}
 	
     public void initDefaultCommand() {

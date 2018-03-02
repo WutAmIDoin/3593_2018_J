@@ -19,17 +19,11 @@ public class SensorReportingCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.ntValues.getEntry("gyroAngle")
-    		.setDouble(CommandBase.theSensorSubsystem.getGyroAngle());
-    	
-    	double[] encs = CommandBase.theSensorSubsystem.getEncDistance();
-    	Robot.ntValues.getEntry("driveLeftEncoder")
-		.setDouble(encs[0]);
-    	Robot.ntValues.getEntry("driveRightEncoder")
-		.setDouble(encs[1]);
-    	
-    	Robot.ntValues.getEntry("systemPressure")
-			.setDouble(CommandBase.theSensorSubsystem.getPressure());
+        CommandBase.dashTable.put("systemPressure", CommandBase.theSensorSubsystem.getPressure());
+        double[] encDis = CommandBase.theSensorSubsystem.getEncDistance();
+        CommandBase.dashTable.put("driveLeftEncoder", encDis[0]);
+        CommandBase.dashTable.put("driveRightEncoder", encDis[1]);
+        CommandBase.dashTable.put("gyroAngle", CommandBase.theSensorSubsystem.getGyroAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()

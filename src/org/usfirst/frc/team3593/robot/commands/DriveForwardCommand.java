@@ -38,22 +38,24 @@ public class DriveForwardCommand extends CommandBase {
     protected void execute() {
     	double[] encDistances = CommandBase.theSensorSubsystem.getEncDistance();
     	encDistances[0] = encDistances[0] *-1;
-    	SmartDashboard.putNumber("Encoder Left", encDistances[0]);
-    	SmartDashboard.putNumber("Encoder Right", encDistances[1]);
+    	CommandBase.dashTable.put("driveLeftEncoder", encDistances[0]);
+    	CommandBase.dashTable.put("driveRightEncoder", encDistances[1]);
     	
     	if(encDistances.length == 2) {
-    		//gyroPID.setSetpoint(0);
     		
     		double averageDistanceTraveled = (encDistances[0] + 
     				encDistances[1]) / 2;
-    		
+    		double angle = CommandBase.theSensorSubsystem.getGyroAngle();
+    		CommandBase.dashTable.put("gyroAngle", angle);
     		if(!reversing) {
-    			CommandBase.theDriveSubsystem.driveArcade(speed, -0.31);
+    			CommandBase.theDriveSubsystem.driveArcade(speed, (-angle 
+    					* RobotMap.driveKp));;
     			finished = averageDistanceTraveled > (distanceToDrive);
     			
     		}
     		else {
-    			CommandBase.theDriveSubsystem.driveArcade(-speed, -0.31);
+    			CommandBase.theDriveSubsystem.driveArcade(-speed, (-angle
+    					* RobotMap.driveKp));
     			finished = averageDistanceTraveled < distanceToDrive;
     		}    				
     	}

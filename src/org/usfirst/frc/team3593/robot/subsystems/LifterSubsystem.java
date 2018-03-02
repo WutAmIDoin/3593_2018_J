@@ -21,14 +21,14 @@ public class LifterSubsystem extends Subsystem {
 		if (lifter.get() != setLifter)
 			lifter.set(setLifter);
 			CommandBase.toggleLifter = setLifter;
-			Robot.ntValues.getEntry("shooterPosition").setBoolean(setLifter);
+			 CommandBase.dashTable.put("shooterPosition", setLifter);
 	}
 	
 	public void lifterUp() {
 		if (!lifter.get()) {
 			lifter.set(true);
 			CommandBase.toggleLifter = true;
-			Robot.ntValues.getEntry("shooterPosition").setBoolean(true);
+			CommandBase.dashTable.put("shooterPosition", true);
 		}
 	}
 	
@@ -36,7 +36,7 @@ public class LifterSubsystem extends Subsystem {
 		if (lifter.get())
 		lifter.set(false);
 		CommandBase.toggleLifter = false;
-		Robot.ntValues.getEntry("shooterPosition").setBoolean(false);
+		CommandBase.dashTable.put("shooterPosition", false);
 		
 	}
 

@@ -77,10 +77,10 @@ public class RobotMap {
 	public static int XBC2shooterhigh = 3;
 	
 	//PID Values
-	public static double driveKp = 0.05;
+	public static double gyroKp = 0.00139;
+	public static double driveKp = 0.03;
 	
 	// Gyro / Turn PID values
-	public static double gyroKp = 0.01;
 	public static double gyroPIDTolerance = 5; // This is a percent
 		
 	// Speeds and other values

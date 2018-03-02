@@ -21,7 +21,7 @@ public class FolderSubsystem extends Subsystem {
 		if (folders.get() != setFolders) {
 			folders.set(setFolders);
 			CommandBase.toggleFolders = setFolders;
-			Robot.ntValues.getEntry("intakeArms").setBoolean(setFolders);
+			 CommandBase.dashTable.put("intakeArms", setFolders);
 		}
 	}
 	
@@ -29,7 +29,8 @@ public class FolderSubsystem extends Subsystem {
 		if (!folders.get()) {
 			folders.set(true);
 			CommandBase.toggleFolders = true;
-			Robot.ntValues.getEntry("intakeArms").setBoolean(true);
+			 CommandBase.dashTable.put("intakeArms", true);
+
 		}
 	}
 	
@@ -37,7 +38,8 @@ public class FolderSubsystem extends Subsystem {
 		if (folders.get()) {
 			folders.set(false);
 			CommandBase.toggleFolders = false;
-			Robot.ntValues.getEntry("intakeArms").setBoolean(false);
+			 CommandBase.dashTable.put("intakeArms", false);
+
 		}
 	}
 

@@ -22,11 +22,11 @@ public class SwitchCameraViewCommand extends CommandBase {
     protected void execute() {
     	switch (sentPOV) {
     		case 100:
-    				Robot.ntBehav.getEntry("cameraView").setString("REAR");
+    				
     				break;
     		case 0:
     		default:
-    				Robot.ntBehav.getEntry("cameraView").setString("FRONT");
+    				
     				break;
     	}
     	finished = true;
