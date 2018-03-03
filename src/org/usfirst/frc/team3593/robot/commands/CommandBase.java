@@ -18,7 +18,7 @@ public class CommandBase extends Command {
 	public static boolean toggleFlap = false;
 	
 	//TommiNET
-	public static JSONObject dashTable;
+	public static JSONObject dashTable = new JSONObject();
 
 	//New OI and Lights
 	public static OI oi;
@@ -39,7 +39,38 @@ public class CommandBase extends Command {
 
 	//Methods called in CommandBase
 	public static void init() {
+		//OI
 		oi = new OI();
+		
+		//toggles
+		dashTable.put("intakeArms", false);
+		dashTable.put("shooterPosition", false);
+		dashTable.put("driveShifter", false);
+		dashTable.put("flapPosition", false);
+		
+		//Sensors
+		dashTable.put("driveLeftEncoder", 0);
+		dashTable.put("driveRightEncoder", 0);
+		dashTable.put("gyroAngle", 0);
+		dashTable.put("systemPressure", 0);
+		
+		//Power
+		dashTable.put("battVoltage", 0);
+		// Get total current of the PDP
+		dashTable.put("totalCurrent", 0);
+		
+		dashTable.put("driveRight1", 0);
+		dashTable.put("driveRight2", 0);
+		dashTable.put("driveLeft1", 0);
+		dashTable.put("driveLeft2", 0);
+		dashTable.put("shooterRight1", 0);
+		dashTable.put("shooterRight2", 0);
+		dashTable.put("shooterLeft1", 0);
+		dashTable.put("shooterLeft2", 0);
+		dashTable.put("IntakeLeft", 0);
+		dashTable.put("IntakeRight", 0);
+		dashTable.put("cimmy1", 0);
+		dashTable.put("cimmy2", 0);
 	}
 	
 	public CommandBase() {

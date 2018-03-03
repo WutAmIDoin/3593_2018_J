@@ -101,8 +101,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
         CommandBase.dashTable.put("robotMode", "AUTO");
-		String autoMode = CommandBase.dashTable.getString("autoMode");
-    	System.out.println("Auto Mode set to " + autoMode);
+		//String autoMode = CommandBase.dashTable.getString("autoMode");
+    	String autoMode = "LEFT";
+        System.out.println("Auto Mode set to " + autoMode);
     	
 		String fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
 		

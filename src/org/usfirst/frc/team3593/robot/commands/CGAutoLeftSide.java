@@ -20,6 +20,7 @@ public class CGAutoLeftSide extends CommandGroup {
     	addSequential(new SetShifter(false));
     	addSequential(new SetLifter(true));
     	addSequential(new SetFlap(true));
+    	addSequential(new BumpBackCommand());
     	
     	// Drive to the Corner of first switch and open intake arms
     	addSequential(new DriveForwardCommand(80, 0.75)); //or if 153 we go for the middle
@@ -31,7 +32,7 @@ public class CGAutoLeftSide extends CommandGroup {
     		addSequential(new TurnToDegree(45, 0.70));
     		
     		//Drive toward switch
-    		addSequential(new DriveForwardCommand(38, 0.75));
+    		addSequential(new DriveForwardCommand(10, 0.75));
     		
     		//Score
     		//Charge Motors
@@ -47,26 +48,26 @@ public class CGAutoLeftSide extends CommandGroup {
     		addSequential(new SetShooter(0));
     		
     		//Drive back and away
-    		addSequential(new DriveForwardCommand(-38, 0.75));
+    		addSequential(new DriveForwardCommand(-10, 0.75));
     		
     		// Turn back to facing forward
     		addSequential(new TurnToDegree(-45, 0.70));
     	
     	} else {
     		// Drive to the end of the first switch
-        	addSequential(new DriveForwardCommand(135, 0.75));//or 81 if going for mid
+        	addSequential(new DriveForwardCommand(113, 0.75));//or 81 if going for mid
         	
         	// Turn the robot 90 degrees
         	addSequential(new TurnToDegree(90, 0.70));
         	
         	// Drive to the other side of the switch
-        	addSequential(new DriveForwardCommand(145, 0.75));
+        	addSequential(new DriveForwardCommand(140, 0.75));
         	
         	// Turn to face the switch
         	addSequential(new TurnToDegree(90, 0.70));
         	
         	//Drive Forward to Switch
-        	addSequential(new DriveForwardCommand(36, 0.65));
+        	addSequential(new DriveForwardCommand(13, 0.65));
         	
         	// Score in the switch
         	//Charge Motors
@@ -82,7 +83,7 @@ public class CGAutoLeftSide extends CommandGroup {
     		addSequential(new SetShooter(0));
     		
     		//Back away from the switch
-    		addSequential(new DriveForwardCommand(-36, 0.75));
+    		addSequential(new DriveForwardCommand(-13, 0.75));
     		
         	reverseScaleSide = true;
     	}
@@ -100,12 +101,13 @@ public class CGAutoLeftSide extends CommandGroup {
 	    		
 	    		// Backup to get the cube
 	    		addSequential(new DriveForwardCommand(-36, -0.65));
-	    	
+	    		addParallel(new SetFlap(false));
 	    		//Turn towards scale
 	    		addSequential(new TurnToDegree(50, 0.75));
 	    		
 	    		//Drive toward Scale
 	    		addSequential(new DriveForwardCommand(98, 0.75));
+	    		addParallel(new SetFlap(true));
 	    		//Turn off Intake
 	    		addSequential(new SetIntake(0));
 	    		
@@ -120,7 +122,7 @@ public class CGAutoLeftSide extends CommandGroup {
 	    		
 	    		shoot = true;
     		
-    		} else if (FMSInfo.charAt(1) == 'L') { //this for if we are not at the reverse side and we get the left side scale
+    		} else if (!reverseScaleSide && FMSInfo.charAt(1) == 'L') { //this for if we are not at the reverse side and we get the left side scale
     			// Drive to the end of the first switch
             	addSequential(new DriveForwardCommand(170, 0.75));//or 83
             	
@@ -128,8 +130,9 @@ public class CGAutoLeftSide extends CommandGroup {
             	addSequential(new TurnToDegree(-45, 0.70));
             	
             	// Backup to get the cube and activate intake
-	    		addSequential(new DriveForwardCommand(-48, -0.65));
+	    		addSequential(new DriveForwardCommand(-48, 0.65));
 	    		addParallel(new SetIntake(0.75));
+	    		
 	    		
 	    		//Turn Slightly to add alignment to the scale
 	    		//addSequential(new TurnToDegree(-10, 0.75));
@@ -139,6 +142,7 @@ public class CGAutoLeftSide extends CommandGroup {
 	    		
 	    		//Stop the Intake
 	    		addSequential(new SetIntake(0));
+	    		
 	    		
 	    		//Set the Lifter to UP
 	    		addSequential(new SetLifter(false));

@@ -21,7 +21,7 @@ public class TurnToDegree extends CommandBase {
         requires(CommandBase.theDriveSubsystem);
         requires(CommandBase.theSensorSubsystem);
         
-        setpoint = newDegree > 0 ? newDegree - 8 : newDegree + 8;
+        setpoint = newDegree > 0 ? newDegree - 4 : newDegree + 4;
         turnSpeed = speedPercent;
         
         maxToleratedAngle = setpoint + (setpoint * (RobotMap.gyroPIDTolerance / 100));

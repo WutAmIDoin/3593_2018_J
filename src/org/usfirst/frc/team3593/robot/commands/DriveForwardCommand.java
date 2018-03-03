@@ -48,7 +48,7 @@ public class DriveForwardCommand extends CommandBase {
     		double angle = CommandBase.theSensorSubsystem.getGyroAngle();
     		CommandBase.dashTable.put("gyroAngle", angle);
     		if(!reversing) {
-    			CommandBase.theDriveSubsystem.driveArcade(speed, (-angle 
+    			CommandBase.theDriveSubsystem.driveArcade(speed, -0.3 + (-angle 
     					* RobotMap.driveKp));;
     			finished = averageDistanceTraveled > (distanceToDrive);
     			

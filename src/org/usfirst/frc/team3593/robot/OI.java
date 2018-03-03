@@ -29,6 +29,7 @@ public class OI {
 		//Commands XBC1
 		getButton(XBC1, 6).whenPressed(new ToggleShifterCommand());
 		getButton(XBC1, 5).whenPressed(new ToggleFolderCommand());
+		//getButton(XBC1, 0).whenPressed(new SwitchDriveCommand());
 		
 		//Commands XBC2
 		getButton(XBC2, 1).whenPressed(new ActivateBoosterCommand());
