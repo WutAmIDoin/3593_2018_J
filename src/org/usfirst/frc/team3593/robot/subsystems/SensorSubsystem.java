@@ -15,7 +15,7 @@ public class SensorSubsystem extends Subsystem {
 	Encoder encR;
 	
 	AnalogGyro gyro;
-
+	
 	AnalogInput PS;
 	
 	public SensorSubsystem() {

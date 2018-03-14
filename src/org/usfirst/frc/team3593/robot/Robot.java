@@ -50,6 +50,36 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		CommandBase.init();
 		
+		//toggles
+		CommandBase.dashTable.put("intakeArms", 0);
+		CommandBase.dashTable.put("shooterPosition", 0);
+		CommandBase.dashTable.put("driveShifter", 0);
+		CommandBase.dashTable.put("flapPosition", 0);
+		
+		//Sensors
+		CommandBase.dashTable.put("driveLeftEncoder", 0);
+		CommandBase.dashTable.put("driveRightEncoder", 0);
+		CommandBase.dashTable.put("gyroAngle", 0);
+		CommandBase.dashTable.put("systemPressure", 0);
+		
+		//Power
+		CommandBase.dashTable.put("battVoltage", 0);
+		// Get total current of the PDP
+		CommandBase.dashTable.put("totalCurrent", 0);
+		
+		CommandBase.dashTable.put("driveRight1", 0);
+		CommandBase.dashTable.put("driveRight2", 0);
+		CommandBase.dashTable.put("driveLeft1", 0);
+		CommandBase.dashTable.put("driveLeft2", 0);
+		CommandBase.dashTable.put("shooterRight1", 0);
+		CommandBase.dashTable.put("shooterRight2", 0);
+		CommandBase.dashTable.put("shooterLeft1", 0);
+		CommandBase.dashTable.put("shooterLeft2", 0);
+		CommandBase.dashTable.put("IntakeLeft", 0);
+		CommandBase.dashTable.put("IntakeRight", 0);
+		CommandBase.dashTable.put("cimmy1", 0);
+		CommandBase.dashTable.put("cimmy2", 0);
+		
 		//SmartDashboard Values
 		SmartDashboard.putData(Scheduler.getInstance());
 
@@ -74,7 +104,8 @@ public class Robot extends TimedRobot {
         Thread t = new Thread(() -> {
         	while(!Thread.interrupted()) {
                 byte[] request = responder.recv(8);
-                CommandBase.dashTable.put("autoMode", new String(request));
+                CommandBase.dashTable.put("autoMode", new 
+                		String(request));
                 //System.out.println(new String(request));
 
                 // Send reply back to client
@@ -101,8 +132,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
         CommandBase.dashTable.put("robotMode", "AUTO");
-		//String autoMode = CommandBase.dashTable.getString("autoMode");
-    	String autoMode = "LEFT";
+		String autoMode = CommandBase.dashTable.getString("autoMode");
         System.out.println("Auto Mode set to " + autoMode);
     	
 		String fieldInfo = DriverStation.getInstance().getGameSpecificMessage();
@@ -118,6 +148,7 @@ public class Robot extends TimedRobot {
    	
     	switch(autoMode.toUpperCase()) {
 	    	case "LEFT":
+	    	default:
 	    		autoCommand = new CGAutoLeftSide(fieldInfo);
 	    		System.out.println("AUTO - Running LEFT");
 	    		break;
@@ -125,16 +156,17 @@ public class Robot extends TimedRobot {
 	    		autoCommand = new CGAutoRightSide(fieldInfo);
 	    		System.out.println("AUTO - Running RIGHT");
 	    		break;
-	    	case "BASELEFT": // turn to the vision target and drive to it, then score in switch
-	    		autoCommand = new CGAutoBaseline(fieldInfo, "L");
-	    		System.out.println("AUTO - Running BASELEFT");
+	    	case "BASELEFT": //Currently Middle
+	    		autoCommand = new CGAutoMiddle(fieldInfo);
+	    		System.out.println("AUTO - Running MIDDLE");
 	    		break;
-	    	case "BASERIGHT": // break the baseline only, do not score=
-				autoCommand = new CGAutoBaseline(fieldInfo, "R");
-				System.out.println("AUTO - Running BASERIGHT");
+	    	case "BASERIGHT": //Currently Middle
+				autoCommand = new CGAutoMiddle(fieldInfo);
+				System.out.println("AUTO - Running MIDDLE");
 				break;
 	    }
     	autoCommand.start();
+    	System.out.println(">>> AUTO - Running " + autoMode.toUpperCase());
 	}
 
 	@Override

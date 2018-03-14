@@ -32,6 +32,7 @@ public class DriveForwardCommand extends CommandBase {
     protected void initialize() {
     	theSensorSubsystem.resetEncoders();
     	theSensorSubsystem.resetGyro();
+    	RobotMap.driveKp = 0.03;
     }
 
     // Called repeatedly when this Command is scheduled to run

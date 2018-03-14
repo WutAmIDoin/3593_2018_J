@@ -29,16 +29,15 @@ public class OI {
 		//Commands XBC1
 		getButton(XBC1, 6).whenPressed(new ToggleShifterCommand());
 		getButton(XBC1, 5).whenPressed(new ToggleFolderCommand());
-		//getButton(XBC1, 0).whenPressed(new SwitchDriveCommand());
+		getButton(XBC1, 1).whenPressed(new SwitchCameraViewCommand());
 		
 		//Commands XBC2
 		getButton(XBC2, 1).whenPressed(new ActivateBoosterCommand());
 		getButton(XBC2, 3).whenPressed(new ToggeLifterCommand());
 		getButton(XBC2, 4).whenPressed(new ToggleFlapCommand());
+		getButton(XBC2, 8).whenPressed(new BumpBackCommand());
 		
-		if(XBC1.getPOV() != -1) {
-			new SwitchCameraViewCommand(XBC1.getPOV());
-		}
+		
 	}
 	
 	public JoystickButton getButton(XboxController con, int button) {

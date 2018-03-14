@@ -21,7 +21,6 @@ public class ShifterSubsystem extends Subsystem {
     	if (shifter.get() != setShifter) {
     		shifter.set(setShifter);
     		CommandBase.toggleShifters = setShifter;
-    		CommandBase.dashTable.put("driveShifter", setShifter);
     	}
     }
     
@@ -29,7 +28,6 @@ public class ShifterSubsystem extends Subsystem {
     	if (shifter.get()) {
     		shifter.set(false);
     		CommandBase.toggleShifters = false;
-    		CommandBase.dashTable.put("driveShifter", false);
     	}
     }
     
@@ -37,7 +35,6 @@ public class ShifterSubsystem extends Subsystem {
     	if (!shifter.get()) {
     		shifter.set(true);
     		CommandBase.toggleShifters = true;
-    		CommandBase.dashTable.put("driveShifter", true);
     	}
     }
     

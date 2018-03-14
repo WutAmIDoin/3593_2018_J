@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class SwitchCameraViewCommand extends CommandBase {
-	int sentPOV;
+	
 	boolean finished = false;
-    public SwitchCameraViewCommand(int POV) {
-        sentPOV = POV;
+    public SwitchCameraViewCommand() {
+        
     }
 
     // Called just before this Command runs the first time
@@ -20,15 +20,8 @@ public class SwitchCameraViewCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	switch (sentPOV) {
-    		case 100:
-    				
-    				break;
-    		case 0:
-    		default:
-    				
-    				break;
-    	}
+    	CommandBase.toggleCamera = !CommandBase.toggleCamera;
+    	dashTable.put("cameraView", CommandBase.toggleCamera);
     	finished = true;
     }
 

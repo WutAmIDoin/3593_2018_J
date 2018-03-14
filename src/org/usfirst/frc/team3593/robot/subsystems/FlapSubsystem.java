@@ -21,14 +21,11 @@ public class FlapSubsystem extends Subsystem {
 	   if(flap.get() != flapVal) 
 		   flap.set(flapVal);
 	   	   CommandBase.toggleFlap = flapVal;
-	   	   
-	   	CommandBase.dashTable.put("flapPosition", flapVal);
    }
    
    public void flapUp() {
 	   if (!flap.get()) {
 		   flap.set(true);
-		   CommandBase.dashTable.put("flapPosition", true);
 		   CommandBase.toggleFlap = true;
 	   }
    }
@@ -36,7 +33,6 @@ public class FlapSubsystem extends Subsystem {
    public void flapDown() {
 	   if (flap.get()) {
 		   flap.set(false);
-		   CommandBase.dashTable.put("flapPosition", false);
 		   CommandBase.toggleFlap = false;
 
 	   }

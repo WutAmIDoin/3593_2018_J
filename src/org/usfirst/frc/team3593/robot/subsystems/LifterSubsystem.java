@@ -21,14 +21,12 @@ public class LifterSubsystem extends Subsystem {
 		if (lifter.get() != setLifter)
 			lifter.set(setLifter);
 			CommandBase.toggleLifter = setLifter;
-			 CommandBase.dashTable.put("shooterPosition", setLifter);
 	}
 	
 	public void lifterUp() {
 		if (!lifter.get()) {
 			lifter.set(false);
 			CommandBase.toggleLifter = false;
-			CommandBase.dashTable.put("shooterPosition", false);
 		}
 	}
 	
@@ -36,7 +34,6 @@ public class LifterSubsystem extends Subsystem {
 		if (lifter.get())
 		lifter.set(true);
 		CommandBase.toggleLifter = true;
-		CommandBase.dashTable.put("shooterPosition", true);
 		
 	}
 

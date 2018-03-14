@@ -24,6 +24,10 @@ public class SensorReportingCommand extends Command {
         CommandBase.dashTable.put("driveLeftEncoder", encDis[0]);
         CommandBase.dashTable.put("driveRightEncoder", encDis[1]);
         CommandBase.dashTable.put("gyroAngle", CommandBase.theSensorSubsystem.getGyroAngle());
+        CommandBase.dashTable.put("flapPosition", CommandBase.toggleFlap ? 1 : 0);
+        CommandBase.dashTable.put("driveShifter", CommandBase.toggleShifters ? 1 : 0);
+        CommandBase.dashTable.put("shooterPosition", CommandBase.toggleLifter ? 1 : 0);
+        CommandBase.dashTable.put("intakeArms", CommandBase.toggleFolders ? 1 : 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
