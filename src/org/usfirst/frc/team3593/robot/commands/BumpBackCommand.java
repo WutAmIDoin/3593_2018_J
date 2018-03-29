@@ -18,7 +18,7 @@ public class BumpBackCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.theShooterSubsystem.SetShooterSpeed(-.5);
+    	CommandBase.theShooterSubsystem.SetShooterSpeed(-.4);
     	Timer.delay(.5);
     	CommandBase.theShooterSubsystem.SetShooterSpeed(0);
     	finished = true;

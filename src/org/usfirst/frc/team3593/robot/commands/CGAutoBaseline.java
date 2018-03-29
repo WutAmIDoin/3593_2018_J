@@ -16,7 +16,7 @@ public class CGAutoBaseline extends CommandGroup {
     	
     	
     	//original
-    	addSequential(new DriveForwardCommand(120, .65));
+    	addSequential(new DriveForwardCommand(140, .65));
     	//Stop motors just in case
     	addSequential(new DriveForwardCommand(0,0));
     	

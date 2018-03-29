@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
 		//Rear Camera
 		serv = new MjpegServer("RearStream", 1188);
 		rearCamera = new UsbCamera("RearCam", 0);
-		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 20);
+		rearCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 480, 30);
 		serv.setSource(rearCamera);
 		
 		//TommiNET
@@ -150,20 +150,28 @@ public class Robot extends TimedRobot {
 	    	case "LEFT":
 	    	default:
 	    		autoCommand = new CGAutoLeftSide(fieldInfo);
-	    		System.out.println("AUTO - Running LEFT");
+	    		System.out.println("AUTO - Set to LEFT");
 	    		break;
 	    	case "RIGHT":
 	    		autoCommand = new CGAutoRightSide(fieldInfo);
-	    		System.out.println("AUTO - Running RIGHT");
+	    		System.out.println("AUTO - Set to RIGHT");
 	    		break;
 	    	case "BASELEFT": //Currently Middle
-	    		autoCommand = new CGAutoMiddle(fieldInfo);
-	    		System.out.println("AUTO - Running MIDDLE");
+	    		autoCommand = new CGAutoBaseline(fieldInfo, "L");
+	    		System.out.println("AUTO - Set to BASELEFT");
 	    		break;
 	    	case "BASERIGHT": //Currently Middle
-				autoCommand = new CGAutoMiddle(fieldInfo);
-				System.out.println("AUTO - Running MIDDLE");
+				autoCommand = new CGAutoBaseline(fieldInfo, "R");
+				System.out.println("AUTO - Set to BASERIGHT");
 				break;
+	    	case "CENTER": 
+	    		autoCommand = new CGAutoMiddle(fieldInfo);
+	    		System.out.println("AUTO - Set to MIDDLE");
+	    		break;
+	    	case "SCALEONLYL":
+	    		autoCommand = new CGScaleOnlyL(fieldInfo);
+	    		System.out.println("AUTO - Set to SCALEONLY L");
+	    		break;
 	    }
     	autoCommand.start();
     	System.out.println(">>> AUTO - Running " + autoMode.toUpperCase());

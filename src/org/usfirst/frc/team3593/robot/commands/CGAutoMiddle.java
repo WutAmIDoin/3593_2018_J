@@ -23,23 +23,20 @@ public class CGAutoMiddle extends CommandGroup {
     	//Determine switch side
     	if (FMSInfo.charAt(0) == 'L') {
     		//Turn to left for diagonal drive
-    		addSequential(new TurnToDegree(-45, 0.75));
+    		addSequential(new TurnToDegree(-35, 0.75));
     		
     		//Drive Diagonally to switch
-    		addSequential(new DriveForwardCommand(85.5, .8));
+    		addSequential(new DriveForwardCommand(75.5, .8));
     		
     		//Turn to toward the scale
     		addSequential(new TurnToDegree(45, .75));
     		
     		//Drive to scale
-    		addSequential(new DriveForwardCommand(20, 0.85));
+    		addSequential(new DriveForwardCommand(5, 0.85));
     		
     		//Shoot
     		//Charge Motors
     		addSequential(new SetShooter(RobotMap.switchSpeed));
-    		
-    		//Delay to get to speed
-    		addSequential(new DelayCommand(0.5));
     		
     		//Activate Launcher
     		addSequential(new ActivateBoosterCommand());
@@ -52,20 +49,17 @@ public class CGAutoMiddle extends CommandGroup {
     		addSequential(new TurnToDegree(45, 0.75));
     		
     		//Drive Diagonally to switch
-    		addSequential(new DriveForwardCommand(85.5, .8));
+    		addSequential(new DriveForwardCommand(75.5, .8));
     		
     		//Turn to toward the scale
     		addSequential(new TurnToDegree(-45, .75));
     		
     		//Drive to scale
-    		addSequential(new DriveForwardCommand(20, 0.85));
+    		addSequential(new DriveForwardCommand(5, 0.85));
     		
     		//Shoot
     		//Charge Motors
     		addSequential(new SetShooter(RobotMap.switchSpeed));
-    		
-    		//Delay to get to speed
-    		addSequential(new DelayCommand(0.5));
     		
     		//Activate Launcher
     		addSequential(new ActivateBoosterCommand());

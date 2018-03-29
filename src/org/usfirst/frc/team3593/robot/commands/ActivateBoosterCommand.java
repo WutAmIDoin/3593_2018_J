@@ -24,7 +24,7 @@ public class ActivateBoosterCommand extends CommandBase {
     //took out the CommandBase.
     protected void execute() {
     	theBoosterSubsystem.SetLauncher(true);
-    	Timer.delay(1);
+    	Timer.delay(0.75);
     	finished = true;
     }
 

@@ -24,8 +24,8 @@ public class IntakeSubsystem extends Subsystem {
 	}
 	
 	public void runIntake(double douknowdawea) {
-		intakeL.set(douknowdawea * 0.8);
-		intakeR.set(-douknowdawea * 0.8);
+		intakeL.set(douknowdawea * 0.85);
+		intakeR.set(-douknowdawea * 0.85);
 		ciminiR.set(douknowdawea);
 		ciminiL.set(-douknowdawea);
 	}
