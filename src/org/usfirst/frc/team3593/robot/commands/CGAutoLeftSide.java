@@ -41,6 +41,7 @@ public class CGAutoLeftSide extends CommandGroup {
 //    		
 //    		//Delay to get to speed
 //    		addSequential(new DelayCommand(0.2));
+    	
 //    		
 //    		//Activate Launcher
 //    		addSequential(new ActivateBoosterCommand());
@@ -59,7 +60,7 @@ public class CGAutoLeftSide extends CommandGroup {
 //    	} 
 	if (FMSInfo.charAt(1) == 'L'){ //Left Scale
     		//Drive to scale
-    		addSequential(new DriveForwardCommand(190, 0.85));
+    		addSequential(new DriveForwardCommand(185, 0.85));
     		
     		//Turn To scale
     		addSequential(new TurnToDegree(55, 0.75));
@@ -109,38 +110,39 @@ public class CGAutoLeftSide extends CommandGroup {
 			addSequential(new TurnToDegree(-45, 0.75));
 	} else { //Opposite side switch
 		
-//    		addSequential(new DriveForwardCommand(70, 0.8));
-//    	} //baseline code
-			
-			//Drive to center of scale/switch pathway
-			addSequential(new DriveForwardCommand(165, 0.9));
-			
-			//Turn toward pathway
-			addSequential(new TurnToDegree(90, 0.75));
-			
-			//Go down the pathway to the opposite switch
-			addSequential(new DriveForwardCommand(155, 0.9));
-			
-			//Turn toward switch
-			addSequential(new TurnToDegree(135, 0.75));
-			
-			//Drive to Switch
-			addSequential(new DriveForwardCommand(35, 0.9));
-			
-			//Score
-			//Charge Motors
-			addSequential(new SetShooter(RobotMap.switchSpeed));
-			
-			//Delay to get to speed
-			addSequential(new DelayCommand(0.2));
-			
-			//Activate Launcher
-			addSequential(new ActivateBoosterCommand());
-				
-			//Turn off shooters
-			addSequential(new SetShooter(0));
-	  		
-    	}
+    		addSequential(new DriveForwardCommand(70, 0.8));
+    	} //baseline code
+//			
+//			//Drive to center of scale/switch pathway
+//			addSequential(new DriveForwardCommand(100, 0.9));
+//			
+//			//Turn toward pathway
+//			addSequential(new TurnToDegree(85, 0.75));
+//			
+//			//Go down the pathway to the opposite switch
+//			addSequential(new DriveForwardCommand(195, 0.9));
+//			
+//			//Turn toward switch
+//			addSequential(new TurnToDegree(135, 0.75));
+//			addSequential(new SetLifter(true));
+//			
+//			//Drive to Switch
+//			addSequential(new DriveForwardCommand(15, 0.9));
+//			
+//			//Score
+//			//Charge Motors
+//			addSequential(new SetShooter(RobotMap.switchSpeed));
+//			
+//			//Delay to get to speed
+//			addSequential(new DelayCommand(0.2));
+//			
+//			//Activate Launcher
+//			addSequential(new ActivateBoosterCommand());
+//				
+//			//Turn off shooters
+//			addSequential(new SetShooter(0));
+//	  		
+//    	}
     	
     	// If the scale side we're now closest to is also our color
     	if(FMSInfo.charAt(1) == 'L' && atSwitch) {

@@ -168,7 +168,7 @@ public class Robot extends TimedRobot {
 	    		autoCommand = new CGAutoMiddle(fieldInfo);
 	    		System.out.println("AUTO - Set to MIDDLE");
 	    		break;
-	    	case "SCALEONLYL":
+	    	case "SCALE":
 	    		autoCommand = new CGScaleOnlyL(fieldInfo);
 	    		System.out.println("AUTO - Set to SCALEONLY L");
 	    		break;
