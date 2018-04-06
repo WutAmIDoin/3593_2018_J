@@ -45,32 +45,33 @@ public class CGScaleOnlyL extends CommandGroup {
     		addSequential(new SetShooter(0));
     		
     		//Turn toward second cube
-    		addSequential(new TurnToDegree());
+    		addSequential(new TurnToDegree(-104, 0.75));
     		
     		//Back up about 3/4 the way at max speed
-    		addSequential(new DriveForwardCommand(-0.85));
+    		addSequential(new DriveForwardCommand(-84, 0.85));
     		
     		//Set Flap down and pick up cube and activate intake
-    		addSequential(new DriveForwardCommand(-0.65, 0));
+    		addSequential(new DriveForwardCommand(25, 0.65));
     		addParallel(new SetFlap(false));
     		addParallel(new SetIntake(0.9));
     		
     		//Pause the Intake and Run again to ensure good cube pick up
     		addSequential(new SetIntake(0));
-    		//addSequential(new DelayCommand(0.3);
+    		addSequential(new DelayCommand(0.2));
     		addSequential(new SetIntake(0.9));
     		
     		//Drive back to scale
-    		addSequential(new DriveForwardCommand(0.85));
+    		addSequential(new DriveForwardCommand(110, 0.85));
     		
     		//Turn to scale
-    		addSequential(new TurnToDegree());
+    		addSequential(new TurnToDegree(104, 0.75));
+    		addParallel(new SetIntake(0));
     		
     		//Shoot
     		addSequential(new SetShooter(RobotMap.scaleSpeed));
     		
     		//Delay to get to speed
-    		addSequential(new DelayCommand(0.5));
+    		addSequential(new DelayCommand(0.3));
     		
     		//Activate Launcher
     		addSequential(new ActivateBoosterCommand());
@@ -110,32 +111,33 @@ public class CGScaleOnlyL extends CommandGroup {
     		addSequential(new SetShooter(0));
     		
     		//Turn toward second cube
-    		addSequential(new TurnToDegree());
+    		addSequential(new TurnToDegree(104, 0.75));
     		
     		//Back up about 3/4 the way at max speed
-    		addSequential(new DriveForwardCommand(-0.85));
+    		addSequential(new DriveForwardCommand(-84, 0.85));
     		
     		//Set Flap down and pick up cube and activate intake
-    		addSequential(new DriveForwardCommand(-0.65, 0));
+    		addSequential(new DriveForwardCommand(-25, 0.65));
     		addParallel(new SetFlap(false));
     		addParallel(new SetIntake(0.9));
     		
     		//Pause the Intake and Run again to ensure good cube pick up
     		addSequential(new SetIntake(0));
-    		//addSequential(new DelayCommand(0.3);
+    		addSequential(new DelayCommand(0.2));
     		addSequential(new SetIntake(0.9));
     		
     		//Drive back to scale
-    		addSequential(new DriveForwardCommand(0.85));
+    		addSequential(new DriveForwardCommand(110, 0.85));
     		
     		//Turn to scale
-    		addSequential(new TurnToDegree());
+    		addSequential(new TurnToDegree(104, 0.75));
+    		addParallel(new SetIntake(0));
     		
     		//Shoot
     		addSequential(new SetShooter(RobotMap.scaleSpeed));
     		
     		//Delay to get to speed
-    		addSequential(new DelayCommand(0.5));
+    		addSequential(new DelayCommand(0.3));
     		
     		//Activate Launcher
     		addSequential(new ActivateBoosterCommand());
