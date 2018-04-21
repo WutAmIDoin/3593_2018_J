@@ -32,7 +32,7 @@ public class CGAutoMiddle extends CommandGroup {
     		addSequential(new TurnToDegree(45, 0.75));
     		
     		//Drive to switch
-    		addSequential(new DriveForwardCommand(5, 0.85));
+    		addSequential(new DriveForwardCommand(2, 0.65));
     		
     		//Shoot
     		//Charge Motors
@@ -46,81 +46,43 @@ public class CGAutoMiddle extends CommandGroup {
     		
     		//2nd Cube
     		//Back up a bit
-    		addSequential(new DriveForwardCommand(-20, 0.85));
+    		addSequential(new DriveForwardCommand(-45, 0.85));
     		
     		//Turn at a 45 to diagonal
-    		addSequential(new TurnToDegree(-30, 0.75));
-    		
+    		addSequential(new TurnToDegree(-135, 0.75));
+    		addSequential(new SetFlap(false));
+    		addParallel(new SetIntake(0.9));
     		//Drive back diagonal
-    		addSequential(new DriveForwardCommand(-63, 0.85));
+//    		addSequential(new DriveForwardCommand(-30, 0.85));
     		
-    		//Whip around for intake
-    		addSequential(new TurnToDegree(-115, 0.75));
+//    		//Whip around for intake
+//    		addSequential(new TurnToDegree(-115, 0.75));
     		
     		//Drive into cube with intake and flap
-    		addSequential(new DriveForwardCommand(-20, 0.65));
-    		addParallel(new SetFlap(false));
-    		addParallel(new SetIntake(0.9));
+    		addSequential(new DriveForwardCommand(-52, 0.75));
+    		
     		
     		//Flutter Intake for smooth intake
-    		addSequential(new SetIntake(0));
-    		addSequential(new DelayCommand(0.2));
-    		addSequential(new SetIntake(0.9));
-    		
+    		addSequential(new DelayCommand(1));
     		//Forward a bit
-    		addSequential(new DriveForwardCommand(20, 0.85));
+    		addSequential(new DriveForwardCommand(27, 0.9));
     		
+    		addSequential(new SetIntake(0));
+    		addSequential(new DelayCommand(0.5));
+    		addSequential(new SetIntake(0.9));
     		//Whip around toward Switch
-    		addSequential(new TurnToDegree(115, 0.75));
+    		addSequential(new TurnToDegree(130, 0.75));
     		
     		//Drive Diagonally to Switch
-    		addSequential(new DriveForwardCommand(63, 0.85));
-    		
-    		//Turn to Switch 
-    		addSequential(new TurnToDegree(30, 0.75));
+    		addSequential(new DriveForwardCommand(40, 0.9));
     		addParallel(new SetFlap(true));
     		addParallel(new SetIntake(0));
-    		
-    		//Drive to edge of Switch
-    		addSequential(new DriveForwardCommand(15, 0.9));
-    		
-    		//Shoot
-    		//Charge Motors
-    		addSequential(new SetShooter(RobotMap.switchSpeed));
-    		
-    		//Activate Launcher
-    		addSequential(new ActivateBoosterCommand());
-    		
-    		//Turn off shooters
-    		addSequential(new SetShooter(0));
-    		
-    		//3rd Cube???
-    		//Back up a slight bit
-    		addSequential(new DriveForwardCommand(-5, 0.85));
-    		
-    		//Turn to Cube 
-    		addSequential(new TurnToDegree(-90, 0.75));
-    		
-    		//Drive to cube with flap
-    		addSequential(new DriveForwardCommand(-58, 0.85));
-    		addParallel(new SetFlap(false));
-    		addParallel(new SetIntake(0.9));
-    		
-    		//Flutter Intake for smooth intake
-    		addSequential(new SetIntake(0));
-    		addSequential(new DelayCommand(0.2));
-    		addSequential(new SetIntake(0.9));
-    		
-    		//Go back to switch
-    		addSequential(new DriveForwardCommand(58, 0.85));
-    		
-    		//Turn to Switch
-    		addSequential(new TurnToDegree(90, 0.75));
-    		addParallel(new SetIntake(0));
-    		addParallel(new SetFlap(true));
-    		
-    		//Drive back to switch
-    		addSequential(new DriveForwardCommand(5, 0.85));
+//    		//Turn to Switch 
+//    		addSequential(new TurnToDegree(30, 0.75));
+
+//    		
+//    		//Drive to edge of Switch
+//    		addSequential(new DriveForwardCommand(15, 0.9));
     		
     		//Shoot
     		//Charge Motors
@@ -134,16 +96,17 @@ public class CGAutoMiddle extends CommandGroup {
     	}
     	else if (FMSInfo.charAt(0) == 'R'){
     		//Turn to right for diagonal drive
-    		addSequential(new TurnToDegree(48, 0.75));
+    		addSequential(new TurnToDegree(50, 0.75));
     		
     		//Drive Diagonally to switch
-    		addSequential(new DriveForwardCommand(75.5, .8));
+    		addSequential(new DriveForwardCommand(58, 0.8));
+    		addSequential(new DriveForwardCommand(10, 0.7));
     		
     		//Turn to toward the switch
-    		addSequential(new TurnToDegree(-45, .75));
+    		addSequential(new TurnToDegree(-50, .75));
     		
     		//Drive to switch
-    		addSequential(new DriveForwardCommand(8, 0.85));
+    		addSequential(new DriveForwardCommand(4, 0.65));
     		
     		//Shoot
     		//Charge Motors
@@ -157,81 +120,43 @@ public class CGAutoMiddle extends CommandGroup {
     		
     		//2nd Cube
     		//Back up a bit
-    		addSequential(new DriveForwardCommand(-20, 0.85));
+    		addSequential(new DriveForwardCommand(-45, 0.85));
     		
     		//Turn at a 45 to diagonal
-    		addSequential(new TurnToDegree(30, 0.75));
-    		
+    		addSequential(new TurnToDegree(135, 0.75));
+    		addSequential(new SetFlap(false));
+    		addParallel(new SetIntake(0.9));
     		//Drive back diagonal
-    		addSequential(new DriveForwardCommand(-63, 0.85));
+//    		addSequential(new DriveForwardCommand(-30, 0.85));
     		
-    		//Whip around for intake
-    		addSequential(new TurnToDegree(115, 0.75));
+//    		//Whip around for intake
+//    		addSequential(new TurnToDegree(-115, 0.75));
     		
     		//Drive into cube with intake and flap
-    		addSequential(new DriveForwardCommand(-20, 0.65));
-    		addParallel(new SetFlap(false));
-    		addParallel(new SetIntake(0.9));
+    		addSequential(new DriveForwardCommand(-52, 0.75));
+    		
     		
     		//Flutter Intake for smooth intake
-    		addSequential(new SetIntake(0));
-    		addSequential(new DelayCommand(0.2));
-    		addSequential(new SetIntake(0.9));
-    		
+    		addSequential(new DelayCommand(1));
     		//Forward a bit
-    		addSequential(new DriveForwardCommand(20, 0.85));
+    		addSequential(new DriveForwardCommand(27, 0.9));
     		
+    		addSequential(new SetIntake(0));
+    		addSequential(new DelayCommand(0.5));
+    		addSequential(new SetIntake(0.9));
     		//Whip around toward Switch
-    		addSequential(new TurnToDegree(-115, 0.75));
+    		addSequential(new TurnToDegree(-130, 0.75));
     		
     		//Drive Diagonally to Switch
-    		addSequential(new DriveForwardCommand(63, 0.85));
-    		
-    		//Turn to Switch 
-    		addSequential(new TurnToDegree(-30, 0.75));
+    		addSequential(new DriveForwardCommand(40, 0.9));
     		addParallel(new SetFlap(true));
     		addParallel(new SetIntake(0));
-    		
-    		//Drive to edge of Switch
-    		addSequential(new DriveForwardCommand(15, 0.9));
-    		
-    		//Shoot
-    		//Charge Motors
-    		addSequential(new SetShooter(RobotMap.switchSpeed));
-    		
-    		//Activate Launcher
-    		addSequential(new ActivateBoosterCommand());
-    		
-    		//Turn off shooters
-    		addSequential(new SetShooter(0));
-    		
-    		//3rd Cube???
-    		//Back up a slight bit
-    		addSequential(new DriveForwardCommand(-5, 0.85));
-    		
-    		//Turn to Cube 
-    		addSequential(new TurnToDegree(90, 0.75));
-    		
-    		//Drive to cube with flap
-    		addSequential(new DriveForwardCommand(-58, 0.85));
-    		addParallel(new SetFlap(false));
-    		addParallel(new SetIntake(0.9));
-    		
-    		//Flutter Intake for smooth intake
-    		addSequential(new SetIntake(0));
-    		addSequential(new DelayCommand(0.2));
-    		addSequential(new SetIntake(0.9));
-    		
-    		//Go back to switch
-    		addSequential(new DriveForwardCommand(58, 0.85));
-    		
-    		//Turn to Switch
-    		addSequential(new TurnToDegree(-90, 0.75));
-    		addParallel(new SetIntake(0));
-    		addParallel(new SetFlap(true));
-    		
-    		//Drive back to switch
-    		addSequential(new DriveForwardCommand(5, 0.85));
+//    		//Turn to Switch 
+//    		addSequential(new TurnToDegree(30, 0.75));
+
+//    		
+//    		//Drive to edge of Switch
+//    		addSequential(new DriveForwardCommand(15, 0.9));
     		
     		//Shoot
     		//Charge Motors

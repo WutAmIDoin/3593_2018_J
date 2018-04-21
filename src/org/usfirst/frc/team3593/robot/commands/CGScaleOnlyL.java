@@ -45,26 +45,32 @@ public class CGScaleOnlyL extends CommandGroup {
     		addSequential(new SetShooter(0));
     		
     		//Turn toward second cube
-    		addSequential(new TurnToDegree(-104, 0.75));
+    		addSequential(new TurnToDegree(-92, 0.75));
     		
-    		//Back up about 3/4 the way at max speed
-    		addSequential(new DriveForwardCommand(-84, 0.85));
-    		
-    		//Set Flap down and pick up cube and activate intake
-    		addSequential(new DriveForwardCommand(25, 0.65));
-    		addParallel(new SetFlap(false));
-    		addParallel(new SetIntake(0.9));
-    		
-    		//Pause the Intake and Run again to ensure good cube pick up
-    		addSequential(new SetIntake(0));
-    		addSequential(new DelayCommand(0.2));
+    		addSequential(new SetLifter(true));
     		addSequential(new SetIntake(0.9));
     		
-    		//Drive back to scale
-    		addSequential(new DriveForwardCommand(110, 0.85));
+    		//Back up about 3/4 the way at max speed
+    		addSequential(new DriveForwardCommand(-75, 0.75));
     		
+    		addSequential(new SetFlap(false));
+    		addSequential(new DelayCommand(0.5));
+    		//Set Flap down and pick up cube and activate intake
+    		//addSequential(new DriveForwardCommand(28, 0.65));
+    		
+    		
+    		//Pause the Intake and Run again to ensure good cube pick up
+    		
+    		
+    		addSequential(new SetLifter(false));
+    		//Drive back to scale
+    		addSequential(new DriveForwardCommand(75, 0.95));
+    		
+    		addSequential(new SetIntake(0));
+    		addSequential(new DelayCommand(0.5));
+    		addSequential(new SetIntake(0.9));
     		//Turn to scale
-    		addSequential(new TurnToDegree(104, 0.75));
+    		addSequential(new TurnToDegree(90, 0.75));
     		addParallel(new SetIntake(0));
     		
     		//Shoot
@@ -111,26 +117,30 @@ public class CGScaleOnlyL extends CommandGroup {
     		addSequential(new SetShooter(0));
     		
     		//Turn toward second cube
-    		addSequential(new TurnToDegree(104, 0.75));
+    		addSequential(new TurnToDegree(95, 0.75));
+    		
+    		addSequential(new SetLifter(true));
     		
     		//Back up about 3/4 the way at max speed
-    		addSequential(new DriveForwardCommand(-84, 0.85));
+    		addSequential(new DriveForwardCommand(-75, 0.85));
     		
-    		//Set Flap down and pick up cube and activate intake
-    		addSequential(new DriveForwardCommand(-25, 0.65));
-    		addParallel(new SetFlap(false));
+    		addSequential(new SetFlap(false));
     		addParallel(new SetIntake(0.9));
+    		//Set Flap down and pick up cube and activate intake
+    		addSequential(new DriveForwardCommand(28, 0.65));
+    		
     		
     		//Pause the Intake and Run again to ensure good cube pick up
     		addSequential(new SetIntake(0));
-    		addSequential(new DelayCommand(0.2));
+    		addSequential(new DelayCommand(0.3));
     		addSequential(new SetIntake(0.9));
     		
+    		addSequential(new SetLifter(false));
     		//Drive back to scale
-    		addSequential(new DriveForwardCommand(110, 0.85));
+    		addSequential(new DriveForwardCommand(90, 0.85));
     		
     		//Turn to scale
-    		addSequential(new TurnToDegree(104, 0.75));
+    		addSequential(new TurnToDegree(-95, 0.75));
     		addParallel(new SetIntake(0));
     		
     		//Shoot

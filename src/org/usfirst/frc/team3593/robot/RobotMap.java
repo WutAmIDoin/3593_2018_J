@@ -61,8 +61,8 @@ public class RobotMap {
 	//Random Values
 	public static double shooterLowSpeed = 0.5;
 	public static double shooterHighSpeed = 1;
-	public static double intakeIn = 0.9;
-	public static double intakeOut = 0.8;
+	public static double intakeIn = 0.85;
+	//public static double intakeOut = 0.8;
 	
 	public static double wheelDiameter = 6;
 	public static double encoderPPR = 256;
