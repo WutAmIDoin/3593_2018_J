@@ -24,17 +24,8 @@ public class Robot extends TimedRobot
 	{
 		// Initializes all subsystems and the OI
 		CommandBase.init();
-		NTDef = NetworkTableInstance.create();
-		NTDef.setNetworkIdentity("3593-Robot");
-		NTDef.setServerTeam(3593, 1180);
-		NTDef.startServer();
 		
-		Robot.ntValues = NTDef.getTable("3593-Values");
-		Robot.ntVision = NTDef.getTable("3593-Vision");
-		Robot.ntBehav = NTDef.getTable("3593-Behavior");
-		Robot.ntBehav.getEntry("piContinue").setDefaultBoolean(true);
-		Robot.ntBehav.getEntry("cameraView").setDefaultString("FRONT");
-		Robot.ntBehav.getEntry("robotMode").setString("DISABLED");
+		
 		
 		serv = new MjpegServer("RearStream", 1188);
 		rearCamera = new UsbCamera("RearCam", 0);
@@ -66,7 +57,6 @@ public class Robot extends TimedRobot
     		autoCommand = new CGAutoLeftSide(fieldInfo);
     		break;
     	case "RIGHT":
-    		//rightSide();
     		break;
     	case "B-SWITCH": // turn to the vision target and drive to it, then score in switch
     		//baseline("R");
